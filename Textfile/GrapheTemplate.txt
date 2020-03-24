@@ -1,0 +1,7 @@
+4 //nombre de sommets
+5 //nombre d'arcs
+3 1 25 //Sommet initial arc sommet final
+1 0 12
+2 0 -5
+0 1 0
+2 1 7
