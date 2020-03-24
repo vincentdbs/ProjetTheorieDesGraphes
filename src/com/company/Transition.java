@@ -2,6 +2,7 @@ package com.company;
 
 public class Transition {
     int init, arc, fin;
+    //TODO refactor nom de la classe en Arc
 
     public Transition(int i_init, int i_arc, int i_fin){
         init = i_init;

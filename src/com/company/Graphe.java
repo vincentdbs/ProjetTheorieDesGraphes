@@ -9,12 +9,26 @@ public class Graphe {
     private String name_file;
     private int nb_arc, nb_sommet, num_file;
     private ArrayList<Transition> listTransition;
+    private int[][] matriceAdjacence;
+    private int[][] matriceValeur;
 
     public Graphe(int _num_file){
-        this.listTransition = new ArrayList<Transition>();
+        this.listTransition = new ArrayList<Transition>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "TG-PRJ-A4-" + num_file + ".txt"; //nom du fichier
-        readFile();
+        readFile(); //récupération de la liste de transition
+
+        //initialisation des matrices
+        this.matriceValeur = new int[nb_sommet][nb_sommet];
+        this.matriceAdjacence = new int[nb_sommet][nb_sommet];
+        for (int i = 0; i < nb_sommet; i++) {
+            for (int j = 0; j < nb_sommet; j++) {
+                matriceAdjacence[i][j] = 0;
+                matriceValeur[i][j] = 0;
+            }
+        }
+
+
     }
 
     private void readFile(){
