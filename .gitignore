@@ -1,0 +1,10 @@
+/.idea/misc.xml
+/.idea/workflow.xml
+/.idea/workspace.xml
+*.idea
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
