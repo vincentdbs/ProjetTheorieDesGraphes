@@ -6,11 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
         Graphe a = new Graphe(1);
+        a.createTransition("0 1 20", 5);
     }
 
-    public String fileChoice(){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Choisissez un numéro de graphe : ");
-        return "kjdfhs";
-    }
+
 }

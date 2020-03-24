@@ -3,10 +3,14 @@ package com.company;
 public class Transition {
     int init, arc, fin;
 
-    private Transition(int i_init, int i_arc, int i_fin){
+    public Transition(int i_init, int i_arc, int i_fin){
         init = i_init;
         arc = i_arc;
         fin = i_fin;
+    }
+
+    public void print(){
+        System.out.print(init + " " + arc  + " " + fin);
     }
 
     public int getInit() {

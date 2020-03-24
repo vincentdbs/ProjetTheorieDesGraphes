@@ -2,17 +2,17 @@ package com.company;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Graphe {
-    int num_file;
-    String name_file;
-    int nb_arc;
-    int nb_sommet;
+    private String name_file;
+    private int nb_arc, nb_sommet, num_file;
+    private List<Transition> listTransition;
 
     public Graphe(int _num_file){
         this.num_file = _num_file; //numéro du fichier
-        this.name_file = "TG-PRJ-A4-" + num_file + ".txt";
+        this.name_file = "TG-PRJ-A4-" + num_file + ".txt"; //nom du fichier
         readFile();
     }
 
@@ -21,11 +21,24 @@ public class Graphe {
             Scanner scan = new Scanner(new File("Textfile/" + name_file));
             setNb_sommet(Integer.parseInt(scan.nextLine()));
             setNb_arc(Integer.parseInt(scan.nextLine()));
-            System.out.println(getNb_sommet() + " " + getNb_arc());
+
             scan.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private Transition createTransition(String line){
+        String[] array = line.split(" ");
+        Transition transition = new Transition(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+        return transition;
+    }
+
+    //TODO delete
+    public void createTransition(String line, int x){
+        String[] array = line.split(" ");
+        Transition transition = new Transition(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+        transition.print();
     }
 
     public int getNum_file() {
