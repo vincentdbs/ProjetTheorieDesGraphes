@@ -10,7 +10,7 @@ public class Graphe {
     private int nb_arc, nb_sommet, num_file;
     private ArrayList<Transition> listTransition;
     private int[][] matriceAdjacence;
-    private int[][] matriceValeur;
+    private String[][] matriceValeur;
 
     public Graphe(int _num_file){
         this.listTransition = new ArrayList<Transition>(); //initialisation de la liste de transition
@@ -19,16 +19,15 @@ public class Graphe {
         readFile(); //récupération de la liste de transition
 
         //initialisation des matrices
-        this.matriceValeur = new int[nb_sommet][nb_sommet];
+        this.matriceValeur = new String[nb_sommet][nb_sommet];
         this.matriceAdjacence = new int[nb_sommet][nb_sommet];
         for (int i = 0; i < nb_sommet; i++) {
             for (int j = 0; j < nb_sommet; j++) {
                 matriceAdjacence[i][j] = 0;
-                matriceValeur[i][j] = 0;
+                matriceValeur[i][j] = "X";
             }
         }
-
-
+        createMatrice(); //remplissage des matrices
     }
 
     private void readFile(){
@@ -51,6 +50,12 @@ public class Graphe {
         return transition;
     }
 
+    private void createMatrice(){
+        for (int i = 0; i < listTransition.size(); i++) {
+            matriceAdjacence[listTransition.get(i).getInit()][listTransition.get(i).getFin()] = 1;
+            matriceValeur[listTransition.get(i).getInit()][listTransition.get(i).getFin()] = String.valueOf(listTransition.get(i).getArc());
+        }
+    }
 
     public int getNum_file() {
         return num_file;
