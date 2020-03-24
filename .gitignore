@@ -8,3 +8,4 @@ out/
 *.iml
 *.ipr
 *.iws
+automate_git_push.sh
