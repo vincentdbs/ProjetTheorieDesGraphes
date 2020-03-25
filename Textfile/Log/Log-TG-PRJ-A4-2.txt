@@ -5,3 +5,30 @@ Lecture du fichier n°2
 1 -> 0 = 12
 2 -> 0 = -5
 2 -> 1 = 7
+
+Matrice d'ajacence
+	0	1	2	3	
+0 	0	0	0	0
+1 	1	0	0	0
+2 	1	1	0	0
+3 	0	1	0	0
+Matrice des valeurs
+	0	1	2	3	
+0 	*	*	*	*
+1 	12	*	*	*
+2 	-5	7	*	*
+3 	*	25	*	*
+
+Detection de circuit - methode d'elimination des points d'entrée :
+
+Points d'entrée : 2 3 
+Suppression des points d'entrée
+Sommets restants : 0 1 
+
+Points d'entrée : 1 
+Suppression des points d'entrée
+Sommets restants : 0 
+
+Points d'entrée : 0 
+Suppression des points d'entrée
+Sommets restants : 

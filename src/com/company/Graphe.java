@@ -94,12 +94,14 @@ public class Graphe {
             todo.add(i);
         }
 
+        trace.write("\nDetection de circuit - methode d'elimination des points d'entrée :\n");
         //rang
         int rg = 0;
         do{
             //un tour
             int tempo = 0;
             //detection predecesseur ou non
+            trace.write("\nPoints d'entrée : ");
             for (int i = 0; i < todo.size(); i++) {
                 for (int j = 0; j < nb_sommet; j++) {
                     if (matDetection[j][todo.get(i)] == 1) { // [j][i] car parcourt en colonne
@@ -109,9 +111,11 @@ public class Graphe {
                 if (tempo == 0) {
                     done.add(todo.get(i));
                     rang[todo.get(i)] = rg;
+                    trace.write(String.valueOf(todo.get(i)) + " ");
                 }
                 tempo = 0;
             }
+            trace.write("\nSuppression des points d'entrée\n");
             //passage à -1 des elements
             for (int i = 0; i < done.size(); i++) {
                 for (int j = 0; j < nb_sommet; j++) {
@@ -123,6 +127,12 @@ public class Graphe {
             for (int i = 0; i < done.size() ; i++) {
                 todo.remove(done.get(i));
             }
+            //affichage des sommets restants
+            trace.write("Sommets restants : ");
+            for (int i = 0; i < todo.size() ; i++) {
+                trace.write(String.valueOf(todo.get(i)) + " ");
+            }
+            trace.write("\n");
             rg++;
         }while ((rg < nb_sommet) && (!todo.isEmpty()));
 
