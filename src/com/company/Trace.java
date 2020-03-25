@@ -1,14 +1,21 @@
 package com.company;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Trace {
     private String nameFile;
 
     public Trace(int _num_file){
         nameFile = "Textfile/Log/Log-TG-PRJ-A4-" + _num_file + ".txt";
+        PrintWriter writer = null;
+        try { //supprime le contenu du fichier
+            writer = new PrintWriter(nameFile);
+            writer.print("");
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void write(String str){

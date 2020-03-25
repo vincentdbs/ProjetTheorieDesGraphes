@@ -33,10 +33,6 @@ public class Graphe {
             }
         }
         fillMatrice(); //remplissage des matrices
-
-        trace.write("test ");
-        trace.write("test\n");
-        detectCircuit();
     }
 
     /**
@@ -47,6 +43,7 @@ public class Graphe {
             Scanner scan = new Scanner(new File("Textfile/" + name_file));
             setNb_sommet(Integer.parseInt(scan.nextLine()));
             setNb_arc(Integer.parseInt(scan.nextLine()));
+            trace.write("Lecture du fichier n°" + getNum_file() + "\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n");
             while (scan.hasNextLine()){
                 listTransition.add(createTransition(scan.nextLine()));
             }

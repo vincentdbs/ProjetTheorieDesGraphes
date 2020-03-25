@@ -1,0 +1,4 @@
+Lecture du fichier n°2
+4 sommet(s)
+4 arc(s)
+kfhsd
