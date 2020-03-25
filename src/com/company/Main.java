@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         Graphe a = new Graphe(2);
+        a.detectCircuit();
 
 //        ArrayList<Integer> done = new ArrayList<Integer>();
 //        ArrayList<Integer> todo = new ArrayList<Integer>();

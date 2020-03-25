@@ -71,7 +71,10 @@ public class Graphe {
         }
     }
 
-    private void detectCircuit() {
+    /**
+     * Detection de la présence/absence d'un circuit dans le graphe + calcul du rang si possible
+     */
+    public void detectCircuit() {
         //initialisation
         int[][] matDetection = matriceAdjacence;
         ArrayList<Integer> done = new ArrayList<Integer>();
@@ -109,10 +112,6 @@ public class Graphe {
             for (int i = 0; i < done.size() ; i++) {
                 todo.remove(done.get(i));
             }
-
-
-            System.out.println("k= " + rg + "\n" + todo);
-            System.out.println(done);
             rg++;
         }while ((rg < nb_sommet) && (!todo.isEmpty()));
 
@@ -128,8 +127,8 @@ public class Graphe {
             System.out.println("");
         }
     }
-    /*Getter setter*/
 
+    /*Getter setter*/
     public int getNum_file() {
         return num_file;
     }
