@@ -1,4 +1,7 @@
 Lecture du fichier n°2
 4 sommet(s)
 4 arc(s)
-kfhsd
+3 -> 1 = 25
+1 -> 0 = 12
+2 -> 0 = -5
+2 -> 1 = 7

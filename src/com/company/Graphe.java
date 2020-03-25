@@ -33,6 +33,14 @@ public class Graphe {
             }
         }
         fillMatrice(); //remplissage des matrices
+
+    }
+
+    public void affichageMatrice(){
+        trace.write("Matrice d'ajacence\n");
+        printMatrice(matriceAdjacence);
+        trace.write("Matrice des valeurs\n");
+        printMatrice(matriceValeur);
     }
 
     /**
@@ -47,6 +55,7 @@ public class Graphe {
             while (scan.hasNextLine()){
                 listTransition.add(createTransition(scan.nextLine()));
             }
+            trace.write("\n");
             scan.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -59,6 +68,7 @@ public class Graphe {
     private Transition createTransition(String line){
         String[] array = line.split(" ");
         Transition transition = new Transition(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+        trace.write(array[0] + " -> " + array[1] + " = " + array[2] + "\n");
         return transition;
     }
 
@@ -116,16 +126,35 @@ public class Graphe {
             rg++;
         }while ((rg < nb_sommet) && (!todo.isEmpty()));
 
-
-        printMatrice(matDetection);
     }
 
     private void printMatrice(int[][] arrayList){
+        trace.write("\t");
+        for (int i = 0; i < nb_sommet ; i++) {
+            trace.write(i + "\t");
+        }
+        trace.write("\n");
         for (int i = 0; i < nb_sommet; i++) {
+            trace.write(i + " ");
             for (int j = 0; j < nb_sommet; j++) {
-                System.out.print(arrayList[i][j] + " ");
+                trace.write(String.valueOf("\t" + arrayList[i][j]));
             }
-            System.out.println("");
+            trace.write("\n");
+        }
+    }
+
+    private void printMatrice(String[][] arrayList){
+        trace.write("\t");
+        for (int i = 0; i < nb_sommet ; i++) {
+            trace.write(i + "\t");
+        }
+        trace.write("\n");
+        for (int i = 0; i < nb_sommet; i++) {
+            trace.write(i + " ");
+            for (int j = 0; j < nb_sommet; j++) {
+                trace.write(String.valueOf("\t" + arrayList[i][j]));
+            }
+            trace.write("\n");
         }
     }
 
