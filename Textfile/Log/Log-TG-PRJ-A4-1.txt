@@ -19,6 +19,22 @@ Matrice des valeurs
 1 	12	*	*	*
 2 	-5	7	*	*
 3 	*	25	*	*
-Detection de circuit :
-Methode d'elimination des points d'entrée
-23
+
+Detection de circuit - methode d'elimination des points d'entrée :
+
+Points d'entrée : 2 3 
+Suppression des points d'entrée
+Sommets restants : 0 1 
+
+Points d'entrée : 
+Suppression des points d'entrée
+Sommets restants : 0 1 
+
+Points d'entrée : 
+Suppression des points d'entrée
+Sommets restants : 0 1 
+
+Points d'entrée : 
+Suppression des points d'entrée
+Sommets restants : 0 1 
+Le graphe contient au moins un circuit

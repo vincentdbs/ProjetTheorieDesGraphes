@@ -3,6 +3,7 @@ package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Graphe {
@@ -136,6 +137,20 @@ public class Graphe {
             rg++;
         }while ((rg < nb_sommet) && (!todo.isEmpty()));
 
+        if (Arrays.binarySearch(rang, -1) > 0){
+            trace.write("Le graphe contient au moins un circuit\n");
+        }
+        else{
+            trace.write("Le graphe ne contient pas de circuit\n");
+            trace.write("Sommets : ");
+            for (int i = 0; i <  rang.length; i++) {
+                trace.write("\t" + i);
+            }
+            trace.write("\nRang : ");
+            for (int i = 0; i <  rang.length; i++) {
+                trace.write("\t" + rang[i]);
+            }
+        }
     }
 
     private void printMatrice(int[][] arrayList){
