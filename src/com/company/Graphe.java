@@ -12,8 +12,10 @@ public class Graphe {
     private int[][] matriceAdjacence;
     private String[][] matriceValeur;
     private int[] rang;
+    private Trace trace;
 
     public Graphe(int _num_file){
+        this.trace = new Trace(_num_file);
         this.listTransition = new ArrayList<Transition>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "TG-PRJ-A4-" + num_file + ".txt"; //nom du fichier
@@ -32,6 +34,8 @@ public class Graphe {
         }
         fillMatrice(); //remplissage des matrices
 
+        trace.write("test ");
+        trace.write("test\n");
         detectCircuit();
     }
 
