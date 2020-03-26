@@ -11,7 +11,8 @@ public class Main {
         a.affichageMatrice();
         a.detectCircuit();
 
-        System.out.println(a.noNegative());
+        a.uniqueStart();
+        a.uniqueEnd();
 
 
 

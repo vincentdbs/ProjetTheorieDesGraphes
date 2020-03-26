@@ -88,7 +88,12 @@ public class Graphe {
      */
     public void detectCircuit() {
         //initialisation
-        int[][] matDetection = matriceAdjacence;
+        int[][] matDetection = new int[nb_sommet][nb_sommet];
+
+        for (int i = 0; i < matriceAdjacence.length; i++) {
+            matDetection[i] = matriceAdjacence[i].clone();
+        }
+
         ArrayList<Integer> done = new ArrayList<Integer>();
         ArrayList<Integer> todo = new ArrayList<Integer>();
         for (int i = 0; i < nb_sommet; i++) {
@@ -179,8 +184,31 @@ public class Graphe {
         }
     }
 
-    public boolean noNegative(){
+    public boolean uniqueEnd(){
+        int nbStart = 0;
+        int tempo = 0;
+        for (int i = 0; i < nb_sommet; i++) {
+            for (int j = 0; j < nb_sommet; j++) {
+                if (matriceAdjacence[i][j] == 1){
+                    tempo++;
+                }
+            }
+            if (tempo == 0){
+                nbStart++;
+            }
+            tempo = 0;
+        }
+        if (nbStart == 1){
+            trace.write("\nUn seul point de sortie\n");
+            return true;
+        }
+        else{
+            trace.write("\n0 ou plusieurs point de sortie\n");
+            return false;
+        }
+    }
 
+    public boolean noNegative(){
         for (int i = 0; i < nb_sommet; i++) {
             for (int j = 0; j < nb_sommet; j++) {
                 try {
@@ -260,5 +288,8 @@ public class Graphe {
         this.nb_sommet = nb_sommet;
     }
 
+    public int[][] getMatriceAdjacence() {
+        return matriceAdjacence;
+    }
 
 }

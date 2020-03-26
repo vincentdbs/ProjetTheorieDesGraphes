@@ -35,3 +35,7 @@ Sommets restants :
 Le graphe ne contient pas de circuit
 Sommets : 	0	1	2	3
 Rang : 		2	1	0	0
+
+0 ou plusieurs point de départ
+
+Un seul point de sortie
