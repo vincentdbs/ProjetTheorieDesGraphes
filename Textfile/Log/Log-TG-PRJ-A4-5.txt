@@ -1,4 +1,4 @@
-Lecture du fichier n°5
+----- Lecture du fichier n°5 -----
 7 sommet(s)
 12 arc(s)
 0 -> 1 = 1
@@ -14,7 +14,7 @@ Lecture du fichier n°5
 5 -> 3 = 1
 5 -> 4 = 2
 
-Matrice d'ajacence
+----- Matrice d'ajacence -----
 	0	1	2	3	4	5	6	
 0 	0	1	1	0	0	0	0
 1 	0	0	0	1	1	1	0
@@ -23,7 +23,7 @@ Matrice d'ajacence
 4 	0	0	0	0	0	0	1
 5 	0	0	0	1	1	0	0
 6 	0	0	0	0	0	0	0
-Matrice des valeurs
+----- Matrice des valeurs -----
 	0	1	2	3	4	5	6	
 0 	*	1	2	*	*	*	*
 1 	*	*	*	5	7	5	*
@@ -33,7 +33,7 @@ Matrice des valeurs
 5 	*	*	*	1	2	*	*
 6 	*	*	*	*	*	*	*
 
-Detection de circuit - methode d'elimination des points d'entrée :
+----- Detection de circuit - methode d'elimination des points d'entrée -----
 
 Points d'entrée : 0 
 Suppression des points d'entrée
@@ -58,6 +58,7 @@ Sommets restants : 6
 Points d'entrée : 6 
 Suppression des points d'entrée
 Sommets restants : 
+
 Le graphe ne contient pas de circuit
 Sommets : 	0	1	2	3	4	5	6
 Rang : 		0	2	1	4	4	3	5

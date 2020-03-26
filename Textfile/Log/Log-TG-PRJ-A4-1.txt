@@ -1,4 +1,4 @@
-Lecture du fichier n°1
+----- Lecture du fichier n°1 -----
 4 sommet(s)
 5 arc(s)
 3 -> 1 = 25
@@ -7,20 +7,20 @@ Lecture du fichier n°1
 0 -> 1 = 0
 2 -> 1 = 7
 
-Matrice d'ajacence
+----- Matrice d'ajacence -----
 	0	1	2	3	
 0 	0	1	0	0
 1 	1	0	0	0
 2 	1	1	0	0
 3 	0	1	0	0
-Matrice des valeurs
+----- Matrice des valeurs -----
 	0	1	2	3	
 0 	*	0	*	*
 1 	12	*	*	*
 2 	-5	7	*	*
 3 	*	25	*	*
 
-Detection de circuit - methode d'elimination des points d'entrée :
+----- Detection de circuit - methode d'elimination des points d'entrée -----
 
 Points d'entrée : 2 3 
 Suppression des points d'entrée
@@ -37,4 +37,5 @@ Sommets restants : 0 1
 Points d'entrée : 
 Suppression des points d'entrée
 Sommets restants : 0 1 
+
 Le graphe contient au moins un circuit

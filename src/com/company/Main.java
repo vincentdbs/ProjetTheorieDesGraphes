@@ -8,20 +8,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String again = "1";
         do {
             int numGraphe = choiceNumGraphe();
-            Graphe a = new Graphe(numGraphe);
-            a.affichageMatrice();
-            a.detectCircuit();
+            Graphe graphe = new Graphe(numGraphe);
+            graphe.affichageMatrice();
+            if (!graphe.detectCircuit()){
+                //todo méthode public isGrapheOrdonnacement
+                graphe.uniqueStart();
+                graphe.uniqueEnd();
+                graphe.noNegative();
+                System.out.print(graphe.sameValueOnLine());
+            }
 
-            a.uniqueStart();
-            a.uniqueEnd();
-            a.noNegative();
-            System.out.print(a.sameValueOnLine());
-
-
-        }while (again == "0");
+        }while (newGraphe());
 
 
 
@@ -54,6 +53,24 @@ public class Main {
             }
         }while (again == 0);
         return Integer.parseInt(grapheChoice);
+    }
+
+    private static boolean newGraphe(){
+        Scanner scanner = new Scanner(System.in);
+        String choice = "";
+
+        do{
+            System.out.print("\nVoulez-vous tester un autre graphe ? [o/n] : ");
+            choice = scanner.nextLine();
+        }while (!((choice.equals("o")) || (choice.equals("n"))));
+
+        System.out.print("\n");
+        if (choice.equals("o")){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 

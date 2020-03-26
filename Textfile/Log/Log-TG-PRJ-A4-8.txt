@@ -1,20 +1,26 @@
-Lecture du fichier n°8
+----- Lecture du fichier n°8 -----
 1 sommet(s)
 1 arc(s)
 0 -> 0 = 1
 
-Matrice d'ajacence
+----- Matrice d'ajacence -----
 	0	
 0 	1
-Matrice des valeurs
+----- Matrice des valeurs -----
 	0	
 0 	1
 
-Detection de circuit - methode d'elimination des points d'entrée :
+----- Detection de circuit - methode d'elimination des points d'entrée -----
 
 Points d'entrée : 
 Suppression des points d'entrée
 Sommets restants : 0 
+
 Le graphe ne contient pas de circuit
 Sommets : 	0
 Rang : 		-1
+
+0 ou plusieurs point de départ
+
+0 ou plusieurs point de sortie
+Aucune valeur négative

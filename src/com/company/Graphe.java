@@ -38,9 +38,9 @@ public class Graphe {
     }
 
     public void affichageMatrice(){
-        trace.write("Matrice d'ajacence\n");
+        trace.write("----- Matrice d'ajacence -----\n");
         printMatrice(matriceAdjacence);
-        trace.write("Matrice des valeurs\n");
+        trace.write("----- Matrice des valeurs -----\n");
         printMatrice(matriceValeur);
     }
 
@@ -52,7 +52,7 @@ public class Graphe {
             Scanner scan = new Scanner(new File("Textfile/Graphe/" + name_file));
             setNb_sommet(Integer.parseInt(scan.nextLine()));
             setNb_arc(Integer.parseInt(scan.nextLine()));
-            trace.write("Lecture du fichier n°" + getNum_file() + "\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n");
+            trace.write("----- Lecture du fichier n°" + getNum_file() + " -----\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n");
             while (scan.hasNextLine()){
                 listTransition.add(createTransition(scan.nextLine()));
             }
@@ -86,7 +86,8 @@ public class Graphe {
     /**
      * Detection de la présence/absence d'un circuit dans le graphe + calcul du rang si possible
      */
-    public void detectCircuit() {
+    public boolean detectCircuit() {
+        //todo corriger pour fichier 8
         //initialisation
         int[][] matDetection = new int[nb_sommet][nb_sommet];
 
@@ -100,7 +101,7 @@ public class Graphe {
             todo.add(i);
         }
 
-        trace.write("\nDetection de circuit - methode d'elimination des points d'entrée :\n");
+        trace.write("\n----- Detection de circuit - methode d'elimination des points d'entrée -----\n");
         //rang
         int rg = 0;
         do{
@@ -143,10 +144,11 @@ public class Graphe {
         }while ((rg < nb_sommet) && (!todo.isEmpty()));
 
         if (Arrays.binarySearch(rang, -1) > 0){
-            trace.write("Le graphe contient au moins un circuit\n");
+            trace.write("\nLe graphe contient au moins un circuit\n");
+            return true;
         }
         else{
-            trace.write("Le graphe ne contient pas de circuit\n");
+            trace.write("\nLe graphe ne contient pas de circuit\n");
             trace.write("Sommets : ");
             for (int i = 0; i <  rang.length; i++) {
                 trace.write("\t" + i);
@@ -156,6 +158,7 @@ public class Graphe {
                 trace.write("\t" + rang[i]);
             }
             trace.write("\n");
+            return false;
         }
     }
 
