@@ -34,4 +34,4 @@ Suppression des points d'entrée
 Sommets restants : 
 Le graphe ne contient pas de circuit
 Sommets : 	0	1	2	3
-Sommets : 	2	1	0	0
+Rang : 		2	1	0	0

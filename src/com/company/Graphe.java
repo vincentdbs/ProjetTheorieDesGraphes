@@ -146,13 +146,39 @@ public class Graphe {
             for (int i = 0; i <  rang.length; i++) {
                 trace.write("\t" + i);
             }
-            trace.write("\nRang : ");
+            trace.write("\nRang : \t");
             for (int i = 0; i <  rang.length; i++) {
                 trace.write("\t" + rang[i]);
             }
         }
     }
 
+
+    public boolean uniqueStart(){
+        int nbStart = 0;
+        int tempo = 0;
+        for (int i = 0; i < nb_sommet; i++) {
+            for (int j = 0; j < nb_sommet; j++) {
+                if (matriceAdjacence[j][i] == 1){
+                    tempo++;
+                }
+            }
+            if (tempo == 0){
+                nbStart++;
+            }
+            tempo = 0;
+        }
+        if (nbStart == 1){
+            trace.write("\nUn seul point de départ\n");
+            return true;
+        }
+        else{
+            trace.write("\n0 ou plusieurs point de départ\n");
+            return false;
+        }
+    }
+
+    //Affichage matrice
     private void printMatrice(int[][] arrayList){
         trace.write("\t");
         for (int i = 0; i < nb_sommet ; i++) {
@@ -182,6 +208,8 @@ public class Graphe {
             trace.write("\n");
         }
     }
+
+
 
     /*Getter setter*/
     public int getNum_file() {
