@@ -6,12 +6,14 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Graphe a = new Graphe(7);
+        Graphe a = new Graphe(2);
 
         a.affichageMatrice();
         a.detectCircuit();
 
-        a.uniqueStart();
+        System.out.println(a.noNegative());
+
+
 
         //todo demander si les fichiers sont forecement bien rempli
         //todo demander si graphe avec un état et une boucle sur lui même considéré comme un circuit

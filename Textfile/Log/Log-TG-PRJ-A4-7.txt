@@ -46,5 +46,3 @@ Points d'entrée :
 Suppression des points d'entrée
 Sommets restants : 1 2 3 4 
 Le graphe contient au moins un circuit
-
-Un seul point de départ

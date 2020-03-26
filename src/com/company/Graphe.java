@@ -150,6 +150,7 @@ public class Graphe {
             for (int i = 0; i <  rang.length; i++) {
                 trace.write("\t" + rang[i]);
             }
+            trace.write("\n");
         }
     }
 
@@ -176,6 +177,21 @@ public class Graphe {
             trace.write("\n0 ou plusieurs point de départ\n");
             return false;
         }
+    }
+
+    public boolean noNegative(){
+
+        for (int i = 0; i < nb_sommet; i++) {
+            for (int j = 0; j < nb_sommet; j++) {
+                try {
+                    if(Integer.parseInt(matriceValeur[i][j]) < 0 ){
+                        return false;
+                    }
+                }
+                catch (NumberFormatException e){}
+            }
+        }
+        return true;
     }
 
     //Affichage matrice
