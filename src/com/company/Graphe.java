@@ -213,11 +213,30 @@ public class Graphe {
             for (int j = 0; j < nb_sommet; j++) {
                 try {
                     if(Integer.parseInt(matriceValeur[i][j]) < 0 ){
+                        //todo affiner l'affcihage
+                        trace.write("Au moins une valeur négative détectée\n");
                         return false;
                     }
                 }
                 catch (NumberFormatException e){}
             }
+        }
+        trace.write("Aucune valeur négative\n");
+        return true;
+    }
+
+    public boolean sameValueOnLine(){
+        ArrayList<String> value = new ArrayList<String>();
+        for (int i = 0; i < nb_sommet; i++) {
+            for (int j = 0; j < nb_sommet; j++) {
+                if (!(value.contains(matriceValeur[i][j]))){
+                    value.add(matriceValeur[i][j]);
+                }
+            }
+            if (value.size() > 2){
+                return false;
+            }
+            value.clear();
         }
         return true;
     }

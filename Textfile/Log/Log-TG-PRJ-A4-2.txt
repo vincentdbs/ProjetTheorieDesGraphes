@@ -39,3 +39,4 @@ Rang : 		2	1	0	0
 0 ou plusieurs point de départ
 
 Un seul point de sortie
+Au moins une valeur négative détectée

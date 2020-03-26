@@ -13,7 +13,8 @@ public class Main {
 
         a.uniqueStart();
         a.uniqueEnd();
-
+        a.noNegative();
+        System.out.print(a.sameValueOnLine());
 
 
         //todo demander si les fichiers sont forecement bien rempli
