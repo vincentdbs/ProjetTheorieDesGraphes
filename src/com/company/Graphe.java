@@ -49,7 +49,7 @@ public class Graphe {
      */
     private void readFile(){
         try {
-            Scanner scan = new Scanner(new File("Textfile/" + name_file));
+            Scanner scan = new Scanner(new File("Textfile/Graphe/" + name_file));
             setNb_sommet(Integer.parseInt(scan.nextLine()));
             setNb_arc(Integer.parseInt(scan.nextLine()));
             trace.write("Lecture du fichier n°" + getNum_file() + "\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n");

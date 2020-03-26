@@ -6,6 +6,13 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
+//        int choice = 0;
+//        do {
+//            System.out.println("Choisissez un graph");
+//
+//        }while (choice == 0);
+
         Graphe a = new Graphe(2);
 
         a.affichageMatrice();
