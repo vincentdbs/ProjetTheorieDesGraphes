@@ -63,7 +63,11 @@ Le graphe ne contient pas de circuit
 Sommets : 	0	1	2	3	4	5	6
 Rang : 		0	2	1	4	4	3	5
 
-Un seul point de départ
-
-Un seul point de sortie
-Aucune valeur négative
+----- Le graphe est-il un graphe d'ordonancement ? -----
+Un seul point d'entrée :		true
+Un seul point de sortie :		true
+Pas de circuit :				true
+Pas d’arcs à valeur négative :	true
+Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :	false
+Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :				true
+Le graphe n'est pas un graphe d'ordonnancement

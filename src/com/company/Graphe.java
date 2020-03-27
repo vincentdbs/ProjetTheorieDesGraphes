@@ -14,8 +14,10 @@ public class Graphe {
     private String[][] matriceValeur;
     private int[] rang;
     private Trace trace;
+    private boolean isGrapheOrdonnancement;
 
     public Graphe(int _num_file){
+        this.isGrapheOrdonnancement = false;
         this.trace = new Trace(_num_file);
         this.listTransition = new ArrayList<Transition>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
@@ -86,6 +88,7 @@ public class Graphe {
     /**
      * Detection de la présence/absence d'un circuit dans le graphe + calcul du rang si possible
      */
+    //todo changer pour que rang se calcule après circuit
     public boolean detectCircuit() {
         //todo corriger pour fichier 8
         //initialisation
@@ -162,8 +165,27 @@ public class Graphe {
         }
     }
 
+    public boolean isGrapheOrdonnancement(){
+        isGrapheOrdonnancement = true;
+        trace.write("\n----- Le graphe est-il un graphe d'ordonancement ? -----\n");
+        trace.write("Un seul point d'entrée :\t\t" + uniqueStart() + "\n");
+        trace.write("Un seul point de sortie :\t\t" + uniqueEnd() + "\n");
+        trace.write("Pas de circuit :\t\t\t\ttrue\n");
+        trace.write("Pas d’arcs à valeur négative :\t" + noNegative() + "\n");
+        trace.write("Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :\t" + sameValueOnLine() + "\n");
+        trace.write("Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :\t\t\t\t" + "true"+ "\n"); //todo créer la fonction après réponse de Kassel + isGrapheOrdonnancement = false si faux
 
-    public boolean uniqueStart(){
+        if(isGrapheOrdonnancement == false){
+            trace.write("Le graphe n'est pas un graphe d'ordonnancement !\n");
+        }
+        else{
+            trace.write("Le graphe est un graphe d'ordonnancement !\n");
+        }
+
+        return isGrapheOrdonnancement;
+    }
+
+    private boolean uniqueStart(){
         int nbStart = 0;
         int tempo = 0;
         for (int i = 0; i < nb_sommet; i++) {
@@ -178,16 +200,15 @@ public class Graphe {
             tempo = 0;
         }
         if (nbStart == 1){
-            trace.write("\nUn seul point de départ\n");
             return true;
         }
         else{
-            trace.write("\n0 ou plusieurs point de départ\n");
+            isGrapheOrdonnancement = false;
             return false;
         }
     }
 
-    public boolean uniqueEnd(){
+    private boolean uniqueEnd(){
         int nbStart = 0;
         int tempo = 0;
         for (int i = 0; i < nb_sommet; i++) {
@@ -202,33 +223,30 @@ public class Graphe {
             tempo = 0;
         }
         if (nbStart == 1){
-            trace.write("\nUn seul point de sortie\n");
             return true;
         }
         else{
-            trace.write("\n0 ou plusieurs point de sortie\n");
+            isGrapheOrdonnancement = false;
             return false;
         }
     }
 
-    public boolean noNegative(){
+    private boolean noNegative(){
         for (int i = 0; i < nb_sommet; i++) {
             for (int j = 0; j < nb_sommet; j++) {
                 try {
                     if(Integer.parseInt(matriceValeur[i][j]) < 0 ){
-                        //todo affiner l'affcihage
-                        trace.write("Au moins une valeur négative détectée\n");
+                        isGrapheOrdonnancement = false;
                         return false;
                     }
                 }
                 catch (NumberFormatException e){}
             }
         }
-        trace.write("Aucune valeur négative\n");
         return true;
     }
 
-    public boolean sameValueOnLine(){
+    private boolean sameValueOnLine(){
         ArrayList<String> value = new ArrayList<String>();
         for (int i = 0; i < nb_sommet; i++) {
             for (int j = 0; j < nb_sommet; j++) {
@@ -237,6 +255,7 @@ public class Graphe {
                 }
             }
             if (value.size() > 2){
+                isGrapheOrdonnancement = false;
                 return false;
             }
             value.clear();

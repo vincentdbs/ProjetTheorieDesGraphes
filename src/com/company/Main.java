@@ -14,10 +14,7 @@ public class Main {
             graphe.affichageMatrice();
             if (!graphe.detectCircuit()){
                 //todo méthode public isGrapheOrdonnacement
-                graphe.uniqueStart();
-                graphe.uniqueEnd();
-                graphe.noNegative();
-                System.out.print(graphe.sameValueOnLine());
+                graphe.isGrapheOrdonnancement();
             }
 
         }while (newGraphe());
