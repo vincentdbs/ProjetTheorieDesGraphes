@@ -14,7 +14,9 @@ public class Main {
             graphe.affichageMatrice();
             if (!graphe.detectCircuit()){
                 //todo méthode public isGrapheOrdonnacement
-                graphe.isGrapheOrdonnancement();
+                if (graphe.isGrapheOrdonnancement()){
+
+                }
             }
 
         }while (newGraphe());

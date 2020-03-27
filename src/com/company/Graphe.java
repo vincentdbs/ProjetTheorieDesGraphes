@@ -15,9 +15,11 @@ public class Graphe {
     private int[] rang;
     private Trace trace;
     private boolean isGrapheOrdonnancement;
+    private int start;
 
     public Graphe(int _num_file){
         this.isGrapheOrdonnancement = false;
+        this.start = -1;
         this.trace = new Trace(_num_file);
         this.listTransition = new ArrayList<Transition>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
@@ -173,7 +175,7 @@ public class Graphe {
         trace.write("Pas de circuit :\t\t\t\ttrue\n");
         trace.write("Pas d’arcs à valeur négative :\t" + noNegative() + "\n");
         trace.write("Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :\t" + sameValueOnLine() + "\n");
-        trace.write("Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :\t\t\t\t" + "true"+ "\n"); //todo créer la fonction après réponse de Kassel + isGrapheOrdonnancement = false si faux
+        trace.write("Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :\t\t\t\t" + valueZeroOnStart()+ "\n"); //todo à verifier sur plus de graphe + ne pas tester si plusieurs entrées
 
         if(isGrapheOrdonnancement == false){
             trace.write("Le graphe n'est pas un graphe d'ordonnancement !\n");
@@ -196,6 +198,7 @@ public class Graphe {
             }
             if (tempo == 0){
                 nbStart++;
+                start = i;
             }
             tempo = 0;
         }
@@ -259,6 +262,16 @@ public class Graphe {
                 return false;
             }
             value.clear();
+        }
+        return true;
+    }
+
+    private boolean valueZeroOnStart(){
+        for (int i = 0; i < nb_sommet; i++) {
+            if ((!matriceValeur[start][i].equals("*")) || (!matriceValeur[start][i].equals("0"))){
+                isGrapheOrdonnancement = false;
+                return false;
+            }
         }
         return true;
     }
