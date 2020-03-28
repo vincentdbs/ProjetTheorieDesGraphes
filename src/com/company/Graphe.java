@@ -268,7 +268,7 @@ public class Graphe {
 
     private boolean valueZeroOnStart(){
         for (int i = 0; i < nb_sommet; i++) {
-            if ((!matriceValeur[start][i].equals("*")) || (!matriceValeur[start][i].equals("0"))){
+            if (!((matriceValeur[start][i].equals("*")) || (matriceValeur[start][i].equals("0")))){
                 isGrapheOrdonnancement = false;
                 return false;
             }
@@ -307,6 +307,36 @@ public class Graphe {
         }
     }
 
+    public void ordonnancement(){
+        trace.write("----- Ordonnancement -----\n");
+        int[][] tabOrdonnancement = new int[6][nb_sommet];
+            //i = 0 => sommets | i = 1 => prédecesseur ayant la plus grande date | i = 2 =>  date
+            //i = 3 => successeur ayant la plus petite date | i = 4 => date | i = 5 => marge
+        for (int i = 0; i < 6 ; i++) {
+            for (int j = 0; j < nb_sommet ; j++) {
+                tabOrdonnancement[i][j] = -1;
+            }
+        }
+        orderSommetsbyRang();
+    }
+
+    private int[] orderSommetsbyRang(){
+        //todo a tester sur d'autre graphe
+        int[] ordered = new int[nb_sommet];
+        int index = 0;
+        int rg = 0;
+        do{
+            for (int i = 0; i < rang.length; i++) {
+                if(rang[i] == rg){
+                    ordered[index] = i;
+                    index++;
+                }
+            }
+            rg++ ;
+        }while (rg<nb_sommet);
+        System.out.println(Arrays.toString(ordered));
+        return ordered;
+    }
 
 
     /*Getter setter*/

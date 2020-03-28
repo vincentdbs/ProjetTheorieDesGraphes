@@ -15,7 +15,7 @@ public class Main {
             if (!graphe.detectCircuit()){
                 //todo méthode public isGrapheOrdonnacement
                 if (graphe.isGrapheOrdonnancement()){
-
+                    graphe.ordonnancement();
                 }
             }
 
