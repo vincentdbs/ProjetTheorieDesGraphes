@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Graphe {
     private String name_file;
     private int nb_arc, nb_sommet, num_file;
-    private ArrayList<Transition> listTransition;
+    private ArrayList<Arc> listArc;
     private int[][] matriceAdjacence;
     private String[][] matriceValeur;
     private int[] rang;
@@ -22,7 +22,7 @@ public class Graphe {
         this.isGrapheOrdonnancement = false;
         this.start = -1;
         this.trace = new Trace(_num_file);
-        this.listTransition = new ArrayList<Transition>(); //initialisation de la liste de transition
+        this.listArc = new ArrayList<Arc>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "TG-PRJ-A4-" + num_file + ".txt"; //nom du fichier
         readFile(); //récupération de la liste de transition
@@ -59,7 +59,7 @@ public class Graphe {
             setNb_arc(Integer.parseInt(scan.nextLine()));
             trace.write("----- Lecture du fichier n°" + getNum_file() + " -----\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n");
             while (scan.hasNextLine()){
-                listTransition.add(createTransition(scan.nextLine()));
+                listArc.add(createTransition(scan.nextLine()));
             }
             trace.write("\n");
             scan.close();
@@ -71,20 +71,20 @@ public class Graphe {
     /**
      * creer une transition
      */
-    private Transition createTransition(String line){
+    private Arc createTransition(String line){
         String[] array = line.split(" ");
-        Transition transition = new Transition(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+        Arc arc = new Arc(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
         trace.write(array[0] + " -> " + array[1] + " = " + array[2] + "\n");
-        return transition;
+        return arc;
     }
 
     /**
      * remplis les matrices d'ajacence et valeurs à partir de la liste de transition
      */
     private void fillMatrice(){
-        for (int i = 0; i < listTransition.size(); i++) {
-            matriceAdjacence[listTransition.get(i).getInit()][listTransition.get(i).getFin()] = 1;
-            matriceValeur[listTransition.get(i).getInit()][listTransition.get(i).getFin()] = String.valueOf(listTransition.get(i).getArc());
+        for (int i = 0; i < listArc.size(); i++) {
+            matriceAdjacence[listArc.get(i).getInit()][listArc.get(i).getFin()] = 1;
+            matriceValeur[listArc.get(i).getInit()][listArc.get(i).getFin()] = String.valueOf(listArc.get(i).getArc());
         }
     }
 

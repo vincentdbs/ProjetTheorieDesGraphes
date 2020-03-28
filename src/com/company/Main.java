@@ -13,7 +13,6 @@ public class Main {
             Graphe graphe = new Graphe(numGraphe);
             graphe.affichageMatrice();
             if (!graphe.detectCircuit()){
-                //todo méthode public isGrapheOrdonnacement
                 if (graphe.isGrapheOrdonnancement()){
                     graphe.ordonnancement();
                 }
@@ -27,7 +26,6 @@ public class Main {
 
         //todo demander si les fichiers sont forecement bien rempli
         //todo demander si graphe avec un état et une boucle sur lui même considéré comme un circuit
-        //todo securisation de l'entrée du numéro de fichier
     }
 
     private static int choiceNumGraphe(){
