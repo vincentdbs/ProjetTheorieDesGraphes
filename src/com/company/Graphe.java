@@ -309,15 +309,22 @@ public class Graphe {
 
     public void ordonnancement(){
         trace.write("----- Ordonnancement -----\n");
-        int[][] tabOrdonnancement = new int[6][nb_sommet];
-            //i = 0 => sommets | i = 1 => prédecesseur ayant la plus grande date | i = 2 =>  date
-            //i = 3 => successeur ayant la plus petite date | i = 4 => date | i = 5 => marge
-        for (int i = 0; i < 6 ; i++) {
+        int[][] tabOrdonnancement = new int[7][nb_sommet];
+            //i = 0 => sommets | i = 1 => longueur tache du sommet | i = 2 => prédecesseur ayant la plus grande date | i = 3 =>  date
+            //i = 4 => successeur ayant la plus petite date | i = 5 => date | i = 6 => marge
+        //initialisation
+        for (int i = 0; i < 7 ; i++) {
             for (int j = 0; j < nb_sommet ; j++) {
                 tabOrdonnancement[i][j] = -1;
             }
         }
-        orderSommetsbyRang();
+        //classement des sommets par ordre croissant de rang
+        tabOrdonnancement[0] = orderSommetsbyRang();
+        tabOrdonnancement[1] = retrieveSommetValue(tabOrdonnancement[0]);
+        System.out.println(Arrays.toString(tabOrdonnancement[0]));
+        System.out.println(Arrays.toString(tabOrdonnancement[1]));
+
+
     }
 
     private int[] orderSommetsbyRang(){
@@ -334,8 +341,36 @@ public class Graphe {
             }
             rg++ ;
         }while (rg<nb_sommet);
-        System.out.println(Arrays.toString(ordered));
         return ordered;
+    }
+
+    /**
+     * Récupere pour chaque sommet sa longueur
+     * @param sommet, le tableau de sommet classé par ordre croissant de rang
+     * @return la longeur de la tache de chaque sommet classé par rang
+     */
+    private int[] retrieveSommetValue(int[] sommet){
+        int[] tache = new int[nb_sommet];
+        for (int i = 0; i < nb_sommet; i++) {
+            tache[i] = sommetValue(sommet[i]);
+        }
+        return tache;
+    }
+
+    /**
+     * Recupere la tache du sommet i
+     * @param i le sommet i à analyse
+     * @return la longeur de la tache du sommet i
+     */
+    private int sommetValue(int i){
+        int tache = -1;
+        for (int j = 0; j < nb_sommet ; j++) {
+            try {
+                tache = Integer.parseInt(matriceValeur[i][j]);
+            }catch (NumberFormatException e){}
+
+        }
+        return tache;
     }
 
 
