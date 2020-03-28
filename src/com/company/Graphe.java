@@ -310,6 +310,7 @@ public class Graphe {
 
     public void ordonnancement(){
         trace.write("----- Ordonnancement -----\n");
+        trace.write("-1 signifie que la valeur n'est pas définie\");
         int[][] tabOrdonnancement = new int[7][nb_sommet];
             //i = 0 => sommets | i = 1 => longueur tache du sommet | i = 2 => prédecesseur ayant la plus grande date | i = 3 =>  date
             //i = 4 => successeur ayant la plus petite date | i = 5 => date | i = 6 => marge
@@ -321,14 +322,17 @@ public class Graphe {
         }
         //classement des sommets par ordre croissant de rang
         tabOrdonnancement[0] = orderSommetsbyRang();
-        trace.write("Sommet : \t" + Arrays.toString(tabOrdonnancement[0]));
+        trace.write("Sommet :\t\t" + Arrays.toString(tabOrdonnancement[0]));
+
         //recupération des tâche de chaque sommet
         tabOrdonnancement[1] = retrieveSommetValue(tabOrdonnancement[0]);
-        trace.write("\nTache : \t" + Arrays.toString(tabOrdonnancement[1]));
-
-        retrieveBestPredecesseur(tabOrdonnancement[0]);
+        trace.write("\nTache :\t\t\t" + Arrays.toString(tabOrdonnancement[1]));
 
 
+        tabOrdonnancement[2] = retrieveBestPredecesseur(tabOrdonnancement[0])[0];
+        tabOrdonnancement[3] = retrieveBestPredecesseur(tabOrdonnancement[0])[1];
+        trace.write("\nPrédecesseur :\t" + Arrays.toString(tabOrdonnancement[2]));
+        trace.write("\nDate au + tôt :\t" + Arrays.toString(tabOrdonnancement[3]));
     }
 
     /**
@@ -381,62 +385,17 @@ public class Graphe {
         return tache;
     }
 
-//    private int[][] retrieveBestPredecesseur(int[] sommetOrdonné){
-//        int[][] array = new int[2][nb_sommet]; //tableau du meilleur predecesseur(i = 0) et sa date au plus tot(i=1)
-//        ArrayList<Integer> tempoPred = new ArrayList<Integer>(); //liste temporaire des prédecesseur d'un sommet
-//        ArrayList<Integer> tempoTache = new ArrayList<Integer>(); //liste temporaire de la durée du prédecesseur d'un sommet
-//        ArrayList<Integer> tempoDatePlusTot = new ArrayList<Integer>(); //liste temporaire de la date au plus tôt en fonction de chaque predecesseur
-//
-//        //todo patcher pas somme tache precedente mais tache du predecesseur
-//        //todo patcher remplissage du tableau des predecesseur
-//        array[0][0] = -1;
-//        array[1][0] = 0;
-//
-//        for (int i = 1; i < nb_sommet; i++) {
-//            int som = sommetOrdonné[i];
-//            for (int j = 0; j < nb_sommet ; j++) {
-//                if (matriceAdjacence[j][sommetOrdonné[i]] == 1){
-//                    tempoPred.add(j); //ajout du predecesseur
-//                }
-//            }
-//            for (int j = 0; j < tempoPred.size(); j++) {
-//                tempoTache.add(sommetValue(tempoPred.get(j))); //recuperation de la tâche
-//            }
-//
-//            array[1][i] = Collections.max(tempoTache);
-//            array[0][i] = tempoPred.get(tempoTache.indexOf(array[1][i]));
-//
-//            int a = tempoTache.indexOf(array[1][i]); //recuperation de l'index de la tache
-//            int sommetTache = tempoPred.get(a); //recuperation du sommet correspondant
-//            int c = 0;
-//            for (int j = 0; j < sommetOrdonné.length ; j++) {
-//                if (sommetOrdonné[j] == sommetTache){
-//                    c = j; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
-//                }
-//            }
-//            int datePlustot = array[1][c];
-//            array[1][i] += datePlustot;
-//
-//            tempoDatePlusTot.clear();
-//            tempoPred.clear();
-//            tempoTache.clear();
-//        }
-//
-//        System.out.print("\n Predecesseur : \t" + Arrays.toString(array[0]));
-//        System.out.print("\n Date au plus tot : \t" + Arrays.toString(array[1]));
-//
-//        return array;
-//    }
-
+    /**
+     * Caclul du calendrier de date au plus tôt
+     * @param sommetOrdonné, le tableau de sommet ordonné par rang croissant
+     * @return tableau 2D des predecesseur et des dates au plus tôt ordonné par rang
+     */
     private int[][] retrieveBestPredecesseur(int[] sommetOrdonné){
         int[][] array = new int[2][nb_sommet]; //tableau du meilleur predecesseur(i = 0) et sa date au plus tot(i=1)
         ArrayList<Integer> tempoPred = new ArrayList<Integer>(); //liste temporaire des prédecesseur d'un sommet
         ArrayList<Integer> tempoTache = new ArrayList<Integer>(); //liste temporaire de la durée du prédecesseur d'un sommet
         ArrayList<Integer> tempoDatePlusTot = new ArrayList<Integer>(); //liste temporaire de la date au plus tôt en fonction de chaque predecesseur
 
-        //todo patcher pas somme tache precedente mais tache du predecesseur
-        //todo patcher remplissage du tableau des predecesseur
-        //todo voir cahier
         array[0][0] = -1;
         array[1][0] = 0;
 
@@ -469,10 +428,6 @@ public class Graphe {
             tempoPred.clear();
             tempoTache.clear();
         }
-
-        System.out.print("\n Predecesseur : \t" + Arrays.toString(array[0]));
-        System.out.print("\n Date au plus tot : \t" + Arrays.toString(array[1]));
-
         return array;
     }
 
