@@ -393,25 +393,29 @@ public class Graphe {
 //        array[1][0] = 0;
 //
 //        for (int i = 1; i < nb_sommet; i++) {
+//            int som = sommetOrdonné[i];
 //            for (int j = 0; j < nb_sommet ; j++) {
 //                if (matriceAdjacence[j][sommetOrdonné[i]] == 1){
 //                    tempoPred.add(j); //ajout du predecesseur
-//                    int a = sommetOrdonné[i];
-//                    int b = 0;
 //                }
 //            }
-//            int b =0;
 //            for (int j = 0; j < tempoPred.size(); j++) {
 //                tempoTache.add(sommetValue(tempoPred.get(j))); //recuperation de la tâche
 //            }
-//            b = 1;
-//            for (int j = 0; j < tempoTache.size() ; j++) {
-//               // tempoDatePlusTot.add(tempoTache.get(j) + getDateAuPlusTotSommet(array, tempoPred.get(j)));
-//                tempoDatePlusTot.add(tempoTache.get(j));
-//            }
 //
-//            array[1][i] = Collections.max(tempoDatePlusTot);
-//            array[0][i] = tempoPred.get(tempoDatePlusTot.indexOf(array[1][i]));
+//            array[1][i] = Collections.max(tempoTache);
+//            array[0][i] = tempoPred.get(tempoTache.indexOf(array[1][i]));
+//
+//            int a = tempoTache.indexOf(array[1][i]); //recuperation de l'index de la tache
+//            int sommetTache = tempoPred.get(a); //recuperation du sommet correspondant
+//            int c = 0;
+//            for (int j = 0; j < sommetOrdonné.length ; j++) {
+//                if (sommetOrdonné[j] == sommetTache){
+//                    c = j; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
+//                }
+//            }
+//            int datePlustot = array[1][c];
+//            array[1][i] += datePlustot;
 //
 //            tempoDatePlusTot.clear();
 //            tempoPred.clear();
@@ -432,29 +436,36 @@ public class Graphe {
 
         //todo patcher pas somme tache precedente mais tache du predecesseur
         //todo patcher remplissage du tableau des predecesseur
+        //todo voir cahier
         array[0][0] = -1;
         array[1][0] = 0;
 
         for (int i = 1; i < nb_sommet; i++) {
+            int som = sommetOrdonné[i];
             for (int j = 0; j < nb_sommet ; j++) {
                 if (matriceAdjacence[j][sommetOrdonné[i]] == 1){
                     tempoPred.add(j); //ajout du predecesseur
-                    int a = sommetOrdonné[i];
-                    int b = 0;
                 }
             }
-            int b =0;
             for (int j = 0; j < tempoPred.size(); j++) {
                 tempoTache.add(sommetValue(tempoPred.get(j))); //recuperation de la tâche
             }
-            b = 1;
-            for (int j = 0; j < tempoTache.size() ; j++) {
-                // tempoDatePlusTot.add(tempoTache.get(j) + getDateAuPlusTotSommet(array, tempoPred.get(j)));
-                tempoDatePlusTot.add(tempoTache.get(j));
-            }
 
-            array[1][i] = Collections.max(tempoDatePlusTot);
-            array[0][i] = tempoPred.get(tempoDatePlusTot.indexOf(array[1][i]));
+            array[1][i] = Collections.max(tempoTache);
+            array[0][i] = tempoPred.get(tempoTache.indexOf(array[1][i]));
+
+            for (int k = 0 ; k < tempoTache.size() ; k++){
+                int a = tempoTache.indexOf(array[1][i]); //recuperation de l'index de la tache
+                int sommetTache = tempoPred.get(a); //recuperation du sommet correspondant
+                int c = 0;
+                for (int j = 0; j < sommetOrdonné.length ; j++) {
+                    if (sommetOrdonné[j] == sommetTache){
+                        c = j; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
+                    }
+                }
+                int datePlustot = array[1][c];
+                array[1][i] += datePlustot;
+            }
 
             tempoDatePlusTot.clear();
             tempoPred.clear();
@@ -466,6 +477,8 @@ public class Graphe {
 
         return array;
     }
+
+
 
     private int getDateAuPlusTotSommet(int[][] array, int sommet){
         for (int i = 0; i < nb_sommet; i++) {
