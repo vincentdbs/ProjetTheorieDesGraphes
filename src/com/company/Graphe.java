@@ -342,6 +342,9 @@ public class Graphe {
         trace.write("\nSuccesseur :\t\t" + Arrays.toString(tabOrdonnancement[4]));
         trace.write("\nDate au + tard :\t" + Arrays.toString(tabOrdonnancement[5]));
 
+        //margeTotale
+        tabOrdonnancement[6] = margeTotale(tabOrdonnancement[3], tabOrdonnancement[5]);
+        trace.write("\nMarge totale :\t\t" + Arrays.toString(tabOrdonnancement[6]));
     }
 
     /**
@@ -440,6 +443,12 @@ public class Graphe {
         return array;
     }
 
+    /**
+     * Calcul du calendrier des dates au plus tard
+     * @param sommetOrdonné, le tableau de sommet ordonné par rang croissant
+     * @param datePlusTot, la date au plus tôt du sommet max
+     * @return
+     */
     private int[][] retrieveBestSuccesseur(int[] sommetOrdonné, int datePlusTot){
         int[][] array = new int[2][nb_sommet];
         ArrayList<Integer> tempoSucc = new ArrayList<Integer>(); //liste temporaire des succésseur d'un sommet
@@ -479,6 +488,13 @@ public class Graphe {
         return array;
     }
 
+    private int[] margeTotale(int[] datePlusTot, int[] datePlusTard){
+        int[] margeTotale = new int[nb_sommet];
+        for (int i = 0; i < nb_sommet; i++) {
+            margeTotale[i] = datePlusTard[i] - datePlusTot[i];
+        }
+        return margeTotale;
+    }
     /*Getter setter*/
     public int getNum_file() {
         return num_file;
