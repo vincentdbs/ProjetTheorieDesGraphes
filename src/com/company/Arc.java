@@ -2,7 +2,6 @@ package com.company;
 
 public class Arc {
     private int init, arc, fin;
-    //TODO refactor nom de la classe en Arc
 
     public Arc(int i_init, int i_fin, int i_arc){
         init = i_init;

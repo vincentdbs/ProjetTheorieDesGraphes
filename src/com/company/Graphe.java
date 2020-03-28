@@ -43,9 +43,9 @@ public class Graphe {
     }
 
     public void affichageMatrice(){
-        trace.write("----- Matrice d'ajacence -----\n");
+        trace.write("----- Matrice d'ajacence -----\n\n");
         printMatrice(matriceAdjacence);
-        trace.write("----- Matrice des valeurs -----\n");
+        trace.write("\n----- Matrice des valeurs -----\n\n");
         printMatrice(matriceValeur);
     }
 
@@ -179,10 +179,10 @@ public class Graphe {
         trace.write("Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :\t\t\t\t" + valueZeroOnStart()+ "\n"); //todo à verifier sur plus de graphe + ne pas tester si plusieurs entrées
 
         if(isGrapheOrdonnancement == false){
-            trace.write("Le graphe n'est pas un graphe d'ordonnancement !\n");
+            trace.write("Le graphe n'est pas un graphe d'ordonnancement !\n\n");
         }
         else{
-            trace.write("Le graphe est un graphe d'ordonnancement !\n");
+            trace.write("Le graphe est un graphe d'ordonnancement !\n\n");
         }
 
         return isGrapheOrdonnancement;
