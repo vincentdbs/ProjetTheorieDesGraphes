@@ -451,21 +451,19 @@ public class Graphe {
                 tempoTache.add(sommetValue(tempoPred.get(j))); //recuperation de la tâche
             }
 
-            array[1][i] = Collections.max(tempoTache);
-            array[0][i] = tempoPred.get(tempoTache.indexOf(array[1][i]));
-
-            for (int k = 0 ; k < tempoTache.size() ; k++){
-                int a = tempoTache.indexOf(array[1][i]); //recuperation de l'index de la tache
-                int sommetTache = tempoPred.get(a); //recuperation du sommet correspondant
+            for (int j = 0; j < tempoTache.size() ; j++) {
+                int sommetTache = tempoPred.get(j); //recuperation du sommet correspondant
                 int c = 0;
-                for (int j = 0; j < sommetOrdonné.length ; j++) {
-                    if (sommetOrdonné[j] == sommetTache){
-                        c = j; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
+                for (int k = 0; k < sommetOrdonné.length ; k++) {
+                    if (sommetOrdonné[k] == sommetTache){
+                        c = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
                     }
                 }
-                int datePlustot = array[1][c];
-                array[1][i] += datePlustot;
+                tempoDatePlusTot.add(array[1][c] + tempoTache.get(j));
             }
+
+            array[1][i] = Collections.max(tempoDatePlusTot);
+            array[0][i] = tempoPred.get(tempoDatePlusTot.indexOf(array[1][i]));
 
             tempoDatePlusTot.clear();
             tempoPred.clear();
@@ -477,20 +475,6 @@ public class Graphe {
 
         return array;
     }
-
-
-
-    private int getDateAuPlusTotSommet(int[][] array, int sommet){
-        for (int i = 0; i < nb_sommet; i++) {
-            if(array[0][i] == sommet){
-                int a = array[1][i];
-                return a;
-            }
-        }
-        return -1;
-    }
-
-
 
     /*Getter setter*/
     public int getNum_file() {
