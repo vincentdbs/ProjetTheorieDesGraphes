@@ -95,3 +95,5 @@ Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet
 Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :				true
 Le graphe est un graphe d'ordonnancement !
 ----- Ordonnancement -----
+Sommet : 	[0, 1, 3, 2, 4, 5, 8, 7, 9, 6, 10]
+Tache : 	[0, 2, 4, 4, 2, 3, 1, 1, 2, 3, -1]
