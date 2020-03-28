@@ -310,7 +310,7 @@ public class Graphe {
 
     public void ordonnancement(){
         trace.write("----- Ordonnancement -----\n");
-        trace.write("-1 signifie que la valeur n'est pas définie\");
+        trace.write("-1 signifie que la valeur n'est pas définie\n");
         int[][] tabOrdonnancement = new int[7][nb_sommet];
             //i = 0 => sommets | i = 1 => longueur tache du sommet | i = 2 => prédecesseur ayant la plus grande date | i = 3 =>  date
             //i = 4 => successeur ayant la plus petite date | i = 5 => date | i = 6 => marge
@@ -322,17 +322,26 @@ public class Graphe {
         }
         //classement des sommets par ordre croissant de rang
         tabOrdonnancement[0] = orderSommetsbyRang();
-        trace.write("Sommet :\t\t" + Arrays.toString(tabOrdonnancement[0]));
+        trace.write("Sommet :\t\t\t" + Arrays.toString(tabOrdonnancement[0]));
 
         //recupération des tâche de chaque sommet
         tabOrdonnancement[1] = retrieveSommetValue(tabOrdonnancement[0]);
-        trace.write("\nTache :\t\t\t" + Arrays.toString(tabOrdonnancement[1]));
+        trace.write("\nTache :\t\t\t\t" + Arrays.toString(tabOrdonnancement[1]));
 
+        //Calendrier des dates au plus tôt
+        int[][] result = retrieveBestPredecesseur(tabOrdonnancement[0]);
+        tabOrdonnancement[2] = result[0];
+        tabOrdonnancement[3] = result[1];
+        trace.write("\nPrédecesseur :\t\t" + Arrays.toString(tabOrdonnancement[2]));
+        trace.write("\nDate au + tôt :\t\t" + Arrays.toString(tabOrdonnancement[3]));
 
-        tabOrdonnancement[2] = retrieveBestPredecesseur(tabOrdonnancement[0])[0];
-        tabOrdonnancement[3] = retrieveBestPredecesseur(tabOrdonnancement[0])[1];
-        trace.write("\nPrédecesseur :\t" + Arrays.toString(tabOrdonnancement[2]));
-        trace.write("\nDate au + tôt :\t" + Arrays.toString(tabOrdonnancement[3]));
+        //Calendrier date au plus tard
+        result = retrieveBestSuccesseur(tabOrdonnancement[0], tabOrdonnancement[3][nb_sommet-1]);
+        tabOrdonnancement[4] = result[0];
+        tabOrdonnancement[5] = result[1];
+        trace.write("\nSuccesseur :\t\t" + Arrays.toString(tabOrdonnancement[4]));
+        trace.write("\nDate au + tard :\t" + Arrays.toString(tabOrdonnancement[5]));
+
     }
 
     /**
@@ -427,6 +436,45 @@ public class Graphe {
             tempoDatePlusTot.clear();
             tempoPred.clear();
             tempoTache.clear();
+        }
+        return array;
+    }
+
+    private int[][] retrieveBestSuccesseur(int[] sommetOrdonné, int datePlusTot){
+        int[][] array = new int[2][nb_sommet];
+        ArrayList<Integer> tempoSucc = new ArrayList<Integer>(); //liste temporaire des succésseur d'un sommet
+        ArrayList<Integer> tempoTache = new ArrayList<Integer>(); //liste temporaire de la durée du successeur d'un sommet
+        ArrayList<Integer> tempoDatePlusTard = new ArrayList<Integer>(); //liste temporaire de la date au plus tard en fonction de chaque successeur
+
+        array[0][nb_sommet-1] = -1;
+        array[1][nb_sommet-1] = datePlusTot;
+
+        for (int i = nb_sommet-2 ; i > 0; i--) {
+            for (int j = 0; j < nb_sommet ; j++) {
+                if (matriceAdjacence[sommetOrdonné[i]][j] == 1){
+                    tempoSucc.add(j); //ajout du successeur
+                }
+            }
+
+            int tache = sommetValue(sommetOrdonné[i]);
+
+            for (int j = 0; j < tempoSucc.size() ; j++) {
+                int sommetTache = tempoSucc.get(j); //recuperation du sommet correspondant
+                int c = 0;
+                for (int k = 0; k < sommetOrdonné.length ; k++) {
+                    if (sommetOrdonné[k] == sommetTache){
+                        c = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
+                    }
+                }
+                tempoDatePlusTard.add(array[1][c] - tache);
+                int test =0;
+            }
+
+            array[1][i] = Collections.min(tempoDatePlusTard);
+            array[0][i] = tempoSucc.get(tempoDatePlusTard.indexOf(array[1][i]));
+
+            tempoDatePlusTard.clear();
+            tempoSucc.clear();
         }
         return array;
     }
