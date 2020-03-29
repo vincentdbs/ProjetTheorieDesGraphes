@@ -20,12 +20,17 @@ public class Graphe {
 
     public Graphe(int _num_file){
         this.isGrapheOrdonnancement = false;
-        this.start = -1;
         this.trace = new Trace(_num_file);
         this.listArc = new ArrayList<Arc>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "A4-TG-PRJ-" + num_file + ".txt"; //nom du fichier
         readFile(); //récupération de la liste de transition
+
+        if (nb_sommet == 1){
+            this.start = 0;
+        }else{
+            this.start = -1;
+        }
 
         //initialisation des matrices
         this.matriceValeur = new String[nb_sommet][nb_sommet];
@@ -38,6 +43,7 @@ public class Graphe {
                 matriceValeur[i][j] = "*";
             }
         }
+
         fillMatrice(); //remplissage des matrices
 
     }
@@ -167,6 +173,8 @@ public class Graphe {
             return false;
         }
     }
+
+
 
     public boolean isGrapheOrdonnancement(){
         isGrapheOrdonnancement = true;
