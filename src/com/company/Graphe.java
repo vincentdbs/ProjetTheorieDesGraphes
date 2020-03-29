@@ -124,7 +124,7 @@ public class Graphe {
                 if (tempo == 0) {
                     done.add(todo.get(i));
                     rang[todo.get(i)] = rg;
-                    trace.write(String.valueOf(todo.get(i)) + " ");
+                    trace.write(todo.get(i) + " ");
                 }
                 tempo = 0;
             }
@@ -143,7 +143,7 @@ public class Graphe {
             //affichage des sommets restants
             trace.write("Sommets restants : ");
             for (int i = 0; i < todo.size() ; i++) {
-                trace.write(String.valueOf(todo.get(i)) + " ");
+                trace.write(todo.get(i) + " ");
             }
             trace.write("\n");
             rg++;
@@ -178,7 +178,7 @@ public class Graphe {
         trace.write("Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :\t" + sameValueOnLine() + "\n");
         trace.write("Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :\t\t\t\t" + valueZeroOnStart()+ "\n"); //todo à verifier sur plus de graphe + ne pas tester si plusieurs entrées
 
-        if(isGrapheOrdonnancement == false){
+        if(!isGrapheOrdonnancement){
             trace.write("Le graphe n'est pas un graphe d'ordonnancement !\n\n");
         }
         else{
@@ -287,7 +287,7 @@ public class Graphe {
         for (int i = 0; i < nb_sommet; i++) {
             trace.write(i + " ");
             for (int j = 0; j < nb_sommet; j++) {
-                trace.write(String.valueOf("\t" + arrayList[i][j]));
+                trace.write("\t" + arrayList[i][j]);
             }
             trace.write("\n");
         }
@@ -302,7 +302,7 @@ public class Graphe {
         for (int i = 0; i < nb_sommet; i++) {
             trace.write(i + " ");
             for (int j = 0; j < nb_sommet; j++) {
-                trace.write(String.valueOf("\t" + arrayList[i][j]));
+                trace.write("\t" + arrayList[i][j]);
             }
             trace.write("\n");
         }
@@ -399,10 +399,10 @@ public class Graphe {
 
     /**
      * Caclul du calendrier de date au plus tôt
-     * @param sommetOrdonné, le tableau de sommet ordonné par rang croissant
+     * @param sommetOrdonne, le tableau de sommet ordonné par rang croissant
      * @return tableau 2D des predecesseur et des dates au plus tôt ordonné par rang
      */
-    private int[][] retrieveBestPredecesseur(int[] sommetOrdonné){
+    private int[][] retrieveBestPredecesseur(int[] sommetOrdonne){
         int[][] array = new int[2][nb_sommet]; //tableau du meilleur predecesseur(i = 0) et sa date au plus tot(i=1)
         ArrayList<Integer> tempoPred = new ArrayList<Integer>(); //liste temporaire des prédecesseur d'un sommet
         ArrayList<Integer> tempoTache = new ArrayList<Integer>(); //liste temporaire de la durée du prédecesseur d'un sommet
@@ -412,9 +412,9 @@ public class Graphe {
         array[1][0] = 0;
 
         for (int i = 1; i < nb_sommet; i++) {
-            int som = sommetOrdonné[i];
+            int som = sommetOrdonne[i];
             for (int j = 0; j < nb_sommet ; j++) {
-                if (matriceAdjacence[j][sommetOrdonné[i]] == 1){
+                if (matriceAdjacence[j][sommetOrdonne[i]] == 1){
                     tempoPred.add(j); //ajout du predecesseur
                 }
             }
@@ -425,8 +425,8 @@ public class Graphe {
             for (int j = 0; j < tempoTache.size() ; j++) {
                 int sommetTache = tempoPred.get(j); //recuperation du sommet correspondant
                 int c = 0;
-                for (int k = 0; k < sommetOrdonné.length ; k++) {
-                    if (sommetOrdonné[k] == sommetTache){
+                for (int k = 0; k < sommetOrdonne.length ; k++) {
+                    if (sommetOrdonne[k] == sommetTache){
                         c = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
                     }
                 }
@@ -445,11 +445,11 @@ public class Graphe {
 
     /**
      * Calcul du calendrier des dates au plus tard
-     * @param sommetOrdonné, le tableau de sommet ordonné par rang croissant
+     * @param sommetOrdonne, le tableau de sommet ordonné par rang croissant
      * @param datePlusTot, la date au plus tôt du sommet max
      * @return
      */
-    private int[][] retrieveBestSuccesseur(int[] sommetOrdonné, int datePlusTot){
+    private int[][] retrieveBestSuccesseur(int[] sommetOrdonne, int datePlusTot){
         int[][] array = new int[2][nb_sommet];
         ArrayList<Integer> tempoSucc = new ArrayList<Integer>(); //liste temporaire des succésseur d'un sommet
         ArrayList<Integer> tempoTache = new ArrayList<Integer>(); //liste temporaire de la durée du successeur d'un sommet
@@ -460,18 +460,18 @@ public class Graphe {
 
         for (int i = nb_sommet-2 ; i > 0; i--) {
             for (int j = 0; j < nb_sommet ; j++) {
-                if (matriceAdjacence[sommetOrdonné[i]][j] == 1){
+                if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
                     tempoSucc.add(j); //ajout du successeur
                 }
             }
 
-            int tache = sommetValue(sommetOrdonné[i]);
+            int tache = sommetValue(sommetOrdonne[i]);
 
             for (int j = 0; j < tempoSucc.size() ; j++) {
                 int sommetTache = tempoSucc.get(j); //recuperation du sommet correspondant
                 int c = 0;
-                for (int k = 0; k < sommetOrdonné.length ; k++) {
-                    if (sommetOrdonné[k] == sommetTache){
+                for (int k = 0; k < sommetOrdonne.length ; k++) {
+                    if (sommetOrdonne[k] == sommetTache){
                         c = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
                     }
                 }
