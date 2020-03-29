@@ -321,7 +321,6 @@ public class Graphe {
      */
     public void ordonnancement(){
         trace.write("----- Ordonnancement -----\n");
-        trace.write("-1 signifie que la valeur n'est pas définie\n");
         int[][] tabOrdonnancement = new int[7][nb_sommet];
             //i = 0 => sommets | i = 1 => longueur tache du sommet | i = 2 => prédecesseur ayant la plus grande date | i = 3 =>  date
             //i = 4 => successeur ayant la plus petite date | i = 5 => date | i = 6 => marge
@@ -333,29 +332,57 @@ public class Graphe {
         }
         //classement des sommets par ordre croissant de rang
         tabOrdonnancement[0] = orderSommetsbyRang();
-        trace.write("Sommet :\t\t\t" + Arrays.toString(tabOrdonnancement[0]));
-
         //recupération des tâche de chaque sommet
         tabOrdonnancement[1] = retrieveSommetValue(tabOrdonnancement[0]);
-        trace.write("\nTache :\t\t\t\t" + Arrays.toString(tabOrdonnancement[1]));
-
         //Calendrier des dates au plus tôt
         int[][] result = retrieveBestPredecesseur(tabOrdonnancement[0]);
         tabOrdonnancement[2] = result[0];
         tabOrdonnancement[3] = result[1];
-        trace.write("\nPrédecesseur :\t\t" + Arrays.toString(tabOrdonnancement[2]));
-        trace.write("\nDate au + tôt :\t\t" + Arrays.toString(tabOrdonnancement[3]));
-
         //Calendrier date au plus tard
         result = retrieveBestSuccesseur(tabOrdonnancement[0], tabOrdonnancement[3][nb_sommet-1]);
         tabOrdonnancement[4] = result[0];
         tabOrdonnancement[5] = result[1];
-        trace.write("\nSuccesseur :\t\t" + Arrays.toString(tabOrdonnancement[4]));
-        trace.write("\nDate au + tard :\t" + Arrays.toString(tabOrdonnancement[5]));
-
         //margeTotale
         tabOrdonnancement[6] = margeTotale(tabOrdonnancement[3], tabOrdonnancement[5]);
-        trace.write("\nMarge totale :\t\t" + Arrays.toString(tabOrdonnancement[6]));
+
+        printOrdonnancement(tabOrdonnancement);
+    }
+
+    private void printOrdonnancement(int[][] arrayOrdonnancement) {
+        for (int i = 0; i < arrayOrdonnancement.length; i++) {
+            switch (i){
+                case 0:
+                    trace.write("Sommet :\t\t\t");
+                    break;
+                case 1:
+                    trace.write("\nTache :\t\t\t\t");
+                    break;
+                case 2:
+                    trace.write("\nPrédecesseur :\t\t");
+                    break;
+                case 3:
+                    trace.write("\nDate au + tôt :\t\t");
+                    break;
+                case 4:
+                    trace.write("\nSuccesseur :\t\t");
+                    break;
+                case 5:
+                    trace.write("\nDate au + tard :\t");
+                    break;
+                case 6:
+                    trace.write("\nMarge totale :\t\t");
+                    break;
+                default:
+                    break;
+            }
+            for (int j = 0; j < arrayOrdonnancement[i].length; j++) {
+                if (arrayOrdonnancement[i][j] == -1){
+                    trace.write("*\t");
+                }else{
+                    trace.write(arrayOrdonnancement[i][j] + "\t");
+                }
+            }
+        }
     }
 
     /**
