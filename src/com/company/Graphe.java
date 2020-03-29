@@ -316,6 +316,9 @@ public class Graphe {
         }
     }
 
+    /**
+     * Processus d'odonnancement
+     */
     public void ordonnancement(){
         trace.write("----- Ordonnancement -----\n");
         trace.write("-1 signifie que la valeur n'est pas définie\n");
@@ -459,21 +462,21 @@ public class Graphe {
      */
     private int[][] retrieveBestSuccesseur(int[] sommetOrdonne, int datePlusTot){
         int[][] array = new int[2][nb_sommet];
-        ArrayList<Integer> tempoSucc = new ArrayList<Integer>(); //liste temporaire des succésseur d'un sommet
-        ArrayList<Integer> tempoTache = new ArrayList<Integer>(); //liste temporaire de la durée du successeur d'un sommet
+        ArrayList<Integer> tempoSucc = new ArrayList<Integer>(); //liste temporaire des succésseurs d'un sommet
+        ArrayList<Integer> tempoTache = new ArrayList<Integer>(); //liste temporaire de la durée des successeurs d'un sommet
         ArrayList<Integer> tempoDatePlusTard = new ArrayList<Integer>(); //liste temporaire de la date au plus tard en fonction de chaque successeur
 
-        array[0][nb_sommet-1] = -1;
-        array[1][nb_sommet-1] = datePlusTot;
+        array[0][nb_sommet-1] = -1; //la sortie n'a pas de successeur
+        array[1][nb_sommet-1] = datePlusTot; //la date au plus tard = la date au plus tôt
 
         for (int i = nb_sommet-2 ; i > 0; i--) {
-            for (int j = 0; j < nb_sommet ; j++) {
+            for (int j = 0; j < nb_sommet ; j++) { //récupération des successeurs pour le sommet à l'index i
                 if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
                     tempoSucc.add(j); //ajout du successeur
                 }
             }
 
-            int tache = sommetValue(sommetOrdonne[i]);
+            int tache = sommetValue(sommetOrdonne[i]); //longueur de la tache du somme à l'index i
 
             for (int j = 0; j < tempoSucc.size() ; j++) {
                 int sommetTache = tempoSucc.get(j); //recuperation du sommet correspondant
@@ -484,7 +487,6 @@ public class Graphe {
                     }
                 }
                 tempoDatePlusTard.add(array[1][c] - tache);
-                int test =0;
             }
 
             array[1][i] = Collections.min(tempoDatePlusTard);
@@ -496,6 +498,9 @@ public class Graphe {
         return array;
     }
 
+    /**
+     * Calcule des marges totales
+     */
     private int[] margeTotale(int[] datePlusTot, int[] datePlusTard){
         int[] margeTotale = new int[nb_sommet];
         for (int i = 0; i < nb_sommet; i++) {
