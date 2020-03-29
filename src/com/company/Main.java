@@ -20,10 +20,6 @@ public class Main {
 
         }while (newGraphe());
 
-
-
-
-
         //todo demander si les fichiers sont forecement bien rempli
         //todo demander si graphe avec un état et une boucle sur lui même considéré comme un circuit
     }

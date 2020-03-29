@@ -24,7 +24,7 @@ public class Graphe {
         this.trace = new Trace(_num_file);
         this.listArc = new ArrayList<Arc>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
-        this.name_file = "TG-PRJ-A4-" + num_file + ".txt"; //nom du fichier
+        this.name_file = "A4-TG-PRJ-" + num_file + ".txt"; //nom du fichier
         readFile(); //récupération de la liste de transition
 
         //initialisation des matrices

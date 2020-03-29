@@ -6,7 +6,7 @@ public class Trace {
     private String nameFile;
 
     public Trace(int _num_file){
-        nameFile = "Textfile/Log/Log-TG-PRJ-A4-" + _num_file + ".txt";
+        nameFile = "Textfile/Log/A4-Log-TG-PRJ-" + _num_file + ".txt";
         PrintWriter writer = null;
         try { //supprime le contenu du fichier
             writer = new PrintWriter(nameFile);
