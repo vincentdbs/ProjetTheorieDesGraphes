@@ -63,7 +63,7 @@ public class Graphe {
             Scanner scan = new Scanner(new File("Textfile/Graphe/" + name_file));
             setNb_sommet(Integer.parseInt(scan.nextLine()));
             setNb_arc(Integer.parseInt(scan.nextLine()));
-            trace.write("----- Lecture du fichier n°" + getNum_file() + " -----\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n");
+            trace.write("----- Lecture du fichier n°" + getNum_file() + " -----\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n\n");
             while (scan.hasNextLine()){
                 listArc.add(createTransition(scan.nextLine()));
             }
@@ -157,6 +157,8 @@ public class Graphe {
     }
 
     public void rang(){
+        trace.write("\n----- Calcul du rang -----\n\n");
+
         int[] degMoins = new int[nb_sommet];
         ArrayList<Integer> racines = new ArrayList<>();
         ArrayList<Integer> todo = new ArrayList<>();
@@ -177,10 +179,14 @@ public class Graphe {
         }
 
         do{
+            trace.write("Rang courant :\t" + rangCourant + "\n");
             //on attribue le rang courant aux racines
+            trace.write("Racine(s) :\t");
             for (int i = 0; i <  racines.size() ; i++) {
                 rang[racines.get(i)] = rangCourant;
+                trace.write("\t" + racines.get(i));
             }
+            trace.write("\n\n");
             //suppression des racines => passage à -1 dans la matrice
             for (int i = 0; i < racines.size(); i++) {
                 for (int j = 0; j < nb_sommet; j++) {
@@ -228,7 +234,7 @@ public class Graphe {
 
     public boolean isGrapheOrdonnancement(){
         isGrapheOrdonnancement = true;
-        trace.write("\n----- Le graphe est-il un graphe d'ordonancement ? -----\n");
+        trace.write("\n----- Le graphe est-il un graphe d'ordonancement ? -----\n\n");
         trace.write("Un seul point d'entrée :\t\t" + uniqueStart() + "\n");
         trace.write("Un seul point de sortie :\t\t" + uniqueEnd() + "\n");
         trace.write("Pas de circuit :\t\t\t\ttrue\n");
@@ -370,7 +376,7 @@ public class Graphe {
      * Processus d'odonnancement
      */
     public void ordonnancement(){
-        trace.write("----- Ordonnancement -----\n");
+        trace.write("----- Ordonnancement -----\n\n");
         int[][] tabOrdonnancement = new int[7][nb_sommet];
             //i = 0 => sommets | i = 1 => longueur tache du sommet | i = 2 => prédecesseur ayant la plus grande date | i = 3 =>  date
             //i = 4 => successeur ayant la plus petite date | i = 5 => date | i = 6 => marge
