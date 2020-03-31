@@ -21,7 +21,7 @@ public class Graphe {
     public Graphe(int _num_file){
         this.isGrapheOrdonnancement = false;
         this.trace = new Trace(_num_file);
-        this.listArc = new ArrayList<Arc>(); //initialisation de la liste de transition
+        this.listArc = new ArrayList<>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "A4-TG-PRJ-" + num_file + ".txt"; //nom du fichier
         readFile(); //récupération de la liste de transition
@@ -75,7 +75,7 @@ public class Graphe {
     }
 
     /**
-     * creer une transition
+     * Creer une transition
      */
     private Arc createTransition(String line){
         String[] array = line.split(" ");
@@ -309,7 +309,7 @@ public class Graphe {
     }
 
     private boolean sameValueOnLine(){
-        ArrayList<String> value = new ArrayList<String>();
+        ArrayList<String> value = new ArrayList<>();
         for (int i = 0; i < nb_sommet; i++) {
             for (int j = 0; j < nb_sommet; j++) {
                 if (!(value.contains(matriceValeur[i][j]))){
@@ -440,7 +440,6 @@ public class Graphe {
      * @return tableau des sommets classé par rang
      */
     private int[] orderSommetsbyRang(){
-        //todo a tester sur d'autre graphe
         int[] ordered = new int[nb_sommet];
         int index = 0;
         int rg = 0;
@@ -535,12 +534,10 @@ public class Graphe {
      * Calcul du calendrier des dates au plus tard
      * @param sommetOrdonne, le tableau de sommet ordonné par rang croissant
      * @param datePlusTot, la date au plus tôt du sommet max
-     * @return
      */
     private int[][] retrieveBestSuccesseur(int[] sommetOrdonne, int datePlusTot){
         int[][] array = new int[2][nb_sommet];
         ArrayList<Integer> tempoSucc = new ArrayList<Integer>(); //liste temporaire des succésseurs d'un sommet
-        ArrayList<Integer> tempoTache = new ArrayList<Integer>(); //liste temporaire de la durée des successeurs d'un sommet
         ArrayList<Integer> tempoDatePlusTard = new ArrayList<Integer>(); //liste temporaire de la date au plus tard en fonction de chaque successeur
 
         array[0][nb_sommet-1] = -1; //la sortie n'a pas de successeur
@@ -590,18 +587,6 @@ public class Graphe {
         return num_file;
     }
 
-    public void setNum_file(int num_file) {
-        this.num_file = num_file;
-    }
-
-    public String getName_file() {
-        return name_file;
-    }
-
-    public void setName_file(String name_file) {
-        this.name_file = name_file;
-    }
-
     public int getNb_arc() {
         return nb_arc;
     }
@@ -618,8 +603,5 @@ public class Graphe {
         this.nb_sommet = nb_sommet;
     }
 
-    public int[][] getMatriceAdjacence() {
-        return matriceAdjacence;
-    }
 
 }
