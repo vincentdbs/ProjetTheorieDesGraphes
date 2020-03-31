@@ -47,6 +47,9 @@ public class Graphe {
 
     }
 
+    /**
+     * Affichage des matrices d'adjacence et des valeurs
+     */
     public void affichageMatrice(){
         trace.write("----- Matrice d'ajacence -----\n\n");
         printMatrice(matriceAdjacence);
@@ -152,6 +155,9 @@ public class Graphe {
         }
     }
 
+    /**
+     * Calcul du rang par suppression des états
+     */
     public void rang(){
         int[] degMoins = new int[nb_sommet];
         ArrayList<Integer> racines = new ArrayList<>();
@@ -217,6 +223,9 @@ public class Graphe {
         trace.write("\n");
     }
 
+    /**
+     * Determine le nombre de predecesseur d'un sommet à partir de la matrice d'adjacence
+     */
     private int getNumberOfPredecesseur(int sommet, int[][] mat){
         int num = 0;
         for (int i = 0; i < nb_sommet; i++) {
@@ -227,7 +236,22 @@ public class Graphe {
         return num;
     }
 
+    /**
+     * Determine le nombre de successeur d'un sommet à partir de la matrice d'adjacence
+     */
+    private int getNumberOfSuccesseur(int sommet, int[][] mat){
+        int num = 0;
+        for (int i = 0; i < nb_sommet; i++) {
+            if (mat[sommet][i] == 1){
+                num++;
+            }
+        }
+        return num;
+    }
 
+    /**
+     * Processus de contrôle pour savoir si le graphe est un graphe d'ordonnancement
+     */
     public boolean isGrapheOrdonnancement(){
         isGrapheOrdonnancement = true;
         trace.write("\n----- Le graphe est-il un graphe d'ordonancement ? -----\n\n");
@@ -252,6 +276,9 @@ public class Graphe {
         return isGrapheOrdonnancement;
     }
 
+    /**
+     * Determine si le graphe possède une unique entrée
+     */
     private boolean uniqueStart(){
         int nbStart = 0;
         int tempo = 0;
@@ -270,21 +297,17 @@ public class Graphe {
         }
     }
 
+    /**
+     * Determine si le graphe possède une unique sortie
+     */
     private boolean uniqueEnd(){
-        int nbStart = 0;
-        int tempo = 0;
+        int nbEnd = 0;
         for (int i = 0; i < nb_sommet; i++) {
-            for (int j = 0; j < nb_sommet; j++) {
-                if (matriceAdjacence[i][j] == 1){
-                    tempo++;
-                }
+            if (getNumberOfSuccesseur(i, matriceAdjacence) == 0){
+                nbEnd++;
             }
-            if (tempo == 0){
-                nbStart++;
-            }
-            tempo = 0;
         }
-        if (nbStart == 1){
+        if (nbEnd == 1){
             return true;
         }
         else{
