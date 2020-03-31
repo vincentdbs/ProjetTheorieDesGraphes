@@ -316,6 +316,9 @@ public class Graphe {
         }
     }
 
+    /**
+     * Controle de la presence d'arc de valeur positif uniquement
+     */
     private boolean noNegative(){
         for (int i = 0; i < nb_sommet; i++) {
             for (int j = 0; j < nb_sommet; j++) {
@@ -331,6 +334,9 @@ public class Graphe {
         return true;
     }
 
+    /**
+     * Controle de la presence de la même valeur des arcs sortants d'un sommet
+     */
     private boolean sameValueOnLine(){
         ArrayList<String> value = new ArrayList<>();
         for (int i = 0; i < nb_sommet; i++) {
@@ -348,6 +354,9 @@ public class Graphe {
         return true;
     }
 
+    /**
+     * Controle de la presence de la valeur 0 sur les arcs sortants du sommet d'entrée
+     */
     private boolean valueZeroOnStart(){
         for (int i = 0; i < nb_sommet; i++) {
             if (!((matriceValeur[start][i].equals("*")) || (matriceValeur[start][i].equals("0")))){
@@ -358,7 +367,9 @@ public class Graphe {
         return true;
     }
 
-    //Affichage matrice
+    /**
+     * Affichage d'une matrice 2D de type int
+     */
     private void printMatrice(int[][] arrayList){
         trace.write("\t");
         for (int i = 0; i < nb_sommet ; i++) {
@@ -374,6 +385,9 @@ public class Graphe {
         }
     }
 
+    /**
+     * Affichage d'une matrice 2D de type String
+     */
     private void printMatrice(String[][] arrayList){
         trace.write("\t");
         for (int i = 0; i < nb_sommet ; i++) {
@@ -421,6 +435,9 @@ public class Graphe {
         printOrdonnancement(tabOrdonnancement);
     }
 
+    /**
+     * Affichage du calendrier d'un graphe
+     */
     private void printOrdonnancement(int[][] arrayOrdonnancement) {
         for (int i = 0; i < arrayOrdonnancement.length; i++) {
             switch (i){

@@ -30,7 +30,7 @@ public class Main {
         int nbGraphe = new File("Textfile/Graphe").listFiles().length;
         int again = 0;
         do{
-            System.out.println("Choisissez un numéro de graphe entre 1 et " + nbGraphe + " : ");
+            System.out.print("Choisissez un numéro de graphe entre 1 et " + nbGraphe + " : ");
             Scanner scanner = new Scanner(System.in);
             grapheChoice = scanner.nextLine();
             try {
@@ -53,7 +53,7 @@ public class Main {
         String choice = "";
 
         do{
-            System.out.print("\nVoulez-vous tester un autre graphe ? [o/n] : ");
+            System.out.print("\n\nVoulez-vous tester un autre graphe ? [o/n] : ");
             choice = scanner.nextLine();
         }while (!((choice.equals("o")) || (choice.equals("n"))));
 
