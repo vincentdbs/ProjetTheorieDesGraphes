@@ -107,8 +107,8 @@ public class Graphe {
             matDetection[i] = matriceAdjacence[i].clone();
         }
 
-        ArrayList<Integer> done = new ArrayList<Integer>();
-        ArrayList<Integer> todo = new ArrayList<Integer>();
+        ArrayList<Integer> done = new ArrayList<>();
+        ArrayList<Integer> todo = new ArrayList<>();
         for (int i = 0; i < nb_sommet; i++) {
             todo.add(i);
         }
@@ -170,6 +170,65 @@ public class Graphe {
                 trace.write("\t" + rang[i]);
             }
             trace.write("\n");
+            return false;
+        }
+    }
+
+    public boolean detectionCircuit(){
+        int[][] matDetection = new int[nb_sommet][nb_sommet];
+        for (int i = 0; i < matriceAdjacence.length; i++) {
+            matDetection[i] = matriceAdjacence[i].clone();
+        }
+        ArrayList<Integer> done = new ArrayList<>();
+        ArrayList<Integer> todo = new ArrayList<>();
+        ArrayList<Integer> todoPrec = new ArrayList<>();;
+        trace.write("\n----- Detection de circuit - methode d'elimination des points d'entrée -----\n");
+        for (int i = 0; i < nb_sommet; i++) {
+            todo.add(i);
+        }
+
+        do {
+            todoPrec.clear();
+            todoPrec.addAll(todo);
+            int tempo = 0;
+            trace.write("\nPoints d'entrée : ");
+            for (int i = 0; i < todo.size(); i++) {
+                for (int j = 0; j < nb_sommet; j++) {
+                    if (matDetection[j][todo.get(i)] == 1) { // [j][i] car parcourt en colonne
+                        tempo++;
+                    }
+                }
+                if (tempo == 0) {
+                    done.add(todo.get(i));
+                    trace.write(todo.get(i) + " ");
+                }
+                tempo = 0;
+            }
+            trace.write("\nSuppression des points d'entrée\n");
+            //passage à -1 des elements
+            for (int i = 0; i < done.size(); i++) {
+                for (int j = 0; j < nb_sommet; j++) {
+                    matDetection[j][done.get(i)] = -1; //passage à -1 en colonne
+                    matDetection[done.get(i)][j] = -1; //passage à -1 en ligne
+                }
+            }
+            //suppression dans tab_todo
+            for (int i = 0; i < done.size() ; i++) {
+                todo.remove(done.get(i));
+            }
+            trace.write("Sommets restants : ");
+            for (int i = 0; i < todo.size() ; i++) {
+                trace.write(todo.get(i) + " ");
+            }
+            trace.write("\n");
+        }while (!todoPrec.equals(todo));
+
+        if (todo.size() > 0){
+            trace.write("\nLe graphe contient au moins un circuit\n");
+            return true;
+        }
+        else{
+            trace.write("\nLe graphe ne contient pas de circuit\n");
             return false;
         }
     }

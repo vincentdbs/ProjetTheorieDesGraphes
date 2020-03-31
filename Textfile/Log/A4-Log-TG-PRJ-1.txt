@@ -33,12 +33,4 @@ Points d'entrée :
 Suppression des points d'entrée
 Sommets restants : 0 1 
 
-Points d'entrée : 
-Suppression des points d'entrée
-Sommets restants : 0 1 
-
-Points d'entrée : 
-Suppression des points d'entrée
-Sommets restants : 0 1 
-
 Le graphe contient au moins un circuit

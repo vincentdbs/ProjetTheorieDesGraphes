@@ -7,24 +7,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        do {
-            int numGraphe = choiceNumGraphe();
-            Graphe graphe = new Graphe(numGraphe);
-            graphe.affichageMatrice();
-            if (!graphe.detectCircuit()){
-                if (graphe.isGrapheOrdonnancement()){
-                    graphe.ordonnancement();
-                }
-            }
+//        do {
+//            int numGraphe = choiceNumGraphe();
+//            Graphe graphe = new Graphe(numGraphe);
+//            graphe.affichageMatrice();
+//            if (!graphe.detectCircuit()){
+//                if (graphe.isGrapheOrdonnancement()){
+//                    graphe.ordonnancement();
+//                }
+//            }
+//        }while (newGraphe());
 
-        }while (newGraphe());
+        int num = choiceNumGraphe();
+        Graphe graphe = new Graphe(num);
+        graphe.affichageMatrice();
+        graphe.detectionCircuit();
 
-        //todo demander si les fichiers sont forecement bien rempli
-        //todo demander si graphe avec un état et une boucle sur lui même considéré comme un circuit
     }
 
     private static int choiceNumGraphe(){
-        //todo check si ok
         String grapheChoice = "0";
         int nbGraphe = new File("Textfile/Graphe").listFiles().length;
         int again = 0;
