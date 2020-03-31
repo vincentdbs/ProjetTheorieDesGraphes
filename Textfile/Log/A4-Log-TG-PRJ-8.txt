@@ -1,6 +1,7 @@
 ----- Lecture du fichier n°8 -----
 1 sommet(s)
 1 arc(s)
+
 0 -> 0 = 1
 
 ----- Matrice d'ajacence -----

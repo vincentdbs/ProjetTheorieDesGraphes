@@ -116,15 +116,15 @@ public class Graphe {
             todoPrec.addAll(todo);
             int tempo = 0;
             trace.write("\nPoints d'entrée : ");
+            //detection des entrées = aucun predecesseur
             for (int i = 0; i < todo.size(); i++) {
                 if(getNumberOfPredecesseur(todo.get(i), matDetection) == 0){
                     done.add(todo.get(i));
                     trace.write(todo.get(i) + " ");
                 }
-                //tempo = 0;
             }
             trace.write("\nSuppression des points d'entrée\n");
-            //passage à -1 des elements
+            //passage à -1 des entrées
             for (int i = 0; i < done.size(); i++) {
                 for (int j = 0; j < nb_sommet; j++) {
                     matDetection[j][done.get(i)] = -1; //passage à -1 en colonne
@@ -153,19 +153,19 @@ public class Graphe {
     }
 
     public void rang(){
-        trace.write("\n----- Calcul du rang -----\n\n");
-
         int[] degMoins = new int[nb_sommet];
         ArrayList<Integer> racines = new ArrayList<>();
         ArrayList<Integer> todo = new ArrayList<>();
         int rangCourant = 0;
         int[][] matDetection = new int[nb_sommet][nb_sommet];
+
+        trace.write("\n----- Calcul du rang -----\n\n");
+        //copie de la matrice
         for (int i = 0; i < matriceAdjacence.length; i++) {
             matDetection[i] = matriceAdjacence[i].clone();
         }
 
-
-
+        //initialisation = calcul des d°- des sommets + determination des racines
         for (int i = 0; i < nb_sommet; i++) {
             todo.add(i);
             degMoins[i] = getNumberOfPredecesseur(i, matDetection);
@@ -236,7 +236,12 @@ public class Graphe {
         trace.write("Pas de circuit :\t\t\t\ttrue\n");
         trace.write("Pas d’arcs à valeur négative :\t" + noNegative() + "\n");
         trace.write("Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :\t" + sameValueOnLine() + "\n");
-        trace.write("Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :\t\t\t\t" + valueZeroOnStart()+ "\n"); //todo à verifier sur plus de graphe + ne pas tester si plusieurs entrées
+        trace.write("Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :\t\t\t\t");
+        if (!isGrapheOrdonnancement){
+            trace.write("false\n");
+        }else{
+            trace.write(valueZeroOnStart()+ "\n");
+        }
 
         if(!isGrapheOrdonnancement){
             trace.write("Le graphe n'est pas un graphe d'ordonnancement !\n\n");
@@ -244,7 +249,6 @@ public class Graphe {
         else{
             trace.write("Le graphe est un graphe d'ordonnancement !\n\n");
         }
-
         return isGrapheOrdonnancement;
     }
 
