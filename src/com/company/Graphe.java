@@ -256,16 +256,10 @@ public class Graphe {
         int nbStart = 0;
         int tempo = 0;
         for (int i = 0; i < nb_sommet; i++) {
-            for (int j = 0; j < nb_sommet; j++) {
-                if (matriceAdjacence[j][i] == 1){
-                    tempo++;
-                }
-            }
-            if (tempo == 0){
-                nbStart++;
+            if (getNumberOfPredecesseur(i, matriceAdjacence) == 0){
                 start = i;
+                nbStart++;
             }
-            tempo = 0;
         }
         if (nbStart == 1){
             return true;
