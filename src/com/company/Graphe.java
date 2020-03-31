@@ -3,7 +3,6 @@ package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -56,7 +55,7 @@ public class Graphe {
     }
 
     /**
-     * Lit et creer la liste de transition à partir du fichier
+     * Récupere ligne par ligne le nombre de sommets, d'arc et creer la liste de transition à partir du fichier
      */
     private void readFile(){
         try {
@@ -85,7 +84,8 @@ public class Graphe {
     }
 
     /**
-     * remplis les matrices d'ajacence et valeurs à partir de la liste de transition
+     * Remplis les matrices d'ajacence et valeurs à partir de la liste de transition
+     * Chaque transition se voit attribué un 1 dans la matrice d'ajacence et la valeur de l'arc dans la matrice des valeurs
      */
     private void fillMatrice(){
         for (int i = 0; i < listArc.size(); i++) {
@@ -98,14 +98,15 @@ public class Graphe {
      * Detection de la présence/absence d'un circuit dans le graphe + calcul du rang si possible
      */
     public boolean detectionCircuit(){
-        int[][] matDetection = new int[nb_sommet][nb_sommet];
+        int[][] matDetection = new int[nb_sommet][nb_sommet]; //matrice temporaire similaire à matrice d'adjacence
+        ArrayList<Integer> done = new ArrayList<>();
+        ArrayList<Integer> todo = new ArrayList<>();
+        ArrayList<Integer> todoPrec = new ArrayList<>();
+
+        trace.write("\n----- Detection de circuit - methode d'elimination des points d'entrée -----\n");
         for (int i = 0; i < matriceAdjacence.length; i++) {
             matDetection[i] = matriceAdjacence[i].clone();
         }
-        ArrayList<Integer> done = new ArrayList<>();
-        ArrayList<Integer> todo = new ArrayList<>();
-        ArrayList<Integer> todoPrec = new ArrayList<>();;
-        trace.write("\n----- Detection de circuit - methode d'elimination des points d'entrée -----\n");
         for (int i = 0; i < nb_sommet; i++) {
             todo.add(i);
         }
@@ -116,16 +117,11 @@ public class Graphe {
             int tempo = 0;
             trace.write("\nPoints d'entrée : ");
             for (int i = 0; i < todo.size(); i++) {
-                for (int j = 0; j < nb_sommet; j++) {
-                    if (matDetection[j][todo.get(i)] == 1) { // [j][i] car parcourt en colonne
-                        tempo++;
-                    }
-                }
-                if (tempo == 0) {
+                if(getNumberOfPredecesseur(todo.get(i), matDetection) == 0){
                     done.add(todo.get(i));
                     trace.write(todo.get(i) + " ");
                 }
-                tempo = 0;
+                //tempo = 0;
             }
             trace.write("\nSuppression des points d'entrée\n");
             //passage à -1 des elements
@@ -172,7 +168,7 @@ public class Graphe {
 
         for (int i = 0; i < nb_sommet; i++) {
             todo.add(i);
-            degMoins[i] = getPredecesseur(i, matDetection);
+            degMoins[i] = getNumberOfPredecesseur(i, matDetection);
             if (degMoins[i] == 0){
                 racines.add(i);
             }
@@ -202,7 +198,7 @@ public class Graphe {
             racines.clear();
             for (int i = 0; i < todo.size(); i++) {
                 int index = todo.get(i);
-                degMoins[index] = getPredecesseur(index, matDetection);
+                degMoins[index] = getNumberOfPredecesseur(index, matDetection);
                 if (degMoins[index] == 0){
                     racines.add(index);
                 }
@@ -221,7 +217,7 @@ public class Graphe {
         trace.write("\n");
     }
 
-    private int getPredecesseur(int sommet, int[][] mat){
+    private int getNumberOfPredecesseur(int sommet, int[][] mat){
         int num = 0;
         for (int i = 0; i < nb_sommet; i++) {
             if (mat[i][sommet] == 1){
