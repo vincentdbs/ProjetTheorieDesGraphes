@@ -7,21 +7,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        do {
-//            int numGraphe = choiceNumGraphe();
-//            Graphe graphe = new Graphe(numGraphe);
-//            graphe.affichageMatrice();
-//            if (!graphe.detectCircuit()){
-//                if (graphe.isGrapheOrdonnancement()){
-//                    graphe.ordonnancement();
-//                }
-//            }
-//        }while (newGraphe());
+        do {
+            int numGraphe = choiceNumGraphe();
+            Graphe graphe = new Graphe(numGraphe);
+            graphe.affichageMatrice();
+            if (!graphe.detectionCircuit()){
+                graphe.rang();
+                if (graphe.isGrapheOrdonnancement()){
+                    graphe.ordonnancement();
+                }
+            }
 
-        int num = choiceNumGraphe();
-        Graphe graphe = new Graphe(num);
-        graphe.affichageMatrice();
-        graphe.detectionCircuit();
+        }while (newGraphe());
+
+
+
 
     }
 

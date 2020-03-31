@@ -19,16 +19,4 @@ Points d'entrée :
 Suppression des points d'entrée
 Sommets restants : 0 
 
-Le graphe ne contient pas de circuit
-Sommets : 	0
-Rang : 		-1
-
------ Le graphe est-il un graphe d'ordonancement ? -----
-Un seul point d'entrée :		false
-Un seul point de sortie :		false
-Pas de circuit :				true
-Pas d’arcs à valeur négative :	true
-Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :	true
-Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :				false
-Le graphe n'est pas un graphe d'ordonnancement !
-
+Le graphe contient au moins un circuit

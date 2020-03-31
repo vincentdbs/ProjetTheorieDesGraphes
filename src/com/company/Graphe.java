@@ -97,83 +97,6 @@ public class Graphe {
     /**
      * Detection de la présence/absence d'un circuit dans le graphe + calcul du rang si possible
      */
-    //todo changer pour que rang se calcule après circuit
-    public boolean detectCircuit() {
-        //todo corriger pour fichier 8
-        //initialisation
-        int[][] matDetection = new int[nb_sommet][nb_sommet];
-
-        for (int i = 0; i < matriceAdjacence.length; i++) {
-            matDetection[i] = matriceAdjacence[i].clone();
-        }
-
-        ArrayList<Integer> done = new ArrayList<>();
-        ArrayList<Integer> todo = new ArrayList<>();
-        for (int i = 0; i < nb_sommet; i++) {
-            todo.add(i);
-        }
-
-        trace.write("\n----- Detection de circuit - methode d'elimination des points d'entrée -----\n");
-        //rang
-        int rg = 0;
-        do{
-            //un tour
-            int tempo = 0;
-            //detection predecesseur ou non
-            trace.write("\nPoints d'entrée : ");
-            for (int i = 0; i < todo.size(); i++) {
-                for (int j = 0; j < nb_sommet; j++) {
-                    if (matDetection[j][todo.get(i)] == 1) { // [j][i] car parcourt en colonne
-                        tempo++;
-                    }
-                }
-                if (tempo == 0) {
-                    done.add(todo.get(i));
-                    rang[todo.get(i)] = rg;
-                    trace.write(todo.get(i) + " ");
-                }
-                tempo = 0;
-            }
-            trace.write("\nSuppression des points d'entrée\n");
-            //passage à -1 des elements
-            for (int i = 0; i < done.size(); i++) {
-                for (int j = 0; j < nb_sommet; j++) {
-                    matDetection[j][done.get(i)] = -1; //passage à -1 en colonne
-                    matDetection[done.get(i)][j] = -1; //passage à -1 en ligne
-                }
-            }
-            //suppression dans tab_todo
-            for (int i = 0; i < done.size() ; i++) {
-                todo.remove(done.get(i));
-            }
-            //affichage des sommets restants
-            trace.write("Sommets restants : ");
-            for (int i = 0; i < todo.size() ; i++) {
-                trace.write(todo.get(i) + " ");
-            }
-            trace.write("\n");
-            rg++;
-        }while ((rg < nb_sommet) && (!todo.isEmpty()));
-
-        if (Arrays.binarySearch(rang, -1) > 0){
-            trace.write("\nLe graphe contient au moins un circuit\n");
-            return true;
-        }
-        else{
-            trace.write("\nLe graphe ne contient pas de circuit\n");
-            trace.write("Sommets : ");
-            for (int i = 0; i <  rang.length; i++) {
-                trace.write("\t" + i);
-            }
-            trace.write("\nRang : \t");
-            for (int i = 0; i <  rang.length; i++) {
-                trace.write("\t" + rang[i]);
-            }
-            trace.write("\n");
-            return false;
-        }
-    }
-
     public boolean detectionCircuit(){
         int[][] matDetection = new int[nb_sommet][nb_sommet];
         for (int i = 0; i < matriceAdjacence.length; i++) {
@@ -233,6 +156,74 @@ public class Graphe {
         }
     }
 
+    public void rang(){
+        int[] degMoins = new int[nb_sommet];
+        ArrayList<Integer> racines = new ArrayList<>();
+        ArrayList<Integer> todo = new ArrayList<>();
+        int rangCourant = 0;
+        int[][] matDetection = new int[nb_sommet][nb_sommet];
+        for (int i = 0; i < matriceAdjacence.length; i++) {
+            matDetection[i] = matriceAdjacence[i].clone();
+        }
+
+
+
+        for (int i = 0; i < nb_sommet; i++) {
+            todo.add(i);
+            degMoins[i] = getPredecesseur(i, matDetection);
+            if (degMoins[i] == 0){
+                racines.add(i);
+            }
+        }
+
+        do{
+            //on attribue le rang courant aux racines
+            for (int i = 0; i <  racines.size() ; i++) {
+                rang[racines.get(i)] = rangCourant;
+            }
+            //suppression des racines => passage à -1 dans la matrice
+            for (int i = 0; i < racines.size(); i++) {
+                for (int j = 0; j < nb_sommet; j++) {
+                    matDetection[j][racines.get(i)] = -1; //passage à -1 en colonne
+                    matDetection[racines.get(i)][j] = -1; //passage à -1 en ligne
+                }
+            }
+            //suppression des racines de liste.todo
+            for (int i = 0; i < racines.size(); i++) {
+                todo.remove(racines.get(i));
+            }
+            //calcul des deg°- + ajout des racines
+            racines.clear();
+            for (int i = 0; i < todo.size(); i++) {
+                int index = todo.get(i);
+                degMoins[index] = getPredecesseur(index, matDetection);
+                if (degMoins[index] == 0){
+                    racines.add(index);
+                }
+            }
+            rangCourant++;
+        }while (!todo.isEmpty());
+
+        trace.write("Sommets : ");
+        for (int i = 0; i <  rang.length; i++) {
+            trace.write("\t" + i);
+        }
+        trace.write("\nRang : \t");
+        for (int i = 0; i <  rang.length; i++) {
+            trace.write("\t" + rang[i]);
+        }
+        trace.write("\n");
+    }
+
+    private int getPredecesseur(int sommet, int[][] mat){
+        int num = 0;
+        for (int i = 0; i < nb_sommet; i++) {
+            if (mat[i][sommet] == 1){
+                num++;
+            }
+        }
+        return num;
+    }
 
 
     public boolean isGrapheOrdonnancement(){
