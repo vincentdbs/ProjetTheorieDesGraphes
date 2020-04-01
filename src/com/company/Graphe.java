@@ -539,7 +539,6 @@ public class Graphe {
         array[1][0] = 0;
 
         for (int i = 1; i < nb_sommet; i++) {
-            int som = sommetOrdonne[i];
             for (int j = 0; j < nb_sommet ; j++) {
                 if (matriceAdjacence[j][sommetOrdonne[i]] == 1){
                     tempoPred.add(j); //ajout du predecesseur
@@ -551,13 +550,13 @@ public class Graphe {
 
             for (int j = 0; j < tempoTache.size() ; j++) {
                 int sommetTache = tempoPred.get(j); //recuperation du sommet correspondant
-                int c = 0;
+                int index = 0;
                 for (int k = 0; k < sommetOrdonne.length ; k++) {
                     if (sommetOrdonne[k] == sommetTache){
-                        c = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
+                        index = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
                     }
                 }
-                tempoDatePlusTot.add(array[1][c] + tempoTache.get(j));
+                tempoDatePlusTot.add(array[1][index] + tempoTache.get(j));
             }
 
             array[1][i] = Collections.max(tempoDatePlusTot);
@@ -594,13 +593,13 @@ public class Graphe {
 
             for (int j = 0; j < tempoSucc.size() ; j++) {
                 int sommetTache = tempoSucc.get(j); //recuperation du sommet correspondant
-                int c = 0;
+                int index = 0;
                 for (int k = 0; k < sommetOrdonne.length ; k++) {
                     if (sommetOrdonne[k] == sommetTache){
-                        c = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
+                        index = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
                     }
                 }
-                tempoDatePlusTard.add(array[1][c] - tache);
+                tempoDatePlusTard.add(array[1][index] - tache);
             }
 
             array[1][i] = Collections.min(tempoDatePlusTard);
@@ -622,6 +621,7 @@ public class Graphe {
         }
         return margeTotale;
     }
+
     /*Getter setter*/
     public int getNum_file() {
         return num_file;

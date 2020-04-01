@@ -7,6 +7,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //choix du graphe
+        //affichage des matrices
+        //detection du circuit
+            //calcul du rang
+            //test graphe d'ordonnancement
+                //calcul des calendrier
         do {
             int numGraphe = choiceNumGraphe();
             Graphe graphe = new Graphe(numGraphe);
@@ -17,14 +23,12 @@ public class Main {
                     graphe.ordonnancement();
                 }
             }
-
         }while (newGraphe());
-
-
-
-
     }
 
+    /**
+     * Choix utilisateur du graphe à traiter
+     */
     private static int choiceNumGraphe(){
         String grapheChoice = "0";
         int nbGraphe = new File("Textfile/Graphe").listFiles().length;
@@ -48,6 +52,9 @@ public class Main {
         return Integer.parseInt(grapheChoice);
     }
 
+    /**
+     * Choix utilisateur de tester un nouveau graphe
+     */
     private static boolean newGraphe(){
         Scanner scanner = new Scanner(System.in);
         String choice = "";
