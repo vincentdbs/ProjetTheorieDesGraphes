@@ -47,15 +47,6 @@ public class Graphe {
 
     }
 
-    /**
-     * Affichage des matrices d'adjacence et des valeurs
-     */
-    public void affichageMatrice(){
-        trace.write("----- Matrice d'ajacence -----\n\n");
-        printMatrice(matriceAdjacence);
-        trace.write("\n----- Matrice des valeurs -----\n\n");
-        printMatrice(matriceValeur);
-    }
 
     /**
      * Récupere ligne par ligne le nombre de sommets, d'arc et creer la liste de transition à partir du fichier
@@ -96,6 +87,53 @@ public class Graphe {
             matriceValeur[listArc.get(i).getInit()][listArc.get(i).getFin()] = String.valueOf(listArc.get(i).getArc());
         }
     }
+
+    /**
+     * Affichage des matrices d'adjacence et des valeurs
+     */
+    public void affichageMatrice(){
+        trace.write("----- Matrice d'ajacence -----\n\n");
+        printMatrice(matriceAdjacence);
+        trace.write("\n----- Matrice des valeurs -----\n\n");
+        printMatrice(matriceValeur);
+    }
+
+    /**
+     * Affichage d'une matrice 2D de type int
+     */
+    private void printMatrice(int[][] arrayList){
+        trace.write("\t");
+        for (int i = 0; i < nb_sommet ; i++) {
+            trace.write(i + "\t");
+        }
+        trace.write("\n");
+        for (int i = 0; i < nb_sommet; i++) {
+            trace.write(i + " ");
+            for (int j = 0; j < nb_sommet; j++) {
+                trace.write("\t" + arrayList[i][j]);
+            }
+            trace.write("\n");
+        }
+    }
+
+    /**
+     * Affichage d'une matrice 2D de type String
+     */
+    private void printMatrice(String[][] arrayList){
+        trace.write("\t");
+        for (int i = 0; i < nb_sommet ; i++) {
+            trace.write(i + "\t");
+        }
+        trace.write("\n");
+        for (int i = 0; i < nb_sommet; i++) {
+            trace.write(i + " ");
+            for (int j = 0; j < nb_sommet; j++) {
+                trace.write("\t" + arrayList[i][j]);
+            }
+            trace.write("\n");
+        }
+    }
+
 
     /**
      * Detection de la présence/absence d'un circuit dans le graphe + calcul du rang si possible
@@ -367,41 +405,6 @@ public class Graphe {
         return true;
     }
 
-    /**
-     * Affichage d'une matrice 2D de type int
-     */
-    private void printMatrice(int[][] arrayList){
-        trace.write("\t");
-        for (int i = 0; i < nb_sommet ; i++) {
-            trace.write(i + "\t");
-        }
-        trace.write("\n");
-        for (int i = 0; i < nb_sommet; i++) {
-            trace.write(i + " ");
-            for (int j = 0; j < nb_sommet; j++) {
-                trace.write("\t" + arrayList[i][j]);
-            }
-            trace.write("\n");
-        }
-    }
-
-    /**
-     * Affichage d'une matrice 2D de type String
-     */
-    private void printMatrice(String[][] arrayList){
-        trace.write("\t");
-        for (int i = 0; i < nb_sommet ; i++) {
-            trace.write(i + "\t");
-        }
-        trace.write("\n");
-        for (int i = 0; i < nb_sommet; i++) {
-            trace.write(i + " ");
-            for (int j = 0; j < nb_sommet; j++) {
-                trace.write("\t" + arrayList[i][j]);
-            }
-            trace.write("\n");
-        }
-    }
 
     /**
      * Processus d'odonnancement
