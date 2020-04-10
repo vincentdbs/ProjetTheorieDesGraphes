@@ -78,6 +78,7 @@ public class Graphe {
      */
     private Arc createTransition(String line){
         String[] array = line.split(" ");
+        //todo try/catch
         Arc arc = new Arc(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
         trace.write(array[0] + " -> " + array[1] + " = " + array[2] + "\n");
         return arc;
