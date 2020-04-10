@@ -16,11 +16,13 @@ public class Main {
         do {
             int numGraphe = choiceNumGraphe();
             Graphe graphe = new Graphe(numGraphe);
-            graphe.affichageMatrice();
-            if (!graphe.detectionCircuit()){
-                graphe.rang();
-                if (graphe.isGrapheOrdonnancement()){
-                    graphe.ordonnancement();
+            if (graphe.getisGraphOk()){
+                graphe.affichageMatrice();
+                if (!graphe.detectionCircuit()){
+                    graphe.rang();
+                    if (graphe.isGrapheOrdonnancement()){
+                        graphe.ordonnancement();
+                    }
                 }
             }
         }while (newGraphe());

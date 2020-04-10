@@ -14,7 +14,7 @@ public class Graphe {
     private String[][] matriceValeur;
     private int[] rang;
     private Trace trace;
-    private boolean isGrapheOrdonnancement;
+    private boolean isGrapheOrdonnancement, isGrapheOk;
     private int start;
 
     public Graphe(int _num_file){
@@ -23,35 +23,35 @@ public class Graphe {
         this.listArc = new ArrayList<>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "A4-TG-PRJ-" + num_file + ".txt"; //nom du fichier
-        readFile(); //récupération de la liste de transition
-
-        if (nb_sommet == 1){
-            this.start = 0;
-        }else{
-            this.start = -1;
-        }
-
-        //initialisation des matrices
-        this.matriceValeur = new String[nb_sommet][nb_sommet];
-        this.matriceAdjacence = new int[nb_sommet][nb_sommet];
-        this.rang = new int[nb_sommet];
-        for (int i = 0; i < nb_sommet; i++) {
-            rang[i] = -1;
-            for (int j = 0; j < nb_sommet; j++) {
-                matriceAdjacence[i][j] = 0;
-                matriceValeur[i][j] = "*";
+        this.isGrapheOk = false;
+        if (readFile()){
+            isGrapheOk = true;
+            if (nb_sommet == 1){
+                this.start = 0;
+            }else{
+                this.start = -1;
             }
+
+            //initialisation des matrices
+            this.matriceValeur = new String[nb_sommet][nb_sommet];
+            this.matriceAdjacence = new int[nb_sommet][nb_sommet];
+            this.rang = new int[nb_sommet];
+            for (int i = 0; i < nb_sommet; i++) {
+                rang[i] = -1;
+                for (int j = 0; j < nb_sommet; j++) {
+                    matriceAdjacence[i][j] = 0;
+                    matriceValeur[i][j] = "*";
+                }
+            }
+            fillMatrice(); //remplissage des matrices
         }
-
-        fillMatrice(); //remplissage des matrices
-
     }
 
 
     /**
      * Récupere ligne par ligne le nombre de sommets, d'arc et creer la liste de transition à partir du fichier
      */
-    private void readFile(){
+    private boolean readFile(){
         try {
             Scanner scan = new Scanner(new File("Textfile/Graphe/" + name_file));
             setNb_sommet(Integer.parseInt(scan.nextLine()));
@@ -62,8 +62,14 @@ public class Graphe {
             }
             trace.write("\n");
             scan.close();
+            return true;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.print("Erreur dans la structure du fichier\n");
+            return false;
+        }
+        catch (NumberFormatException e){
+            System.out.print("Erreur dans la structure du fichier - Un symbole non autorisé a été détecté\n");
+            return false;
         }
     }
 
@@ -644,6 +650,10 @@ public class Graphe {
 
     public void setNb_sommet(int nb_sommet) {
         this.nb_sommet = nb_sommet;
+    }
+
+    public boolean getisGraphOk(){
+        return isGrapheOk;
     }
 
 
