@@ -117,6 +117,6 @@ Sommet :			0	4	5	6	7	10	1	2	3	8	9	11
 Tache :				0	4	5	6	7	10	1	2	3	8	9	*	
 Prédecesseur :		*	0	0	0	0	0	10	7	10	7	8	9	
 Date au + tôt :		0	0	0	0	0	0	10	7	10	7	15	24	
-Successeur :		0	1	8	3	8	3	9	9	9	9	11	*	
+Successeur :		7	1	8	3	8	3	9	9	9	9	11	*	
 Date au + tard :	0	10	2	6	0	2	14	13	12	7	15	24	
 Marge totale :		0	10	2	6	0	2	4	6	2	0	0	0	
