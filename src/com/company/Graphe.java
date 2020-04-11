@@ -595,7 +595,7 @@ public class Graphe {
         array[0][nb_sommet-1] = -1; //la sortie n'a pas de successeur
         array[1][nb_sommet-1] = datePlusTot; //la date au plus tard = la date au plus tôt
 
-        for (int i = nb_sommet-2 ; i > 0; i--) {
+        for (int i = nb_sommet-2 ; i >= 0; i--) {
             for (int j = 0; j < nb_sommet ; j++) { //récupération des successeurs pour le sommet à l'index i
                 if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
                     tempoSucc.add(j); //ajout du successeur
