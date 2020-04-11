@@ -7,6 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //todo graphe 12 => arc point d'entrée de valeur nul faux alors que vrai
+
         //choix du graphe
         //affichage des matrices
         //detection du circuit
