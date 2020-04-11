@@ -1,0 +1,87 @@
+----- Lecture du fichier n°2 -----
+14 sommet(s)
+23 arc(s)
+
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 5 = 2
+1 -> 4 = 2
+1 -> 2 = 2
+2 -> 4 = 3
+2 -> 3 = 3
+2 -> 8 = 3
+3 -> 7 = 5
+3 -> 9 = 5
+4 -> 6 = 6
+4 -> 5 = 6
+4 -> 8 = 6
+5 -> 6 = 2
+5 -> 7 = 2
+6 -> 4 = 6
+7 -> 8 = 6
+8 -> 9 = 1
+10 -> 2 = 4
+10 -> 7 = 4
+11 -> 12 = 1
+11 -> 13 = 1
+13 -> 12 = 2
+
+----- Matrice d'ajacence -----
+
+	0	1	2	3	4	5	6	7	8	9	10	11	12	13	
+0 	0	1	1	0	0	0	0	0	0	0	0	0	0	0
+1 	0	0	1	0	1	1	0	0	0	0	0	0	0	0
+2 	0	0	0	1	1	0	0	0	1	0	0	0	0	0
+3 	0	0	0	0	0	0	0	1	0	1	0	0	0	0
+4 	0	0	0	0	0	1	1	0	1	0	0	0	0	0
+5 	0	0	0	0	0	0	1	1	0	0	0	0	0	0
+6 	0	0	0	0	1	0	0	0	0	0	0	0	0	0
+7 	0	0	0	0	0	0	0	0	1	0	0	0	0	0
+8 	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+9 	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+10 	0	0	1	0	0	0	0	1	0	0	0	0	0	0
+11 	0	0	0	0	0	0	0	0	0	0	0	0	1	1
+12 	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+13 	0	0	0	0	0	0	0	0	0	0	0	0	1	0
+
+----- Matrice des valeurs -----
+
+	0	1	2	3	4	5	6	7	8	9	10	11	12	13	
+0 	*	0	0	*	*	*	*	*	*	*	*	*	*	*
+1 	*	*	2	*	2	2	*	*	*	*	*	*	*	*
+2 	*	*	*	3	3	*	*	*	3	*	*	*	*	*
+3 	*	*	*	*	*	*	*	5	*	5	*	*	*	*
+4 	*	*	*	*	*	6	6	*	6	*	*	*	*	*
+5 	*	*	*	*	*	*	2	2	*	*	*	*	*	*
+6 	*	*	*	*	6	*	*	*	*	*	*	*	*	*
+7 	*	*	*	*	*	*	*	*	6	*	*	*	*	*
+8 	*	*	*	*	*	*	*	*	*	1	*	*	*	*
+9 	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+10 	*	*	4	*	*	*	*	4	*	*	*	*	*	*
+11 	*	*	*	*	*	*	*	*	*	*	*	*	1	1
+12 	*	*	*	*	*	*	*	*	*	*	*	*	*	*
+13 	*	*	*	*	*	*	*	*	*	*	*	*	2	*
+
+----- Detection de circuit - methode d'elimination des points d'entrée -----
+
+Points d'entrée : 0 10 11 
+Suppression des points d'entrée
+Sommets restants : 1 2 3 4 5 6 7 8 9 12 13 
+
+Points d'entrée : 1 13 
+Suppression des points d'entrée
+Sommets restants : 2 3 4 5 6 7 8 9 12 
+
+Points d'entrée : 2 12 
+Suppression des points d'entrée
+Sommets restants : 3 4 5 6 7 8 9 
+
+Points d'entrée : 3 
+Suppression des points d'entrée
+Sommets restants : 4 5 6 7 8 9 
+
+Points d'entrée : 
+Suppression des points d'entrée
+Sommets restants : 4 5 6 7 8 9 
+
+Le graphe contient au moins un circuit
