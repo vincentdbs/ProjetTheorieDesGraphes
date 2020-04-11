@@ -1,6 +1,6 @@
 ----- Lecture du fichier n°4 -----
 15 sommet(s)
-19 arc(s)
+23 arc(s)
 
 0 -> 1 = 0
 0 -> 2 = 0
@@ -15,8 +15,12 @@
 6 -> 13 = 2
 6 -> 11 = 2
 7 -> 8 = 5
+7 -> 12 = 5
 8 -> 9 = 5
+8 -> 5 = 5
+8 -> 12 = 5
 9 -> 10 = 9
+9 -> 12 = 9
 10 -> 12 = 2
 11 -> 13 = 19
 12 -> 14 = 5
@@ -32,9 +36,9 @@
 4 	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0
 5 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1
 6 	0	0	0	0	0	1	0	1	0	0	0	1	0	1	0
-7 	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-8 	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0
-9 	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+7 	0	0	0	0	0	0	0	0	1	0	0	0	1	0	0
+8 	0	0	0	0	0	1	0	0	0	1	0	0	1	0	0
+9 	0	0	0	0	0	0	0	0	0	0	1	0	1	0	0
 10 	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
 11 	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0
 12 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1
@@ -51,9 +55,9 @@
 4 	*	*	*	*	*	1	*	*	*	*	*	*	*	*	*
 5 	*	*	*	*	*	*	*	*	*	*	*	*	*	*	9
 6 	*	*	*	*	*	2	*	2	*	*	*	2	*	2	*
-7 	*	*	*	*	*	*	*	*	5	*	*	*	*	*	*
-8 	*	*	*	*	*	*	*	*	*	5	*	*	*	*	*
-9 	*	*	*	*	*	*	*	*	*	*	9	*	*	*	*
+7 	*	*	*	*	*	*	*	*	5	*	*	*	5	*	*
+8 	*	*	*	*	*	5	*	*	*	5	*	*	5	*	*
+9 	*	*	*	*	*	*	*	*	*	*	9	*	9	*	*
 10 	*	*	*	*	*	*	*	*	*	*	*	*	2	*	*
 11 	*	*	*	*	*	*	*	*	*	*	*	*	*	19	*
 12 	*	*	*	*	*	*	*	*	*	*	*	*	*	*	5
@@ -78,11 +82,11 @@ Points d'entrée : 4 7 11
 Suppression des points d'entrée
 Sommets restants : 5 8 9 10 12 13 14 
 
-Points d'entrée : 5 8 13 
+Points d'entrée : 8 13 
 Suppression des points d'entrée
-Sommets restants : 9 10 12 14 
+Sommets restants : 5 9 10 12 14 
 
-Points d'entrée : 9 
+Points d'entrée : 5 9 
 Suppression des points d'entrée
 Sommets restants : 10 12 14 
 
@@ -119,10 +123,10 @@ Rang courant :	3
 Racine(s) :		4	7	11
 
 Rang courant :	4
-Racine(s) :		5	8	13
+Racine(s) :		8	13
 
 Rang courant :	5
-Racine(s) :		9
+Racine(s) :		5	9
 
 Rang courant :	6
 Racine(s) :		10
@@ -134,7 +138,7 @@ Rang courant :	8
 Racine(s) :		14
 
 Sommets : 	0	1	2	3	4	5	6	7	8	9	10	11	12	13	14
-Rang : 		0	1	1	2	3	4	2	3	4	5	6	3	7	4	8
+Rang : 		0	1	1	2	3	5	2	3	4	5	6	3	7	4	8
 
 ----- Le graphe est-il un graphe d'ordonancement ? -----
 
@@ -148,10 +152,10 @@ Le graphe est un graphe d'ordonnancement !
 
 ----- Ordonnancement -----
 
-Sommet :			0	1	2	3	6	4	7	11	5	8	13	9	10	12	14	
-Tache :				0	2	5	4	2	1	5	19	9	5	1	9	2	5	*	
-Prédecesseur :		*	0	0	1	2	3	6	6	4	7	11	8	9	10	12	
-Date au + tôt :		0	0	0	2	5	6	7	7	7	12	26	17	26	28	33	
-Successeur :		0	6	6	4	7	5	8	13	14	9	14	10	12	14	*	
-Date au + tard :	0	3	0	19	5	23	7	13	24	12	32	17	26	28	33	
-Marge totale :		0	3	0	17	0	17	0	6	17	0	6	0	0	0	0	
+Sommet :			0	1	2	3	6	4	7	11	8	13	5	9	10	12	14	
+Tache :				0	2	5	4	2	1	5	19	5	1	9	9	2	5	*	
+Prédecesseur :		*	0	0	1	2	3	6	6	7	11	8	8	9	10	12	
+Date au + tôt :		0	0	0	2	5	6	7	7	12	26	17	17	26	28	33	
+Successeur :		0	6	6	4	7	5	8	13	9	14	14	10	12	14	*	
+Date au + tard :	0	3	0	19	5	23	7	13	12	32	24	17	26	28	33	
+Marge totale :		0	3	0	17	0	17	0	6	0	6	7	0	0	0	0	

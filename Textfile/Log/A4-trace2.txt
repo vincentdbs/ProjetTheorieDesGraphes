@@ -17,7 +17,6 @@
 4 -> 8 = 6
 5 -> 6 = 2
 5 -> 7 = 2
-6 -> 4 = 6
 7 -> 8 = 6
 8 -> 9 = 1
 10 -> 2 = 4
@@ -35,7 +34,7 @@
 3 	0	0	0	0	0	0	0	1	0	1	0	0	0	0
 4 	0	0	0	0	0	1	1	0	1	0	0	0	0	0
 5 	0	0	0	0	0	0	1	1	0	0	0	0	0	0
-6 	0	0	0	0	1	0	0	0	0	0	0	0	0	0
+6 	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 7 	0	0	0	0	0	0	0	0	1	0	0	0	0	0
 8 	0	0	0	0	0	0	0	0	0	1	0	0	0	0
 9 	0	0	0	0	0	0	0	0	0	0	0	0	0	0
@@ -53,7 +52,7 @@
 3 	*	*	*	*	*	*	*	5	*	5	*	*	*	*
 4 	*	*	*	*	*	6	6	*	6	*	*	*	*	*
 5 	*	*	*	*	*	*	2	2	*	*	*	*	*	*
-6 	*	*	*	*	6	*	*	*	*	*	*	*	*	*
+6 	*	*	*	*	*	*	*	*	*	*	*	*	*	*
 7 	*	*	*	*	*	*	*	*	6	*	*	*	*	*
 8 	*	*	*	*	*	*	*	*	*	1	*	*	*	*
 9 	*	*	*	*	*	*	*	*	*	*	*	*	*	*
@@ -76,12 +75,68 @@ Points d'entrée : 2 12
 Suppression des points d'entrée
 Sommets restants : 3 4 5 6 7 8 9 
 
-Points d'entrée : 3 
+Points d'entrée : 3 4 
 Suppression des points d'entrée
-Sommets restants : 4 5 6 7 8 9 
+Sommets restants : 5 6 7 8 9 
+
+Points d'entrée : 5 
+Suppression des points d'entrée
+Sommets restants : 6 7 8 9 
+
+Points d'entrée : 6 7 
+Suppression des points d'entrée
+Sommets restants : 8 9 
+
+Points d'entrée : 8 
+Suppression des points d'entrée
+Sommets restants : 9 
+
+Points d'entrée : 9 
+Suppression des points d'entrée
+Sommets restants : 
 
 Points d'entrée : 
 Suppression des points d'entrée
-Sommets restants : 4 5 6 7 8 9 
+Sommets restants : 
 
-Le graphe contient au moins un circuit
+Le graphe ne contient pas de circuit
+
+----- Calcul du rang -----
+
+Rang courant :	0
+Racine(s) :		0	10	11
+
+Rang courant :	1
+Racine(s) :		1	13
+
+Rang courant :	2
+Racine(s) :		2	12
+
+Rang courant :	3
+Racine(s) :		3	4
+
+Rang courant :	4
+Racine(s) :		5
+
+Rang courant :	5
+Racine(s) :		6	7
+
+Rang courant :	6
+Racine(s) :		8
+
+Rang courant :	7
+Racine(s) :		9
+
+Sommets : 	0	1	2	3	4	5	6	7	8	9	10	11	12	13
+Rang : 		0	1	2	3	3	4	5	5	6	7	0	0	2	1
+
+----- Le graphe est-il un graphe d'ordonancement ? -----
+
+Un seul point d'entrée :		false
+Un seul point de sortie :		false
+Pas de circuit :				true
+Pas d’arcs à valeur négative :	true
+Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :	true
+Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :				non testé car il y a plusieurs sorties
+Le graphe n'est pas un graphe d'ordonnancement !
+
