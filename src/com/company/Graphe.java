@@ -301,12 +301,16 @@ public class Graphe {
         trace.write("\n----- Le graphe est-il un graphe d'ordonancement ? -----\n\n");
         trace.write("Un seul point d'entrée :\t\t" + uniqueStart() + "\n");
         trace.write("Un seul point de sortie :\t\t" + uniqueEnd() + "\n");
+        boolean plsSortie = false;
+        if(!isGrapheOrdonnancement){
+            plsSortie = true;
+        }
         trace.write("Pas de circuit :\t\t\t\ttrue\n");
         trace.write("Pas d’arcs à valeur négative :\t" + noNegative() + "\n");
         trace.write("Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :\t" + sameValueOnLine() + "\n");
         trace.write("Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :\t\t\t\t");
-        if (!isGrapheOrdonnancement){
-            trace.write("false\n");
+        if (plsSortie){
+            trace.write("non testé car il y a plusieurs sorties\n");
         }else{
             trace.write(valueZeroOnStart()+ "\n");
         }
