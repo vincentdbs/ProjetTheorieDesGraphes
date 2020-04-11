@@ -1,6 +1,7 @@
------ Lecture du fichier n°2 -----
+----- Lecture du fichier n°15 -----
 4 sommet(s)
 4 arc(s)
+
 3 -> 1 = 25
 1 -> 0 = 12
 2 -> 0 = -5
@@ -41,10 +42,23 @@ Suppression des points d'entrée
 Sommets restants : 
 
 Le graphe ne contient pas de circuit
+
+----- Calcul du rang -----
+
+Rang courant :	0
+Racine(s) :		2	3
+
+Rang courant :	1
+Racine(s) :		1
+
+Rang courant :	2
+Racine(s) :		0
+
 Sommets : 	0	1	2	3
 Rang : 		2	1	0	0
 
 ----- Le graphe est-il un graphe d'ordonancement ? -----
+
 Un seul point d'entrée :		false
 Un seul point de sortie :		true
 Pas de circuit :				true

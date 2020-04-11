@@ -22,7 +22,7 @@ public class Graphe {
         this.trace = new Trace(_num_file);
         this.listArc = new ArrayList<>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
-        this.name_file = "A4-TG-PRJ-" + num_file + ".txt"; //nom du fichier
+        this.name_file = "A4-graphe" + num_file + ".txt"; //nom du fichier
         this.isGrapheOk = false;
         if (readFile()){
             isGrapheOk = true;
@@ -78,7 +78,6 @@ public class Graphe {
      */
     private Arc createTransition(String line){
         String[] array = line.split(" ");
-        //todo try/catch
         Arc arc = new Arc(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
         trace.write(array[0] + " -> " + array[1] + " = " + array[2] + "\n");
         return arc;
@@ -241,7 +240,7 @@ public class Graphe {
                     matDetection[racines.get(i)][j] = -1; //passage à -1 en ligne
                 }
             }
-            //suppression des racines de liste.todo
+            //suppression des racines de liste.tod'o
             for (int i = 0; i < racines.size(); i++) {
                 todo.remove(racines.get(i));
             }

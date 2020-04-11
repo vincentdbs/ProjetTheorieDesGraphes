@@ -1,6 +1,7 @@
------ Lecture du fichier n°7 -----
+----- Lecture du fichier n°20 -----
 5 sommet(s)
 7 arc(s)
+
 0 -> 1 = 4
 1 -> 1 = 6
 1 -> 2 = 1
@@ -30,18 +31,6 @@
 ----- Detection de circuit - methode d'elimination des points d'entrée -----
 
 Points d'entrée : 0 
-Suppression des points d'entrée
-Sommets restants : 1 2 3 4 
-
-Points d'entrée : 
-Suppression des points d'entrée
-Sommets restants : 1 2 3 4 
-
-Points d'entrée : 
-Suppression des points d'entrée
-Sommets restants : 1 2 3 4 
-
-Points d'entrée : 
 Suppression des points d'entrée
 Sommets restants : 1 2 3 4 
 

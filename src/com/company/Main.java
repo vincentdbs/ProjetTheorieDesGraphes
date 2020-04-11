@@ -42,7 +42,7 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             grapheChoice = scanner.nextLine();
             try {
-                if (!((Integer.parseInt(grapheChoice) <= nbGraphe ) && (Integer.parseInt(grapheChoice) > 0))){
+                if (!((Integer.parseInt(grapheChoice) <= nbGraphe) && (Integer.parseInt(grapheChoice) > 0))){
                     again = 0;
                 }
                 else{
