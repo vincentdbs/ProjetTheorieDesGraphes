@@ -188,48 +188,48 @@ Date au plus tôt max : 	22
 	 ----- Date au plus tard -----
 
 Successeur de 10 : 		11	
-21	
-Date au plus tôt min : 	21
+Date au plus tard : 	21	
+Date au plus tard max : 21
 
 Successeur de 9 : 		10	
-19	
-Date au plus tôt min : 	19
+Date au plus tard : 	19	
+Date au plus tard max : 19
 
 Successeur de 8 : 		9	
-16	
-Date au plus tôt min : 	16
+Date au plus tard : 	16	
+Date au plus tard max : 16
 
 Successeur de 7 : 		10	
-20	
-Date au plus tôt min : 	20
+Date au plus tard : 	20	
+Date au plus tard max : 20
 
 Successeur de 6 : 		8	
-15	
-Date au plus tôt min : 	15
+Date au plus tard : 	15	
+Date au plus tard max : 15
 
 Successeur de 5 : 		10	
-19	
-Date au plus tôt min : 	19
+Date au plus tard : 	19	
+Date au plus tard max : 19
 
 Successeur de 3 : 		5	6	7	
-18	14	19	
-Date au plus tôt min : 	14
+Date au plus tard : 	18	14	19	
+Date au plus tard max : 14
 
 Successeur de 4 : 		5	6	7	
-11	7	12	
-Date au plus tôt min : 	7
+Date au plus tard : 	11	7	12	
+Date au plus tard max : 7
 
 Successeur de 2 : 		3	
-11	
-Date au plus tôt min : 	11
+Date au plus tard : 	11	
+Date au plus tard max : 11
 
 Successeur de 1 : 		2	4	
-4	0	
-Date au plus tôt min : 	0
+Date au plus tard : 	4	0	
+Date au plus tard max : 0
 
 Successeur de 0 : 		1	
-0	
-Date au plus tôt min : 	0
+Date au plus tard : 	0	
+Date au plus tard max : 0
 
 	----- Calendrier -----
 Sommet :			0	1	2	4	3	5	6	7	8	9	10	11	

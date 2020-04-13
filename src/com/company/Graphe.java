@@ -64,11 +64,11 @@ public class Graphe {
             scan.close();
             return true;
         } catch (FileNotFoundException e) {
-            System.out.print("Erreur dans la structure du fichier\n");
+            trace.write("Erreur dans la structure du fichier\n");
             return false;
         }
         catch (NumberFormatException e){
-            System.out.print("Erreur dans la structure du fichier - Un symbole non autorisé a été détecté\n");
+            trace.write("Erreur dans la structure du fichier - Un symbole non autorisé a été détecté\n");
             return false;
         }
     }
@@ -615,7 +615,7 @@ public class Graphe {
             trace.write("\n");
             int tache = sommetValue(sommetOrdonne[i]); //longueur de la tache du somme à l'index i
 
-            System.out.print("Date au plus tard : \t");
+            trace.write("Date au plus tard : \t");
             for (int j = 0; j < tempoSucc.size() ; j++) {
                 int sommetTache = tempoSucc.get(j); //recuperation du sommet correspondant
                 int index = 0;
@@ -630,7 +630,7 @@ public class Graphe {
             trace.write("\n");
 
             array[1][i] = Collections.min(tempoDatePlusTard);
-            trace.write("Date au plus tôt min : \t" + array[1][i] + "\n\n");
+            trace.write("Date au plus tard max : " + array[1][i] + "\n\n");
             array[0][i] = tempoSucc.get(tempoDatePlusTard.indexOf(array[1][i]));
 
             tempoDatePlusTard.clear();
