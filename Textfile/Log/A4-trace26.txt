@@ -128,10 +128,95 @@ Le graphe est un graphe d'ordonnancement !
 
 ----- Ordonnancement -----
 
+	 ----- Date au plus tôt -----
+
+Prédecesseur de 1 : 	0	
+Date au plus tôt : 		0	
+Date au plus tôt max : 	0
+
+Prédecesseur de 2 : 	1	
+Date au plus tôt : 		3	
+Date au plus tôt max : 	3
+
+Prédecesseur de 3 : 	2	
+Date au plus tôt : 		8	
+Date au plus tôt max : 	8
+
+Prédecesseur de 5 : 	2	
+Date au plus tôt : 		8	
+Date au plus tôt max : 	8
+
+Prédecesseur de 6 : 	3	
+Date au plus tôt : 		15	
+Date au plus tôt max : 	15
+
+Prédecesseur de 8 : 	5	
+Date au plus tôt : 		12	
+Date au plus tôt max : 	12
+
+Prédecesseur de 4 : 	1	8	
+Date au plus tôt : 		3	15	
+Date au plus tôt max : 	15
+
+Prédecesseur de 9 : 	5	6	
+Date au plus tôt : 		12	17	
+Date au plus tôt max : 	17
+
+Prédecesseur de 7 : 	4	5	
+Date au plus tôt : 		17	12	
+Date au plus tôt max : 	17
+
+Prédecesseur de 10 : 	7	9	
+Date au plus tôt : 		19	18	
+Date au plus tôt max : 	19
+
+	 ----- Date au plus tard -----
+
+Successeur de 7 : 		10	
+17	
+Date au plus tôt min : 	17
+
+Successeur de 9 : 		10	
+18	
+Date au plus tôt min : 	18
+
+Successeur de 4 : 		7	
+15	
+Date au plus tôt min : 	15
+
+Successeur de 8 : 		4	
+12	
+Date au plus tôt min : 	12
+
+Successeur de 6 : 		9	
+16	
+Date au plus tôt min : 	16
+
+Successeur de 5 : 		7	8	9	
+13	8	14	
+Date au plus tôt min : 	8
+
+Successeur de 3 : 		6	
+9	
+Date au plus tôt min : 	9
+
+Successeur de 2 : 		3	5	
+4	3	
+Date au plus tôt min : 	3
+
+Successeur de 1 : 		2	4	
+0	12	
+Date au plus tôt min : 	0
+
+Successeur de 0 : 		1	
+0	
+Date au plus tôt min : 	0
+
+	----- Calendrier -----
 Sommet :			0	1	2	3	5	6	8	4	9	7	10	
 Tache :				0	3	5	7	4	2	3	2	1	2	*	
 Prédecesseur :		*	0	1	2	2	3	5	8	6	4	7	
 Date au + tôt :		0	0	3	8	8	15	12	15	17	17	19	
-Successeur :		0	2	5	6	8	9	4	7	10	10	*	
+Successeur :		1	2	5	6	8	9	4	7	10	10	*	
 Date au + tard :	0	0	3	9	8	16	12	15	18	17	19	
 Marge totale :		0	0	0	1	0	1	0	0	1	0	0	

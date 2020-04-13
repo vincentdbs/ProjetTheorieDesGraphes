@@ -452,6 +452,7 @@ public class Graphe {
      * Affichage du calendrier d'un graphe
      */
     private void printOrdonnancement(int[][] arrayOrdonnancement) {
+        trace.write("\t----- Calendrier -----\n");
         for (int i = 0; i < arrayOrdonnancement.length; i++) {
             switch (i){
                 case 0:
@@ -550,17 +551,21 @@ public class Graphe {
 
         array[0][0] = -1;
         array[1][0] = 0;
-
+        trace.write("\t ----- Date au plus tôt -----\n\n");
         for (int i = 1; i < nb_sommet; i++) {
+            trace.write("Prédecesseur de " + sommetOrdonne[i] + " : \t");
             for (int j = 0; j < nb_sommet ; j++) {
                 if (matriceAdjacence[j][sommetOrdonne[i]] == 1){
                     tempoPred.add(j); //ajout du predecesseur
+                    trace.write(j + "\t");
                 }
             }
+            trace.write("\n");
             for (int j = 0; j < tempoPred.size(); j++) {
                 tempoTache.add(sommetValue(tempoPred.get(j))); //recuperation de la tâche
             }
 
+            trace.write("Date au plus tôt : \t\t");
             for (int j = 0; j < tempoTache.size() ; j++) {
                 int sommetTache = tempoPred.get(j); //recuperation du sommet correspondant
                 int index = 0;
@@ -569,10 +574,13 @@ public class Graphe {
                         index = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
                     }
                 }
+                trace.write(array[1][index] + tempoTache.get(j) + "\t");
                 tempoDatePlusTot.add(array[1][index] + tempoTache.get(j));
             }
+            trace.write("\n");
 
             array[1][i] = Collections.max(tempoDatePlusTot);
+            trace.write("Date au plus tôt max : \t" + array[1][i] + "\n\n");
             array[0][i] = tempoPred.get(tempoDatePlusTot.indexOf(array[1][i]));
 
             tempoDatePlusTot.clear();
@@ -595,15 +603,19 @@ public class Graphe {
         array[0][nb_sommet-1] = -1; //la sortie n'a pas de successeur
         array[1][nb_sommet-1] = datePlusTot; //la date au plus tard = la date au plus tôt
 
+        trace.write("\t ----- Date au plus tard -----\n\n");
         for (int i = nb_sommet-2 ; i >= 0; i--) {
+            trace.write("Successeur de " + sommetOrdonne[i] + " : \t\t");
             for (int j = 0; j < nb_sommet ; j++) { //récupération des successeurs pour le sommet à l'index i
                 if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
                     tempoSucc.add(j); //ajout du successeur
+                    trace.write(j + "\t");
                 }
             }
-
+            trace.write("\n");
             int tache = sommetValue(sommetOrdonne[i]); //longueur de la tache du somme à l'index i
 
+            System.out.print("Date au plus tard : \t");
             for (int j = 0; j < tempoSucc.size() ; j++) {
                 int sommetTache = tempoSucc.get(j); //recuperation du sommet correspondant
                 int index = 0;
@@ -612,10 +624,13 @@ public class Graphe {
                         index = k; //recuperation de l'index du sommet dans le tableau des sommets ordonnés
                     }
                 }
+                trace.write(array[1][index] - tache + "\t");
                 tempoDatePlusTard.add(array[1][index] - tache);
             }
+            trace.write("\n");
 
             array[1][i] = Collections.min(tempoDatePlusTard);
+            trace.write("Date au plus tôt min : \t" + array[1][i] + "\n\n");
             array[0][i] = tempoSucc.get(tempoDatePlusTard.indexOf(array[1][i]));
 
             tempoDatePlusTard.clear();

@@ -64,6 +64,6 @@ Un seul point de sortie :		true
 Pas de circuit :				true
 Pas d’arcs à valeur négative :	false
 Valeurs identiques pour tous les arcs incidents vers l’extérieur à un sommet :	false
-Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :				false
+Arcs incidents vers l’extérieur au point d’entrée de valeur nulle :				non testé car il y a plusieurs sorties
 Le graphe n'est pas un graphe d'ordonnancement !
 
