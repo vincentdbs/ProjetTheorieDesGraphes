@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Graphe {
@@ -69,6 +70,10 @@ public class Graphe {
         }
         catch (NumberFormatException e){
             trace.write("Erreur dans la structure du fichier - Un symbole non autorisé a été détecté\n");
+            return false;
+        }
+        catch (NoSuchElementException e){
+            trace.write("Erreur dans la structure du fichier - Une ligne est manquante\n");
             return false;
         }
     }
