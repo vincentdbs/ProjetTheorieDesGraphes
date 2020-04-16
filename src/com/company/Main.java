@@ -1,6 +1,8 @@
 package com.company;
 
 import java.io.File;
+import java.io.FileFilter;
+import java.io.FilenameFilter;
 import java.util.Scanner;
 
 public class Main {
@@ -25,6 +27,8 @@ public class Main {
                 }
             }
         }while (newGraphe());
+
+
     }
 
     /**
@@ -32,7 +36,7 @@ public class Main {
      */
     private static int choiceNumGraphe(){
         String grapheChoice = "0";
-        int nbGraphe = new File("Textfile/Graphe").listFiles().length;
+        int nbGraphe = countNbFile();
         int again = 0;
         do{
             System.out.print("Choisissez un numéro de graphe entre 1 et " + nbGraphe + " : ");
@@ -74,6 +78,26 @@ public class Main {
         }
     }
 
+    private static int countNbFile(){
+
+        File dir = new File(".");
+        FileFilter grapheFileFilter = new FileFilter() {
+            public boolean accept(File file) {
+                //si le fichier est un graphe de test
+                if (file.getName().startsWith("A4-graphe")) {
+                    return true;
+                }
+                return false;
+            }
+        };
+        File[] contentDir = dir.listFiles(grapheFileFilter);
+        int nbFile = contentDir.length;
+        if(nbFile == 0){
+            return 26;
+        }else{
+            return nbFile;
+        }
+    }
 
 
 }

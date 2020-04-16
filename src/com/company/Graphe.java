@@ -54,7 +54,7 @@ public class Graphe {
      */
     private boolean readFile(){
         try {
-            Scanner scan = new Scanner(new File("Textfile/Graphe/" + name_file));
+            Scanner scan = new Scanner(new File(name_file));
             setNb_sommet(Integer.parseInt(scan.nextLine()));
             setNb_arc(Integer.parseInt(scan.nextLine()));
             trace.write("----- Lecture du fichier n°" + getNum_file() + " -----\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n\n");
@@ -65,7 +65,7 @@ public class Graphe {
             scan.close();
             return true;
         } catch (FileNotFoundException e) {
-            trace.write("Erreur dans la structure du fichier\n");
+            trace.write("Fichier non trouvé\n");
             return false;
         }
         catch (NumberFormatException e){
