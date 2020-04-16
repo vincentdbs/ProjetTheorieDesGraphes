@@ -34,7 +34,7 @@ public class Main {
      */
     private static int choiceNumGraphe(){
         String grapheChoice = "0";
-        int nbGraphe = countNbFile();
+        int nbGraphe = countNbFile(); //récuperation du nombre de graphe dans le projet
         int again = 0;
         do{
             System.out.print("Choisissez un numéro de graphe entre 1 et " + nbGraphe + " : ");
@@ -49,7 +49,7 @@ public class Main {
                 }
             }
             catch (NumberFormatException e){
-                again = 0;
+                again = 0; //si la saisie n'est pas le bon nombre => recommencer
             }
         }while (again == 0);
         return Integer.parseInt(grapheChoice);
@@ -63,7 +63,7 @@ public class Main {
         String choice = "";
 
         do{
-            System.out.print("\n\nVoulez-vous tester un autre graphe ? [o/n] : ");
+            System.out.print("\n\nVoulez-vous tester un autre graphe ? [oui : o/non : n] : ");
             choice = scanner.nextLine();
         }while (!((choice.equals("o")) || (choice.equals("n"))));
 
@@ -77,7 +77,6 @@ public class Main {
     }
 
     private static int countNbFile(){
-
         File dir = new File(".");
         FileFilter grapheFileFilter = new FileFilter() {
             public boolean accept(File file) {
@@ -88,7 +87,7 @@ public class Main {
                 return false;
             }
         };
-        File[] contentDir = dir.listFiles(grapheFileFilter);
+        File[] contentDir = dir.listFiles(grapheFileFilter); //recupération des fichiers qui commencent par le patern A4-graphe
         int nbFile = contentDir.length;
         if(nbFile == 0){
             return 13;

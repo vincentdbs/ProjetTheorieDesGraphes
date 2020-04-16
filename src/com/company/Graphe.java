@@ -24,7 +24,7 @@ public class Graphe {
         this.listArc = new ArrayList<>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "A4-graphe" + num_file + ".txt"; //nom du fichier
-        this.isGrapheOk = false;
+        this.isGrapheOk = false; //le graphe est bien récuperer depuis le fichiers
         if (readFile()){
             isGrapheOk = true;
             if (nb_sommet == 1){
@@ -59,7 +59,7 @@ public class Graphe {
             setNb_arc(Integer.parseInt(scan.nextLine()));
             trace.write("----- Lecture du fichier n°" + getNum_file() + " -----\n" + getNb_sommet() + " sommet(s)\n" + getNb_arc() + " arc(s)\n\n");
             while (scan.hasNextLine()){
-                listArc.add(createTransition(scan.nextLine()));
+                listArc.add(createTransition(scan.nextLine())); //creation de la liste d'arc
             }
             trace.write("\n");
             scan.close();
@@ -94,8 +94,8 @@ public class Graphe {
      */
     private void fillMatrice(){
         for (int i = 0; i < listArc.size(); i++) {
-            matriceAdjacence[listArc.get(i).getInit()][listArc.get(i).getFin()] = 1;
-            matriceValeur[listArc.get(i).getInit()][listArc.get(i).getFin()] = String.valueOf(listArc.get(i).getArc());
+            matriceAdjacence[listArc.get(i).getInit()][listArc.get(i).getFin()] = 1; //1 à la position en position (source,cible) dans la matrice
+            matriceValeur[listArc.get(i).getInit()][listArc.get(i).getFin()] = String.valueOf(listArc.get(i).getArc()); //valeur de l'arc à la position en position (source,cible) dans la matrice
         }
     }
 
@@ -151,9 +151,9 @@ public class Graphe {
      */
     public boolean detectionCircuit(){
         int[][] matDetection = new int[nb_sommet][nb_sommet]; //matrice temporaire similaire à matrice d'adjacence
-        ArrayList<Integer> done = new ArrayList<>();
-        ArrayList<Integer> todo = new ArrayList<>();
-        ArrayList<Integer> todoPrec = new ArrayList<>();
+        ArrayList<Integer> done = new ArrayList<>(); //sommets traiter
+        ArrayList<Integer> todo = new ArrayList<>(); //sommets à traiter
+        ArrayList<Integer> todoPrec = new ArrayList<>(); //sommet à traiter à l'étape n-1
 
         trace.write("\n----- Detection de circuit - methode d'elimination des points d'entrée -----\n");
         for (int i = 0; i < matriceAdjacence.length; i++) {
@@ -183,10 +183,10 @@ public class Graphe {
                     matDetection[done.get(i)][j] = -1; //passage à -1 en ligne
                 }
             }
-            //suppression dans tab_todo
+            //suppression des sommets traités dans tab_todo
             for (int i = 0; i < done.size() ; i++) {
                 todo.remove(done.get(i));
-            }
+            }//affichage des sommets restants à traiter
             trace.write("Sommets restants : ");
             for (int i = 0; i < todo.size() ; i++) {
                 trace.write(todo.get(i) + " ");
@@ -334,9 +334,8 @@ public class Graphe {
      */
     private boolean uniqueStart(){
         int nbStart = 0;
-        int tempo = 0;
         for (int i = 0; i < nb_sommet; i++) {
-            if (getNumberOfPredecesseur(i, matriceAdjacence) == 0){
+            if (getNumberOfPredecesseur(i, matriceAdjacence) == 0){ //si aucun prédecesseur pour le sommet i => nb entrée++
                 start = i;
                 nbStart++;
             }
@@ -356,7 +355,7 @@ public class Graphe {
     private boolean uniqueEnd(){
         int nbEnd = 0;
         for (int i = 0; i < nb_sommet; i++) {
-            if (getNumberOfSuccesseur(i, matriceAdjacence) == 0){
+            if (getNumberOfSuccesseur(i, matriceAdjacence) == 0){ //si aucun successeur pour le sommet i => nb entrée++
                 nbEnd++;
             }
         }
@@ -376,7 +375,7 @@ public class Graphe {
         for (int i = 0; i < nb_sommet; i++) {
             for (int j = 0; j < nb_sommet; j++) {
                 try {
-                    if(Integer.parseInt(matriceValeur[i][j]) < 0 ){
+                    if(Integer.parseInt(matriceValeur[i][j]) < 0 ){ //si la valeur de l'arc est négative
                         isGrapheOrdonnancement = false;
                         return false;
                     }
@@ -394,15 +393,15 @@ public class Graphe {
         ArrayList<String> value = new ArrayList<>();
         for (int i = 0; i < nb_sommet; i++) {
             for (int j = 0; j < nb_sommet; j++) {
-                if (!(value.contains(matriceValeur[i][j]))){
+                if (!(value.contains(matriceValeur[i][j]))){ //si la valeur de l'arc d'un sommet n'a pas déjà ajouter à la liste => ajout
                     value.add(matriceValeur[i][j]);
                 }
             }
-            if (value.size() > 2){
+            if (value.size() > 2){ //si il y a plus de 2 valeurs (* et la valeur de l'arc) sur une ligne => faux
                 isGrapheOrdonnancement = false;
                 return false;
             }
-            value.clear();
+            value.clear(); //reset de la liste des valeurs pour le sommet suivant
         }
         return true;
     }
@@ -426,9 +425,9 @@ public class Graphe {
      */
     public void ordonnancement(){
         trace.write("----- Ordonnancement -----\n\n");
-        int[][] tabOrdonnancement = new int[7][nb_sommet];
-            //i = 0 => sommets | i = 1 => longueur tache du sommet | i = 2 => prédecesseur ayant la plus grande date | i = 3 =>  date
-            //i = 4 => successeur ayant la plus petite date | i = 5 => date | i = 6 => marge
+        int[][] tabOrdonnancement = new int[7][nb_sommet]; //calendrier total
+            //i = 0 => sommets | i = 1 => longueur tache du sommet | i = 2 => prédecesseur ayant la plus grande date | i = 3 =>  date au plus tôt
+            //i = 4 => successeur ayant la plus petite date | i = 5 => date au plus tard | i = 6 => marge
         //initialisation
         for (int i = 0; i < 7 ; i++) {
             for (int j = 0; j < nb_sommet ; j++) {
@@ -441,15 +440,16 @@ public class Graphe {
         tabOrdonnancement[1] = retrieveSommetValue(tabOrdonnancement[0]);
         //Calendrier des dates au plus tôt
         int[][] result = retrieveBestPredecesseur(tabOrdonnancement[0]);
-        tabOrdonnancement[2] = result[0];
-        tabOrdonnancement[3] = result[1];
+        tabOrdonnancement[2] = result[0]; //meilleur successeur
+        tabOrdonnancement[3] = result[1]; //date au plus tôt
         //Calendrier date au plus tard
         result = retrieveBestSuccesseur(tabOrdonnancement[0], tabOrdonnancement[3][nb_sommet-1]);
-        tabOrdonnancement[4] = result[0];
-        tabOrdonnancement[5] = result[1];
+        tabOrdonnancement[4] = result[0]; //meilleur successeur
+        tabOrdonnancement[5] = result[1]; //date au plus tard
         //margeTotale
         tabOrdonnancement[6] = margeTotale(tabOrdonnancement[3], tabOrdonnancement[5]);
 
+        //affichage du tableau d'ordonnancement
         printOrdonnancement(tabOrdonnancement);
     }
 
@@ -504,12 +504,12 @@ public class Graphe {
         int rg = 0;
         do{
             for (int i = 0; i < rang.length; i++) {
-                if(rang[i] == rg){
-                    ordered[index] = i;
+                if(rang[i] == rg){ //si le rang du sommet i = rang courant
+                    ordered[index] = i; //ajout du sommet i au tableau
                     index++;
                 }
             }
-            rg++ ;
+            rg++; //rang suivant
         }while (rg<nb_sommet);
         return ordered;
     }
@@ -559,6 +559,7 @@ public class Graphe {
         trace.write("\t ----- Date au plus tôt -----\n\n");
         for (int i = 1; i < nb_sommet; i++) {
             trace.write("Prédecesseur de " + sommetOrdonne[i] + " : \t");
+            //récupération des predecesseur du sommet à la position sommetOrdonne[i]
             for (int j = 0; j < nb_sommet ; j++) {
                 if (matriceAdjacence[j][sommetOrdonne[i]] == 1){
                     tempoPred.add(j); //ajout du predecesseur
@@ -566,11 +567,13 @@ public class Graphe {
                 }
             }
             trace.write("\n");
+            //recupération de la tache de chaque prédecesseur récupéré
             for (int j = 0; j < tempoPred.size(); j++) {
                 tempoTache.add(sommetValue(tempoPred.get(j))); //recuperation de la tâche
             }
 
             trace.write("Date au plus tôt : \t\t");
+            //pour chaque predecesseur => calcul de la date au plus tôt
             for (int j = 0; j < tempoTache.size() ; j++) {
                 int sommetTache = tempoPred.get(j); //recuperation du sommet correspondant
                 int index = 0;
@@ -584,6 +587,7 @@ public class Graphe {
             }
             trace.write("\n");
 
+            //calcul de la date au plus tôt optimal
             array[1][i] = Collections.max(tempoDatePlusTot);
             trace.write("Date au plus tôt max : \t" + array[1][i] + "\n\n");
             array[0][i] = tempoPred.get(tempoDatePlusTot.indexOf(array[1][i]));
@@ -611,6 +615,7 @@ public class Graphe {
         trace.write("\t ----- Date au plus tard -----\n\n");
         for (int i = nb_sommet-2 ; i >= 0; i--) {
             trace.write("Successeur de " + sommetOrdonne[i] + " : \t\t");
+            //récupération des predecesseur du sommet à la position sommetOrdonne[i]
             for (int j = 0; j < nb_sommet ; j++) { //récupération des successeurs pour le sommet à l'index i
                 if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
                     tempoSucc.add(j); //ajout du successeur
@@ -620,6 +625,7 @@ public class Graphe {
             trace.write("\n");
             int tache = sommetValue(sommetOrdonne[i]); //longueur de la tache du somme à l'index i
 
+            //calcul de la date au plus tard de chaque successeur
             trace.write("Date au plus tard : \t");
             for (int j = 0; j < tempoSucc.size() ; j++) {
                 int sommetTache = tempoSucc.get(j); //recuperation du sommet correspondant
@@ -634,6 +640,7 @@ public class Graphe {
             }
             trace.write("\n");
 
+            //date au plus tard optimale
             array[1][i] = Collections.min(tempoDatePlusTard);
             trace.write("Date au plus tard max : " + array[1][i] + "\n\n");
             array[0][i] = tempoSucc.get(tempoDatePlusTard.indexOf(array[1][i]));
