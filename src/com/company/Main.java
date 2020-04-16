@@ -27,8 +27,6 @@ public class Main {
                 }
             }
         }while (newGraphe());
-
-
     }
 
     /**
@@ -93,7 +91,7 @@ public class Main {
         File[] contentDir = dir.listFiles(grapheFileFilter);
         int nbFile = contentDir.length;
         if(nbFile == 0){
-            return 26;
+            return 13;
         }else{
             return nbFile;
         }
