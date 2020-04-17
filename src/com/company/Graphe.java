@@ -483,7 +483,7 @@ public class Graphe {
                     trace.write("\nMarge totale :\t\t");
                     break;
                 case 7:
-                    System.out.print("\nMarge libre : \t\t");
+                    trace.write("\nMarge libre : \t\t");
                 default:
                     break;
             }
@@ -673,14 +673,16 @@ public class Graphe {
 
         ArrayList<Integer> tempoMarge = new ArrayList<Integer>();
 
-
+        trace.write("\t ----- Marges libres -----\n");
         for (int i = 0; i < nb_sommet-1; i++) {
             tempoMarge.clear();
             tempoSucc.clear();
             tempoSuccIndex.clear();
+            trace.write("\nSuccesseur(s) du sommet " + sommetOrdonne[i] + " :");
             for (int j = 0; j < nb_sommet ; j++) { //récupération des successeurs pour le sommet à l'index i
                 if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
                     tempoSucc.add(j); //ajout de l'index
+                    trace.write("\t" + j);
                 }
             }
             for (int j = 0; j < tempoSucc.size(); j++) {
@@ -690,13 +692,20 @@ public class Graphe {
                     }
                 }
             }
+            trace.write("\nDate au plus tôt : \t\t");
             for (int j = 0; j < tempoSuccIndex.size() ; j++) {
                 tempoMarge.add(datePlusTot[tempoSuccIndex.get(j)]);
+                trace.write("\t" + datePlusTot[tempoSuccIndex.get(j)]);
             }
             int marge = Collections.min(tempoMarge);
+            trace.write("\nDate au plus tôt minimale : " + marge);
+            trace.write("\nDate au plus tôt de " + sommetOrdonne[i] + " :\t\t" + tache[i]);
+            trace.write("\nTâche du sommet : \t\t\t" + datePlusTot[i]);
             marge -= (datePlusTot[i] + tache[i]);
             margeLibre[i] = marge;
+            trace.write("\nMarge libre : \t\t\t\t" + marge + "\n");
         }
+        trace.write("\n");
         return margeLibre;
     }
 

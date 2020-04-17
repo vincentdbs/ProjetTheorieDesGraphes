@@ -210,6 +210,85 @@ Successeur de 0 : 		4	6	7
 Date au plus tard : 	0	0	2	
 Date au plus tard max : 0
 
+	 ----- Marges libres -----
+
+Successeur(s) du sommet 0 :	4	6	7
+Date au plus tôt : 			0	0	0
+Date au plus tôt minimale : 0
+Date au plus tôt de 0 :		0
+Tâche du sommet : 			0
+Marge libre : 				0
+
+Successeur(s) du sommet 4 :	1	5
+Date au plus tôt : 			16	4
+Date au plus tôt minimale : 4
+Date au plus tôt de 4 :		4
+Tâche du sommet : 			0
+Marge libre : 				0
+
+Successeur(s) du sommet 6 :	3	10
+Date au plus tôt : 			6	6
+Date au plus tôt minimale : 6
+Date au plus tôt de 6 :		6
+Tâche du sommet : 			0
+Marge libre : 				0
+
+Successeur(s) du sommet 7 :	2	8
+Date au plus tôt : 			7	9
+Date au plus tôt minimale : 7
+Date au plus tôt de 7 :		7
+Tâche du sommet : 			0
+Marge libre : 				0
+
+Successeur(s) du sommet 2 :	11
+Date au plus tôt : 			26
+Date au plus tôt minimale : 26
+Date au plus tôt de 2 :		2
+Tâche du sommet : 			7
+Marge libre : 				17
+
+Successeur(s) du sommet 3 :	9
+Date au plus tôt : 			17
+Date au plus tôt minimale : 17
+Date au plus tôt de 3 :		3
+Tâche du sommet : 			6
+Marge libre : 				8
+
+Successeur(s) du sommet 5 :	8
+Date au plus tôt : 			9
+Date au plus tôt minimale : 9
+Date au plus tôt de 5 :		5
+Tâche du sommet : 			4
+Marge libre : 				0
+
+Successeur(s) du sommet 10 :	1
+Date au plus tôt : 			16
+Date au plus tôt minimale : 16
+Date au plus tôt de 10 :		10
+Tâche du sommet : 			6
+Marge libre : 				0
+
+Successeur(s) du sommet 1 :	9
+Date au plus tôt : 			17
+Date au plus tôt minimale : 17
+Date au plus tôt de 1 :		1
+Tâche du sommet : 			16
+Marge libre : 				0
+
+Successeur(s) du sommet 8 :	9
+Date au plus tôt : 			17
+Date au plus tôt minimale : 17
+Date au plus tôt de 8 :		8
+Tâche du sommet : 			9
+Marge libre : 				0
+
+Successeur(s) du sommet 9 :	11
+Date au plus tôt : 			26
+Date au plus tôt minimale : 26
+Date au plus tôt de 9 :		9
+Tâche du sommet : 			17
+Marge libre : 				0
+
 	----- Calendrier -----
 Sommet :			0	4	6	7	2	3	5	10	1	8	9	11	
 Tache :				0	4	6	7	2	3	5	10	1	8	9	*	
@@ -218,3 +297,4 @@ Date au + tôt :		0	0	0	0	7	6	4	6	16	9	17	26
 Successeur :		4	5	10	8	11	9	8	1	9	9	11	*	
 Date au + tard :	0	0	0	2	24	14	4	6	16	9	17	26	
 Marge totale :		0	0	0	2	17	8	0	0	0	0	0	0	
+Marge libre : 		0	0	0	0	17	8	0	0	0	0	0	0	
