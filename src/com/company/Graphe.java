@@ -425,11 +425,11 @@ public class Graphe {
      */
     public void ordonnancement(){
         trace.write("----- Ordonnancement -----\n\n");
-        int[][] tabOrdonnancement = new int[7][nb_sommet]; //calendrier total
+        int[][] tabOrdonnancement = new int[8][nb_sommet]; //calendrier total
             //i = 0 => sommets | i = 1 => longueur tache du sommet | i = 2 => prédecesseur ayant la plus grande date | i = 3 =>  date au plus tôt
-            //i = 4 => successeur ayant la plus petite date | i = 5 => date au plus tard | i = 6 => marge
+            //i = 4 => successeur ayant la plus petite date | i = 5 => date au plus tard | i = 6 => marge totale | i = 7 => marge libre
         //initialisation
-        for (int i = 0; i < 7 ; i++) {
+        for (int i = 0; i < 8 ; i++) {
             for (int j = 0; j < nb_sommet ; j++) {
                 tabOrdonnancement[i][j] = -1;
             }
@@ -448,7 +448,8 @@ public class Graphe {
         tabOrdonnancement[5] = result[1]; //date au plus tard
         //margeTotale
         tabOrdonnancement[6] = margeTotale(tabOrdonnancement[3], tabOrdonnancement[5]);
-
+        //marge libre
+        tabOrdonnancement[7] = margeLibre(tabOrdonnancement[0], tabOrdonnancement[3], tabOrdonnancement[1]);
         //affichage du tableau d'ordonnancement
         printOrdonnancement(tabOrdonnancement);
     }
@@ -481,6 +482,8 @@ public class Graphe {
                 case 6:
                     trace.write("\nMarge totale :\t\t");
                     break;
+                case 7:
+                    System.out.print("\nMarge libre : \t\t");
                 default:
                     break;
             }
@@ -616,7 +619,7 @@ public class Graphe {
         trace.write("\t ----- Date au plus tard -----\n\n");
         for (int i = nb_sommet-2 ; i >= 0; i--) {
             trace.write("Successeur de " + sommetOrdonne[i] + " : \t\t");
-            //récupération des predecesseur du sommet à la position sommetOrdonne[i]
+            //récupération des successeur du sommet à la position sommetOrdonne[i]
             for (int j = 0; j < nb_sommet ; j++) { //récupération des successeurs pour le sommet à l'index i
                 if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
                     tempoSucc.add(j); //ajout du successeur
@@ -661,6 +664,40 @@ public class Graphe {
             margeTotale[i] = datePlusTard[i] - datePlusTot[i];
         }
         return margeTotale;
+    }
+
+    private int[] margeLibre(int[] sommetOrdonne, int[] datePlusTot, int[]tache){
+        int[] margeLibre = new int[nb_sommet];
+        ArrayList<Integer> tempoSucc = new ArrayList<Integer>();
+        ArrayList<Integer> tempoSuccIndex = new ArrayList<Integer>();
+
+        ArrayList<Integer> tempoMarge = new ArrayList<Integer>();
+
+
+        for (int i = 0; i < nb_sommet-1; i++) {
+            tempoMarge.clear();
+            tempoSucc.clear();
+            tempoSuccIndex.clear();
+            for (int j = 0; j < nb_sommet ; j++) { //récupération des successeurs pour le sommet à l'index i
+                if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
+                    tempoSucc.add(j); //ajout de l'index
+                }
+            }
+            for (int j = 0; j < tempoSucc.size(); j++) {
+                for (int k = 0; k < sommetOrdonne.length ; k++) {
+                    if(sommetOrdonne[k] == tempoSucc.get(j)){
+                        tempoSuccIndex.add(k);
+                    }
+                }
+            }
+            for (int j = 0; j < tempoSuccIndex.size() ; j++) {
+                tempoMarge.add(datePlusTot[tempoSuccIndex.get(j)]);
+            }
+            int marge = Collections.min(tempoMarge);
+            marge -= (datePlusTot[i] + tache[i]);
+            margeLibre[i] = marge;
+        }
+        return margeLibre;
     }
 
     /*Getter setter*/
