@@ -567,6 +567,7 @@ public class Graphe {
                 }
             }
             trace.write("\n");
+
             //recupération de la tache de chaque prédecesseur récupéré
             for (int j = 0; j < tempoPred.size(); j++) {
                 tempoTache.add(sommetValue(tempoPred.get(j))); //recuperation de la tâche
