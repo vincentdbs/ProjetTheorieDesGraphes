@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Graphe {
     private String name_file;
     private int nb_arc, nb_sommet, num_file;
-    private ArrayList<Arc> listArc;
+    private ArrayList<A4_Arc> listArc;
     private int[][] matriceAdjacence;
     private String[][] matriceValeur;
     private int[] rang;
@@ -81,9 +81,9 @@ public class Graphe {
     /**
      * Creer une transition
      */
-    private Arc createTransition(String line){
+    private A4_Arc createTransition(String line){
         String[] array = line.split(" ");
-        Arc arc = new Arc(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+        A4_Arc arc = new A4_Arc(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
         trace.write(array[0] + " -> " + array[1] + " = " + array[2] + "\n");
         return arc;
     }

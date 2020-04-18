@@ -1,9 +1,9 @@
 package com.company;
 
-public class Arc {
+public class A4_Arc {
     private int init, arc, fin;
 
-    public Arc(int i_init, int i_fin, int i_arc){
+    public A4_Arc(int i_init, int i_fin, int i_arc){
         init = i_init;
         arc = i_arc;
         fin = i_fin;
