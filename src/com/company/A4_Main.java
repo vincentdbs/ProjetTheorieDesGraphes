@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.util.Scanner;
 
-public class Main {
+public class A4_Main {
 
     public static void main(String[] args) {
         //choix du graphe
