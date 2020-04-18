@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class Graphe {
+public class A4_Graphe {
     private String name_file;
     private int nb_arc, nb_sommet, num_file;
     private ArrayList<A4_Arc> listArc;
@@ -18,7 +18,7 @@ public class Graphe {
     private boolean isGrapheOrdonnancement, isGrapheOk;
     private int start;
 
-    public Graphe(int _num_file){
+    public A4_Graphe(int _num_file){
         this.isGrapheOrdonnancement = false;
         this.trace = new Trace(_num_file);
         this.listArc = new ArrayList<>(); //initialisation de la liste de transition

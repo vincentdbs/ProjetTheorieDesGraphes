@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FilenameFilter;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +15,7 @@ public class Main {
                 //calcul des calendrier
         do {
             int numGraphe = choiceNumGraphe();
-            Graphe graphe = new Graphe(numGraphe);
+            A4_Graphe graphe = new A4_Graphe(numGraphe);
             if (graphe.getisGraphOk()){
                 graphe.affichageMatrice();
                 if (!graphe.detectionCircuit()){
