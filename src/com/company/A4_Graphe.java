@@ -14,13 +14,13 @@ public class A4_Graphe {
     private int[][] matriceAdjacence;
     private String[][] matriceValeur;
     private int[] rang;
-    private Trace trace;
+    private A4_Trace trace;
     private boolean isGrapheOrdonnancement, isGrapheOk;
     private int start;
 
     public A4_Graphe(int _num_file){
         this.isGrapheOrdonnancement = false;
-        this.trace = new Trace(_num_file);
+        this.trace = new A4_Trace(_num_file);
         this.listArc = new ArrayList<>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "A4-graphe" + num_file + ".txt"; //nom du fichier
