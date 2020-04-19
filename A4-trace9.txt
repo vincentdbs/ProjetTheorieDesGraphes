@@ -208,63 +208,63 @@ Date au plus tard max : 0
 
 	 ----- Marges libres -----
 
-Successeur(s) du sommet 0 :	1	2
+Successeur(s) de 0 :		1	2
 Date au plus tôt : 			0	2
 Date au plus tôt minimale : 0
 Date au plus tôt de 0 :		0
 Tâche du sommet : 			0
 Marge libre : 				0
 
-Successeur(s) du sommet 1 :	2	4	5
+Successeur(s) de 1 :		2	4	5
 Date au plus tôt : 			2	5	11
 Date au plus tôt minimale : 2
 Date au plus tôt de 1 :		2
 Tâche du sommet : 			0
 Marge libre : 				0
 
-Successeur(s) du sommet 2 :	3	4	8
+Successeur(s) de 2 :		3	4	8
 Date au plus tôt : 			5	5	19
 Date au plus tôt minimale : 5
 Date au plus tôt de 2 :		3
 Tâche du sommet : 			2
 Marge libre : 				0
 
-Successeur(s) du sommet 3 :	7	9
+Successeur(s) de 3 :		7	9
 Date au plus tôt : 			13	20
 Date au plus tôt minimale : 13
 Date au plus tôt de 3 :		5
 Tâche du sommet : 			5
 Marge libre : 				3
 
-Successeur(s) du sommet 4 :	5	6	8
+Successeur(s) de 4 :		5	6	8
 Date au plus tôt : 			11	13	19
 Date au plus tôt minimale : 11
 Date au plus tôt de 4 :		6
 Tâche du sommet : 			5
 Marge libre : 				0
 
-Successeur(s) du sommet 5 :	6	7
+Successeur(s) de 5 :		6	7
 Date au plus tôt : 			13	13
 Date au plus tôt minimale : 13
 Date au plus tôt de 5 :		2
 Tâche du sommet : 			11
 Marge libre : 				0
 
-Successeur(s) du sommet 6 :	9
+Successeur(s) de 6 :		9
 Date au plus tôt : 			20
 Date au plus tôt minimale : 20
 Date au plus tôt de 6 :		1
 Tâche du sommet : 			13
 Marge libre : 				6
 
-Successeur(s) du sommet 7 :	8
+Successeur(s) de 7 :		8
 Date au plus tôt : 			19
 Date au plus tôt minimale : 19
 Date au plus tôt de 7 :		6
 Tâche du sommet : 			13
 Marge libre : 				0
 
-Successeur(s) du sommet 8 :	9
+Successeur(s) de 8 :		9
 Date au plus tôt : 			20
 Date au plus tôt minimale : 20
 Date au plus tôt de 8 :		1

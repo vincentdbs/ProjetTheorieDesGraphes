@@ -233,77 +233,77 @@ Date au plus tard max : 0
 
 	 ----- Marges libres -----
 
-Successeur(s) du sommet 0 :	1
+Successeur(s) de 0 :		1
 Date au plus tôt : 			0
 Date au plus tôt minimale : 0
 Date au plus tôt de 0 :		0
 Tâche du sommet : 			0
 Marge libre : 				0
 
-Successeur(s) du sommet 1 :	2	4
+Successeur(s) de 1 :		2	4
 Date au plus tôt : 			7	7
 Date au plus tôt minimale : 7
 Date au plus tôt de 1 :		7
 Tâche du sommet : 			0
 Marge libre : 				0
 
-Successeur(s) du sommet 2 :	3
+Successeur(s) de 2 :		3
 Date au plus tôt : 			10
 Date au plus tôt minimale : 10
 Date au plus tôt de 2 :		3
 Tâche du sommet : 			7
 Marge libre : 				0
 
-Successeur(s) du sommet 4 :	5	6	7
+Successeur(s) de 4 :		5	6	7
 Date au plus tôt : 			15	15	15
 Date au plus tôt minimale : 15
 Date au plus tôt de 4 :		8
 Tâche du sommet : 			7
 Marge libre : 				0
 
-Successeur(s) du sommet 3 :	5	6	7
+Successeur(s) de 3 :		5	6	7
 Date au plus tôt : 			15	15	15
 Date au plus tôt minimale : 15
 Date au plus tôt de 3 :		1
 Tâche du sommet : 			10
 Marge libre : 				4
 
-Successeur(s) du sommet 5 :	10
+Successeur(s) de 5 :		10
 Date au plus tôt : 			21
 Date au plus tôt minimale : 21
 Date au plus tôt de 5 :		2
 Tâche du sommet : 			15
 Marge libre : 				4
 
-Successeur(s) du sommet 6 :	8
+Successeur(s) de 6 :		8
 Date au plus tôt : 			16
 Date au plus tôt minimale : 16
 Date au plus tôt de 6 :		1
 Tâche du sommet : 			15
 Marge libre : 				0
 
-Successeur(s) du sommet 7 :	10
+Successeur(s) de 7 :		10
 Date au plus tôt : 			21
 Date au plus tôt minimale : 21
 Date au plus tôt de 7 :		1
 Tâche du sommet : 			15
 Marge libre : 				5
 
-Successeur(s) du sommet 8 :	9
+Successeur(s) de 8 :		9
 Date au plus tôt : 			19
 Date au plus tôt minimale : 19
 Date au plus tôt de 8 :		3
 Tâche du sommet : 			16
 Marge libre : 				0
 
-Successeur(s) du sommet 9 :	10
+Successeur(s) de 9 :		10
 Date au plus tôt : 			21
 Date au plus tôt minimale : 21
 Date au plus tôt de 9 :		2
 Tâche du sommet : 			19
 Marge libre : 				0
 
-Successeur(s) du sommet 10 :	11
+Successeur(s) de 10 :		11
 Date au plus tôt : 			22
 Date au plus tôt minimale : 22
 Date au plus tôt de 10 :		1

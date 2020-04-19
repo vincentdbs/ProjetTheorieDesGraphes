@@ -212,77 +212,77 @@ Date au plus tard max : 0
 
 	 ----- Marges libres -----
 
-Successeur(s) du sommet 0 :	4	6	7
+Successeur(s) de 0 :		4	6	7
 Date au plus tôt : 			0	0	0
 Date au plus tôt minimale : 0
 Date au plus tôt de 0 :		0
 Tâche du sommet : 			0
 Marge libre : 				0
 
-Successeur(s) du sommet 4 :	1	5
+Successeur(s) de 4 :		1	5
 Date au plus tôt : 			16	4
 Date au plus tôt minimale : 4
 Date au plus tôt de 4 :		4
 Tâche du sommet : 			0
 Marge libre : 				0
 
-Successeur(s) du sommet 6 :	3	10
+Successeur(s) de 6 :		3	10
 Date au plus tôt : 			6	6
 Date au plus tôt minimale : 6
 Date au plus tôt de 6 :		6
 Tâche du sommet : 			0
 Marge libre : 				0
 
-Successeur(s) du sommet 7 :	2	8
+Successeur(s) de 7 :		2	8
 Date au plus tôt : 			7	9
 Date au plus tôt minimale : 7
 Date au plus tôt de 7 :		7
 Tâche du sommet : 			0
 Marge libre : 				0
 
-Successeur(s) du sommet 2 :	11
+Successeur(s) de 2 :		11
 Date au plus tôt : 			26
 Date au plus tôt minimale : 26
 Date au plus tôt de 2 :		2
 Tâche du sommet : 			7
 Marge libre : 				17
 
-Successeur(s) du sommet 3 :	9
+Successeur(s) de 3 :		9
 Date au plus tôt : 			17
 Date au plus tôt minimale : 17
 Date au plus tôt de 3 :		3
 Tâche du sommet : 			6
 Marge libre : 				8
 
-Successeur(s) du sommet 5 :	8
+Successeur(s) de 5 :		8
 Date au plus tôt : 			9
 Date au plus tôt minimale : 9
 Date au plus tôt de 5 :		5
 Tâche du sommet : 			4
 Marge libre : 				0
 
-Successeur(s) du sommet 10 :	1
+Successeur(s) de 10 :		1
 Date au plus tôt : 			16
 Date au plus tôt minimale : 16
 Date au plus tôt de 10 :		10
 Tâche du sommet : 			6
 Marge libre : 				0
 
-Successeur(s) du sommet 1 :	9
+Successeur(s) de 1 :		9
 Date au plus tôt : 			17
 Date au plus tôt minimale : 17
 Date au plus tôt de 1 :		1
 Tâche du sommet : 			16
 Marge libre : 				0
 
-Successeur(s) du sommet 8 :	9
+Successeur(s) de 8 :		9
 Date au plus tôt : 			17
 Date au plus tôt minimale : 17
 Date au plus tôt de 8 :		8
 Tâche du sommet : 			9
 Marge libre : 				0
 
-Successeur(s) du sommet 9 :	11
+Successeur(s) de 9 :		11
 Date au plus tôt : 			26
 Date au plus tôt minimale : 26
 Date au plus tôt de 9 :		9

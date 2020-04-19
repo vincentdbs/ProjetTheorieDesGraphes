@@ -678,7 +678,7 @@ public class A4_Graphe {
             tempoMarge.clear();
             tempoSucc.clear();
             tempoSuccIndex.clear();
-            trace.write("\nSuccesseur(s) du sommet " + sommetOrdonne[i] + " :");
+            trace.write("\nSuccesseur(s) de " + sommetOrdonne[i] + " :\t");
             for (int j = 0; j < nb_sommet ; j++) { //récupération des successeurs pour le sommet à l'index i
                 if (matriceAdjacence[sommetOrdonne[i]][j] == 1){
                     tempoSucc.add(j); //ajout de l'index
