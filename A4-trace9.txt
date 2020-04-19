@@ -172,39 +172,39 @@ Date au plus tôt max : 	20
 
 Successeur de 8 : 		9	
 Date au plus tard : 	19	
-Date au plus tard max : 19
+Date au plus tard min : 19
 
 Successeur de 7 : 		8	
 Date au plus tard : 	13	
-Date au plus tard max : 13
+Date au plus tard min : 13
 
 Successeur de 6 : 		9	
 Date au plus tard : 	19	
-Date au plus tard max : 19
+Date au plus tard min : 19
 
 Successeur de 5 : 		6	7	
 Date au plus tard : 	17	11	
-Date au plus tard max : 11
+Date au plus tard min : 11
 
 Successeur de 4 : 		5	6	8	
 Date au plus tard : 	5	13	13	
-Date au plus tard max : 5
+Date au plus tard min : 5
 
 Successeur de 3 : 		7	9	
 Date au plus tard : 	8	15	
-Date au plus tard max : 8
+Date au plus tard min : 8
 
 Successeur de 2 : 		3	4	8	
 Date au plus tard : 	5	2	16	
-Date au plus tard max : 2
+Date au plus tard min : 2
 
 Successeur de 1 : 		2	4	5	
 Date au plus tard : 	0	3	9	
-Date au plus tard max : 0
+Date au plus tard min : 0
 
 Successeur de 0 : 		1	2	
 Date au plus tard : 	0	2	
-Date au plus tard max : 0
+Date au plus tard min : 0
 
 	 ----- Marges libres -----
 

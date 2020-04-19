@@ -123,23 +123,23 @@ Date au plus tôt max : 	8
 
 Successeur de 4 : 		5	
 Date au plus tard : 	7	
-Date au plus tard max : 7
+Date au plus tard min : 7
 
 Successeur de 2 : 		4	
 Date au plus tard : 	6	
-Date au plus tard max : 6
+Date au plus tard min : 6
 
 Successeur de 3 : 		2	4	
 Date au plus tard : 	4	5	
-Date au plus tard max : 4
+Date au plus tard min : 4
 
 Successeur de 1 : 		2	3	
 Date au plus tard : 	2	0	
-Date au plus tard max : 0
+Date au plus tard min : 0
 
 Successeur de 0 : 		1	
 Date au plus tard : 	0	
-Date au plus tard max : 0
+Date au plus tard min : 0
 
 	 ----- Marges libres -----
 

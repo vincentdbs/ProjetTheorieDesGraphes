@@ -646,7 +646,7 @@ public class A4_Graphe {
 
             //date au plus tard optimale
             array[1][i] = Collections.min(tempoDatePlusTard);
-            trace.write("Date au plus tard max : " + array[1][i] + "\n\n");
+            trace.write("Date au plus tard min : " + array[1][i] + "\n\n");
             array[0][i] = tempoSucc.get(tempoDatePlusTard.indexOf(array[1][i]));
 
             tempoDatePlusTard.clear();
