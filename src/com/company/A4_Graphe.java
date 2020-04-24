@@ -495,6 +495,7 @@ public class A4_Graphe {
                 }
             }
         }
+        trace.write("\n\n");
     }
 
     /**

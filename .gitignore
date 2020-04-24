@@ -9,3 +9,4 @@ out/
 *.ipr
 *.iws
 automate_git_push.sh
+pseudocode.txt

@@ -293,3 +293,4 @@ Successeur :		1	2	5	6	8	9	4	7	10	10	*
 Date au + tard :	0	0	3	9	8	16	12	15	18	17	19	
 Marge totale :		0	0	0	1	0	1	0	0	1	0	0	
 Marge libre : 		0	0	0	0	0	0	0	0	1	0	0	
+
