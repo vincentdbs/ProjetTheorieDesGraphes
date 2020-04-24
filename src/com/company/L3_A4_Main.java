@@ -81,7 +81,7 @@ public class L3_A4_Main {
         FileFilter grapheFileFilter = new FileFilter() {
             public boolean accept(File file) {
                 //si le fichier est un graphe de test
-                if (file.getName().startsWith("A4-graphe")) {
+                if (file.getName().startsWith("L3-A4-graphe")) {
                     return true;
                 }
                 return false;
