@@ -13,22 +13,9 @@ public class L3_A4_Main {
             //calcul du rang
             //test graphe d'ordonnancement
                 //calcul des calendrier
-//        do {
-//            int numGraphe = choiceNumGraphe();
-//            A4_Graphe graphe = new A4_Graphe(numGraphe);
-//            if (graphe.getisGraphOk()){
-//                graphe.affichageMatrice();
-//                if (!graphe.detectionCircuit()){
-//                    graphe.rang();
-//                    if (graphe.isGrapheOrdonnancement()){
-//                        graphe.ordonnancement();
-//                    }
-//                }
-//            }
-//        }while (newGraphe());
-
-        for (int i = 1; i <= 13; i++) {
-            L3_A4_Graphe graphe = new L3_A4_Graphe(i);
+        do {
+            int numGraphe = choiceNumGraphe();
+            L3_A4_Graphe graphe = new L3_A4_Graphe(numGraphe);
             if (graphe.getisGraphOk()){
                 graphe.affichageMatrice();
                 if (!graphe.detectionCircuit()){
@@ -38,7 +25,8 @@ public class L3_A4_Main {
                     }
                 }
             }
-        }
+        }while (newGraphe());
+
     }
 
     /**
