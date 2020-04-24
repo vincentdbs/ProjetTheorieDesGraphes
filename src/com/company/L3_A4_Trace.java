@@ -2,10 +2,10 @@ package com.company;
 
 import java.io.*;
 
-public class A4_Trace {
+public class L3_A4_Trace {
     private String nameFile;
 
-    public A4_Trace(int _num_file){
+    public L3_A4_Trace(int _num_file){
         nameFile = "L3-A4-trace" + _num_file + ".txt";
         PrintWriter writer = null;
         try { //supprime le contenu du fichier

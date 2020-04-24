@@ -7,20 +7,20 @@ import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class A4_Graphe {
+public class L3_A4_Graphe {
     private String name_file;
     private int nb_arc, nb_sommet, num_file;
-    private ArrayList<A4_Arc> listArc;
+    private ArrayList<L3_A4_Arc> listArc;
     private int[][] matriceAdjacence;
     private String[][] matriceValeur;
     private int[] rang;
-    private A4_Trace trace;
+    private L3_A4_Trace trace;
     private boolean isGrapheOrdonnancement, isGrapheOk;
     private int start;
 
-    public A4_Graphe(int _num_file){
+    public L3_A4_Graphe(int _num_file){
         this.isGrapheOrdonnancement = false;
-        this.trace = new A4_Trace(_num_file);
+        this.trace = new L3_A4_Trace(_num_file);
         this.listArc = new ArrayList<>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
         this.name_file = "L3-A4-graphe" + num_file + ".txt"; //nom du fichier
@@ -81,9 +81,9 @@ public class A4_Graphe {
     /**
      * Creer une transition
      */
-    private A4_Arc createTransition(String line){
+    private L3_A4_Arc createTransition(String line){
         String[] array = line.split(" ");
-        A4_Arc arc = new A4_Arc(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+        L3_A4_Arc arc = new L3_A4_Arc(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
         trace.write(array[0] + " -> " + array[1] + " = " + array[2] + "\n");
         return arc;
     }

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.util.Scanner;
 
-public class A4_Main {
+public class L3_A4_Main {
 
     public static void main(String[] args) {
         //choix du graphe
@@ -28,7 +28,7 @@ public class A4_Main {
 //        }while (newGraphe());
 
         for (int i = 1; i <= 13; i++) {
-            A4_Graphe graphe = new A4_Graphe(i);
+            L3_A4_Graphe graphe = new L3_A4_Graphe(i);
             if (graphe.getisGraphOk()){
                 graphe.affichageMatrice();
                 if (!graphe.detectionCircuit()){
