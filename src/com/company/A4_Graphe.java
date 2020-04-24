@@ -23,7 +23,7 @@ public class A4_Graphe {
         this.trace = new A4_Trace(_num_file);
         this.listArc = new ArrayList<>(); //initialisation de la liste de transition
         this.num_file = _num_file; //numéro du fichier
-        this.name_file = "A4-graphe" + num_file + ".txt"; //nom du fichier
+        this.name_file = "L3-A4-graphe" + num_file + ".txt"; //nom du fichier
         this.isGrapheOk = false; //le graphe est bien récuperer depuis le fichiers
         if (readFile()){
             isGrapheOk = true;
