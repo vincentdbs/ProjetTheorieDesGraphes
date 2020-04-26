@@ -434,6 +434,7 @@ public class L3_A4_Graphe {
                 tabOrdonnancement[i][j] = -1;
             }
         }
+
         //classement des sommets par ordre croissant de rang
         tabOrdonnancement[0] = orderSommetsbyRang();
         //recupération des tâche de chaque sommet
@@ -671,7 +672,6 @@ public class L3_A4_Graphe {
         int[] margeLibre = new int[nb_sommet];
         ArrayList<Integer> tempoSucc = new ArrayList<Integer>();
         ArrayList<Integer> tempoSuccIndex = new ArrayList<Integer>();
-
         ArrayList<Integer> tempoMarge = new ArrayList<Integer>();
 
         trace.write("\t ----- Marges libres -----\n");
