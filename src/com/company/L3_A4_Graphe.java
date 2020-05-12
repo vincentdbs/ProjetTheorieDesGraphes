@@ -710,6 +710,96 @@ public class L3_A4_Graphe {
         return margeLibre;
     }
 
+//    public void floyd(){
+//        int[][] matriceL = new int[nb_sommet][nb_sommet];
+//        int[][] matriceP = new int[nb_sommet][nb_sommet];
+//
+//        for (int i = 0; i < nb_sommet ; i++) {
+//            for (int j = 0; j < nb_sommet; j++) {
+//                if(i == j){
+//                    matriceL[i][j] = 0;
+//                }else{
+//                    if(matriceValeur[i][j].equals("*")){
+//                        matriceL[i][j] = 10000;
+//                    }else{
+//                        matriceL[i][j] = Integer.parseInt(matriceValeur[i][j]);
+//                    }
+//                }
+//                matriceP[i][j] = i+1;
+//
+//            }
+//        }
+//        System.out.println("Init");
+//        printMatrice(matriceL);
+//        System.out.println();
+//        printMatrice(matriceP);
+//
+//        for (int i = 0; i < nb_sommet ; i++) {
+//            for (int j = 0; j < nb_sommet ; j++) {
+//                for (int k = 0; k < nb_sommet; k++) {
+//                    if(matriceL[i][k] + matriceL[k][j] < matriceL[i][j]){
+//                        if (!((matriceL[i][k] == 10000) || ((matriceL[k][j] == 10000) || (matriceL[i][j] == 10000)))){
+//                            matriceL[i][j] = matriceL[i][k] + matriceL[k][j];
+//
+//                        }else{
+//                            matriceL[i][j] = 10000;
+//                        }
+//                        matriceP[i][j] = matriceP[k][j];
+//                    }
+//                }
+//            }
+//            System.out.println("\nEtape " + (i + 1));
+//            printMatrice(matriceL);
+//            System.out.println();
+//            printMatrice(matriceP);
+//        }
+//
+//    }
+
+    public void floyd(){
+        int[][] matriceL = new int[nb_sommet][nb_sommet];
+        int[][] matriceP = new int[nb_sommet][nb_sommet];
+
+        for (int i = 0; i < nb_sommet ; i++) {
+            for (int j = 0; j < nb_sommet; j++) {
+                if(i == j){
+                    matriceL[i][j] = 0;
+                }else{
+                    if(matriceValeur[i][j].equals("*")){
+                        matriceL[i][j] = 10000;
+                    }else{
+                        matriceL[i][j] = Integer.parseInt(matriceValeur[i][j]);
+                    }
+                }
+                matriceP[i][j] = i+1;
+
+            }
+        }
+        System.out.println("Init");
+        printMatrice(matriceL);
+        System.out.println();
+        printMatrice(matriceP);
+
+        for (int k = 0; k < nb_sommet ; k++) {
+            for (int j = 0; j < nb_sommet ; j++) {
+                for (int i = 0; i < nb_sommet; i++) {
+                    if (!((matriceL[i][k] == 10000) || ((matriceL[k][j] == 10000) ))){
+                        if(matriceL[i][k] + matriceL[k][j] < matriceL[i][j]) {
+                            matriceL[i][j] = matriceL[i][k] + matriceL[k][j];
+                            matriceP[i][j] = matriceP[k][j];
+                        }
+                    }
+                }
+            }
+            System.out.println("\nEtape " + (k + 1));
+            printMatrice(matriceL);
+            System.out.println();
+            printMatrice(matriceP);
+        }
+
+    }
+
+
     /*Getter setter*/
     public int getNum_file() {
         return num_file;
