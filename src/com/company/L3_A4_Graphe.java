@@ -796,7 +796,6 @@ public class L3_A4_Graphe {
             System.out.println();
             printMatrice(matriceP);
         }
-
     }
 
 

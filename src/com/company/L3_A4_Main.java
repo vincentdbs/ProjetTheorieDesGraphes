@@ -13,23 +13,24 @@ public class L3_A4_Main {
             //calcul du rang
             //test graphe d'ordonnancement
                 //calcul des calendrier
-//        do {
-//            int numGraphe = choiceNumGraphe();
-//            L3_A4_Graphe graphe = new L3_A4_Graphe(numGraphe);
-//            if (graphe.getisGraphOk()){
-//                graphe.affichageMatrice();
-//                if (!graphe.detectionCircuit()){
-//                    graphe.rang();
-//                    if (graphe.isGrapheOrdonnancement()){
-//                        graphe.ordonnancement();
-//                    }
-//                }
-//            }
-//        }while (newGraphe());
+        do {
+            int numGraphe = choiceNumGraphe();
+            L3_A4_Graphe graphe = new L3_A4_Graphe(numGraphe);
+            if(choixAlgo().equals("f")){
+                graphe.floyd();
+            }else{
+                if (graphe.getisGraphOk()){
+                    graphe.affichageMatrice();
+                    if (!graphe.detectionCircuit()){
+                        graphe.rang();
+                        if (graphe.isGrapheOrdonnancement()){
+                            graphe.ordonnancement();
+                        }
+                    }
+                }
+            }
+        }while (newGraphe());
 
-        int numGraphe = choiceNumGraphe();
-        L3_A4_Graphe graphe = new L3_A4_Graphe(numGraphe);
-        graphe.floyd();
 
     }
 
@@ -98,6 +99,23 @@ public class L3_A4_Main {
         }else{
             return nbFile;
         }
+    }
+
+    private static String choixAlgo(){
+        String choix= "";
+        int again = 0;
+        do{
+            System.out.print("Choisissez entre ordonnancement[o] et floyd[f] : ");
+            Scanner scanner = new Scanner(System.in);
+            choix = scanner.nextLine();
+            if ((choix.equals("f")) || (choix.equals("o"))){
+                again = 1;
+            }
+            else{
+                again = 0;
+            }
+        }while (again == 0);
+        return choix;
     }
 
 }
