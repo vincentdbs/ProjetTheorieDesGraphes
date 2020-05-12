@@ -776,7 +776,7 @@ public class L3_A4_Graphe {
             }
         }
         System.out.println("Init");
-        printMatrice(matriceL);
+        replaceFloyd(matriceL);
         System.out.println();
         printMatrice(matriceP);
 
@@ -792,10 +792,26 @@ public class L3_A4_Graphe {
                 }
             }
             System.out.println("\nEtape " + (k + 1));
-            printMatrice(matriceL);
+            replaceFloyd(matriceL);
             System.out.println();
             printMatrice(matriceP);
         }
+
+
+    }
+
+    private void replaceFloyd(int[][] matriceL){
+        String[][] finale = new String[nb_sommet][nb_sommet];
+        for (int i = 0; i < nb_sommet ; i++) {
+            for (int j = 0; j < nb_sommet ; j++) {
+                if(matriceL[i][j] == 10000){
+                    finale[i][j] = "*";
+                }else{
+                    finale[i][j] =  String.valueOf(matriceL[i][j]);
+                }
+            }
+        }
+        printMatrice(finale);
     }
 
 
