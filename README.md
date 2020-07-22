@@ -1,4 +1,4 @@
-# Manipulation de graphes
+# Théorie des graphes
 Ce projet a pour but de manipuler des graphes.
 Opérations possibles :
 * Lecture d'un fichier formaté
@@ -10,16 +10,16 @@ Opérations possibles :
 * Calcul des marges libres et totales
 * Affichage du calendrier d'ordonnancement
 
-# Handling of graphs
-The goal of the project is to handle finite-state machine.  
+# Graph theory
+The goal of the project is to manipulate graphs.  
 Possible operations :
 * Reading graph from text file
-* Displaying adjacency matrix and matrix of values
+* Displaying adjacency and values matrix
 * Detect cycle
-* Calcul of the ranks of the vertices
-* Calcul of the earliest dates
-* Calcul of the latest dates
-* Calcul of the free et total floats
-* Displaying the calendar
+* Calculate the ranks of the vertices
+* Calculate the earliest dates
+* Calculate the latest dates
+* Calculate the free et total floats
+* Displaying the scheduling calendar
 
 
